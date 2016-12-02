@@ -45,9 +45,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Card\Draggerable.cs" />
+     <Compile Include="Assets\Card\DropZone.cs" />
      <Compile Include="Assets\CardFactory.cs" />
      <Compile Include="Assets\Common_NowCardSet.cs" />
      <Compile Include="Assets\GamePlayScene_CardFactory.cs" />
+     <Compile Include="Assets\Test_CardFactoryTest.cs" />
+     <Compile Include="Assets\play\Scripts\CardFlipper.cs" />
+     <Compile Include="Assets\play\Scripts\CardModel.cs" />
+     <Compile Include="Assets\play\Scripts\DebugChangeCard.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
