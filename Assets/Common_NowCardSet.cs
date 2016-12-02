@@ -9,6 +9,11 @@ public class NowCardSet {
     static public void LoadCardFile(string inputFile)
     {
         FileName = inputFile;
+        FileStream fs = new FileStream(FileName, FileMode.Create);
+        StreamWriter sw = new StreamWriter(fs);
+
+        sw.Close();
+        fs.Close();
     }
     static public void SaveCardFile()//不需要名字，自动利用即可读取的文件名即可。
     {
