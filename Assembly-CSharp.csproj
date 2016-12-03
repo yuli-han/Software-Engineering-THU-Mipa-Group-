@@ -47,7 +47,6 @@
   <ItemGroup>
      <Compile Include="Assets\Card\Draggerable.cs" />
      <Compile Include="Assets\Card\DropZone.cs" />
-     <Compile Include="Assets\Common_CardInfo.cs" />
      <Compile Include="Assets\Common_DataBase.cs" />
      <Compile Include="Assets\Common_NowCardSet.cs" />
      <Compile Include="Assets\GamePlayScene_CardFactory.cs" />
