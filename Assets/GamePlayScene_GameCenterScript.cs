@@ -9,8 +9,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	void Start () {
 	    //初始化第一步：根据已有的数据来编造卡组
         //数据来源：Common_NowCardSet.CardSet&.Length
-        int length = Common_NowCardSet.Length;
-        int[] cardSet = Common_NowCardSet.CardSet;
+        
         //生成的卡片按顺序铺在场上
 
         //然后应该要通过网络获取对方卡组。因为还没有加入联网测试功能所以选择将双方卡组设为相同。
