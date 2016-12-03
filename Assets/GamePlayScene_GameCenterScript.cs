@@ -1,29 +1,42 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-//GamePlaySceneæ ¸å¿ƒçš„ä»£ç ã€‚å˜›ï¼Œä¹Ÿå°±æ˜¯æ•´ä½“æ§åˆ¶å™¨
+//GamePlaySceneºËĞÄµÄ´úÂë¡£Âï£¬Ò²¾ÍÊÇÕûÌå¿ØÖÆÆ÷
 
 public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
+    GameObject[] CardCollection;//ÌáÊ¾£ºÕâ¸öÖ»´æ´¢ÅÆ¿âÀïµÄÅÆ£¬¶ø²»¹ÜÀíÊÖÅÆµÈ
+
+
 	// Use this for initialization
 	void Start () {
-	    //åˆå§‹åŒ–ç¬¬ä¸€æ­¥ï¼šæ ¹æ®å·²æœ‰çš„æ•°æ®æ¥ç¼–é€ å¡ç»„
-        //æ•°æ®æ¥æºï¼šCommon_NowCardSet.CardSet&.Length
+	    //³õÊ¼»¯µÚÒ»²½£º¸ù¾İÒÑÓĞµÄÊı¾İÀ´±àÔì¿¨×é
+        //Êı¾İÀ´Ô´£ºCommon_NowCardSet.CardSet&.Length
+
+        //ÌáÊ¾£º²âÊÔÊ±£¬¿ÉÒÔ½«´ËĞĞ×¢ÊÍµô£¬¸ÄÎªÊÖ¶¯Éè¶¨
+        int length = Common_NowCardSet.Length;
+        int[] cardSet = Common_NowCardSet.CardSet;
+
+        //Éú³ÉµÄ¿¨Æ¬°´Ë³ĞòÆÌÔÚ³¡ÉÏ
+        for (int i = 0; i < length; i++)
+        {
+            CardCollection[i]=Common_DataBase.GetCard(cardSet[i]);
+        }
         
-        //ç”Ÿæˆçš„å¡ç‰‡æŒ‰é¡ºåºé“ºåœ¨åœºä¸Š
+        //È»ºóÓ¦¸ÃÒªÍ¨¹ıÍøÂç»ñÈ¡¶Ô·½¿¨×é¡£ÒòÎª»¹Ã»ÓĞ¼ÓÈëÁªÍø²âÊÔ¹¦ÄÜËùÒÔÑ¡Ôñ½«Ë«·½¿¨×éÉèÎªÏàÍ¬¡£
 
-        //ç„¶ååº”è¯¥è¦é€šè¿‡ç½‘ç»œè·å–å¯¹æ–¹å¡ç»„ã€‚å› ä¸ºè¿˜æ²¡æœ‰åŠ å…¥è”ç½‘æµ‹è¯•åŠŸèƒ½æ‰€ä»¥é€‰æ‹©å°†åŒæ–¹å¡ç»„è®¾ä¸ºç›¸åŒã€‚
+        //³õÊ¼»¯µÚ¶ş²½£º¸ù¾İÓ¢ĞÛĞÅÏ¢£¬½«Í·ÏñºÍÓ¢ĞÛ¼¼ÄÜ°´Å¥ÖÃÓÚ³¡ÉÏ¡£
 
-        //åˆå§‹åŒ–ç¬¬äºŒæ­¥ï¼šæ ¹æ®è‹±é›„ä¿¡æ¯ï¼Œå°†å¤´åƒå’Œè‹±é›„æŠ€èƒ½æŒ‰é’®ç½®äºåœºä¸Šã€‚
+        //³õÊ¼»¯µÚÈı²½£º³õÊ¼»¯¸÷¸ö¿Ø¼şµÄĞÅÏ¢
 
-        //åˆå§‹åŒ–ç¬¬ä¸‰æ­¥ï¼šåˆå§‹åŒ–å„ä¸ªæ§ä»¶çš„ä¿¡æ¯
+        //³õÊ¼»¯µÚËÄ²½£ºÉèÖÃ×´Ì¬Îª³õÊ¼×´Ì¬¡£
 
-        //åˆå§‹åŒ–ç¬¬å››æ­¥ï¼šè®¾ç½®çŠ¶æ€ä¸ºåˆå§‹çŠ¶æ€ã€‚
-
+        //³õÊ¼»¯µÚÎå²½£ºÆô¶¯Trigger_GameStart£¬ÓÎÏ·¿ªÊ¼¡£
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 	
 	}
 
