@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Common_NowCardSet.cs" />
      <Compile Include="Assets\GamePlayScene_CardFactory.cs" />
+     <Compile Include="Assets\GamePlayScene_GameCenterScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>G:/unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
