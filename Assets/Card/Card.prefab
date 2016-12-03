@@ -58,7 +58,6 @@ GameObject:
   - 114: {fileID: 114000010580661362}
   - 225: {fileID: 225000013273242242}
   - 114: {fileID: 114000012328364078}
-  - 114: {fileID: 114000010123988690}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -134,17 +133,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114000010123988690
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010860105492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef74f7bc4c5a6ab448ef3230e86ab3d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000010580661362
 MonoBehaviour:
   m_ObjectHideFlags: 1
