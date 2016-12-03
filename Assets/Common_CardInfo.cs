@@ -19,7 +19,7 @@ public class Common_CardInfo : MonoBehaviour {
         public int id;
         public int itemId;
         public int position;
-        //void* Trigger;
+        //void* Trigger;//触发器，类型未定。强烈限制每个卡片只允许拥有一个效果
     }
 
     public BaseInfo cardInfo;
