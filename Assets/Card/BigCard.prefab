@@ -91,6 +91,7 @@ GameObject:
   - 114: {fileID: 114000013219571528}
   - 114: {fileID: 114000013389489342}
   - 225: {fileID: 225000012234434604}
+  - 114: {fileID: 114000013641100664}
   m_Layer: 5
   m_Name: BigCard
   m_TagString: Untagged
@@ -309,6 +310,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: DeathWing
+--- !u!114 &114000013641100664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013309772710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8897a32934a7bd545a6d6f94f487ee85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000013810508078
 MonoBehaviour:
   m_ObjectHideFlags: 1
