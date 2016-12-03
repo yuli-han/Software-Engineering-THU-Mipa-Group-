@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class CardFactory :MonoBehaviour{
+public class GamePlayScene_CardFactory :MonoBehaviour{
 
 	public GameObject Card;
 	public Sprite[] picture;

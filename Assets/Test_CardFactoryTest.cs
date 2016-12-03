@@ -5,7 +5,7 @@ public class Test_CardFactoryTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		CardFactory newCard=GameObject.Find("CardFactory").GetComponent<CardFactory>();
+		GamePlayScene_CardFactory newCard=GameObject.Find("CardFactory").GetComponent<GamePlayScene_CardFactory>();
 		GameObject c=newCard.CreateNewCard(3,3,3,"盐","研请",0);
 		c.transform.SetParent(GameObject.Find("Canvas").transform);
 		
