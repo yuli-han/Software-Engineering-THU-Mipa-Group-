@@ -16,7 +16,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	Vector3 BigCardPosition;
 	
 	void Awake(){
-		BigCardPosition = new Vector3(160f,600f,0f);
+		//BigCardPosition = new Vector3(160f,600f,0f);
+		BigCardPosition.z = 0f;
 	}
 	
 	
@@ -118,9 +119,23 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		}
 		
 		//draw big card
+		Vector3 localposition = this.transform.position;
 		int bigId = GetComponent<Common_CardInfo>().cardInfo.id;
 		bigCard=Common_DataBase.GetCard(bigId,true);
 		bigCard.transform.SetParent(GameObject.Find("Canvas").transform);
+		if(localposition.y>400){
+			BigCardPosition.y = localposition.y - 250f;
+		}
+		else{
+			BigCardPosition.y = localposition.y + 300f;
+		}
+		
+		if(localposition.x>=500){
+			BigCardPosition.x = localposition.x - 150f;
+		}
+		else{
+			BigCardPosition.x = localposition.x + 150f;
+		}
 		bigCard.transform.position = BigCardPosition;
 		
 		
@@ -140,7 +155,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		
 		this.transform.SetParent(this.transform.parent.parent);
 		float up = 40f;
-		Vector3 localposition = this.transform.position;
+		
 		localposition.y+=up;
 		this.transform.position = localposition;
 	}
