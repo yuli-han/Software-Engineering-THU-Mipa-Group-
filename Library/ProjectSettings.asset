@@ -29,10 +29,7 @@ PlayerSettings:
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
-<<<<<<< HEAD
   tizenShowActivityIndicatorOnLoading: -1
-=======
->>>>>>> origin/UnityDevelopment
   iosAppInBackgroundBehavior: 0
   displayResolutionDialog: 1
   iosAllowHTTPDownload: 1
@@ -48,10 +45,7 @@ PlayerSettings:
   runInBackground: 0
   captureSingleScreen: 0
   Override IPod Music: 0
-<<<<<<< HEAD
   muteOtherAudioSources: 0
-=======
->>>>>>> origin/UnityDevelopment
   Prepare IOS For Recording: 0
   submitAnalytics: 1
   usePlayerLog: 1
@@ -152,10 +146,7 @@ PlayerSettings:
   tvOSSmallIconLayers: []
   tvOSLargeIconLayers: []
   tvOSTopShelfImageLayers: []
-<<<<<<< HEAD
   tvOSTopShelfImageWideLayers: []
-=======
->>>>>>> origin/UnityDevelopment
   iOSLaunchScreenType: 0
   iOSLaunchScreenPortrait: {fileID: 0}
   iOSLaunchScreenLandscape: {fileID: 0}

@@ -5,7 +5,8 @@ using System.Collections;
 
 public class Common_DataBase 
 {
-
+    
+    //需要为卡片的属性定一个类，并且将其作为卡片的成员。
     static public void GetCardInfo(int cardId)
     {
 
