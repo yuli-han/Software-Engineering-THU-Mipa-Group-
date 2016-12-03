@@ -22,8 +22,8 @@ GameObject:
   - 222: {fileID: 222000012486814310}
   - 114: {fileID: 114000013599510922}
   - 114: {fileID: 114000012329843744}
-  - 114: {fileID: 114000012035155928}
   - 225: {fileID: 225000011081846424}
+  - 114: {fileID: 114000014014950756}
   m_Layer: 5
   m_Name: CardNew
   m_TagString: Untagged
@@ -226,19 +226,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 10
---- !u!114 &114000012035155928
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010047954554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62897dd2e318aa9439a8f4c2cdab00af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentToReturnTo: {fileID: 0}
-  placeholderParent: {fileID: 0}
 --- !u!114 &114000012329843744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,6 +370,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114000014014950756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010047954554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0097f8393919b4b8a243f5e5be42d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentToReturnTo: {fileID: 0}
+  placeholderParent: {fileID: 0}
 --- !u!222 &222000010346034946
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -447,7 +447,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 280, y: 83}
-  m_SizeDelta: {x: 135, y: 200}
+  m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224000010857246266
 RectTransform:

@@ -22,7 +22,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		le.flexibleHeight = 0;
 		
 		placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
-		
+		Debug.Log(this.transform.GetSiblingIndex().ToString());
 		parentToReturnTo = this.transform.parent;
 		placeholderParent = parentToReturnTo;
 		

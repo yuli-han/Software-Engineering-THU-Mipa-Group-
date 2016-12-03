@@ -5,8 +5,9 @@ using System.Collections;
 public class CardFactory :MonoBehaviour{
 
 	public GameObject Card;
+	public Sprite[] picture;
 	
-	public GameObject CreateNewCard(int cost,int atk,int hp,string name,string description,string pictureLocation)
+	public GameObject CreateNewCard(int cost,int atk,int hp,string name,string description,int pictureIndex)
 	{
 		GameObject NewCard = Instantiate(Card);
 		NewCard.transform.FindChild("Card Name").GetComponent<Text>().text=name;
@@ -14,7 +15,7 @@ public class CardFactory :MonoBehaviour{
 		NewCard.transform.Find("Cost").GetComponent<Text>().text=cost.ToString();
 		NewCard.transform.Find("Attack").GetComponent<Text>().text=atk.ToString();
 		NewCard.transform.Find("Life").GetComponent<Text>().text=hp.ToString();
-		NewCard.transform.Find("Image").GetComponent<Image>().overrideSprite = Resources.Load(pictureLocation, typeof(Sprite)) as Sprite;
+		NewCard.transform.Find("photo").GetComponent<Image>().sprite = picture[pictureIndex];
 		
 		return(NewCard);
 	}
