@@ -35,7 +35,7 @@ public class Common_NowCardSet {
         sw.Close();
         fs.Close();
     }
-    static int[] CardSet;//卡组
-    static int Length;//卡组长度
+    public static int[] CardSet;//卡组
+    public static int Length;//卡组长度
 }
 
