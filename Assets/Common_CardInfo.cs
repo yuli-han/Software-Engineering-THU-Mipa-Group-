@@ -1,25 +1,26 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
 public class Common_CardInfo : MonoBehaviour {
     
-    //å¡ç‰‡æ•°æ®æš‚å­˜å™¨ã€‚å°†è¿™ä¸ªScripté™„ç€åœ¨å¡ç‰‡ä¸Šé¢ä½œä¸ºå¡ç‰‡æ•°æ®ï¼Œä»¥æ–¹ä¾¿è®¡ç®—ä»¥åŠæ˜¾ç¤ºã€‚
+    //¿¨Æ¬Êı¾İÔİ´æÆ÷¡£½«Õâ¸öScript¸½×ÅÔÚ¿¨Æ¬ÉÏÃæ×÷Îª¿¨Æ¬Êı¾İ£¬ÒÔ·½±ã¼ÆËãÒÔ¼°ÏÔÊ¾¡£
 
     
     public class BaseInfo
     {
-        //åŸºæœ¬æ•°æ®
+        //»ù±¾Êı¾İ
         public string name;
         public string description;
         public int cost;
         public int atk;
         public int hp;
-        //é¢å¤–æ•°æ®
+        //¶îÍâÊı¾İ
         public int id;
         public int itemId;
         public int position;
-        //void* Trigger;//è§¦å‘å™¨ï¼Œç±»å‹æœªå®šã€‚å¼ºçƒˆé™åˆ¶æ¯ä¸ªå¡ç‰‡åªå…è®¸æ‹¥æœ‰ä¸€ä¸ªæ•ˆæœ
+        //void* Trigger;//´¥·¢Æ÷£¬ÀàĞÍÎ´¶¨¡£Ç¿ÁÒÏŞÖÆÃ¿¸ö¿¨Æ¬Ö»ÔÊĞíÓµÓĞÒ»¸öĞ§¹û
+		//int CardType;//¿¨Æ¬ÀàĞÍ¡£ÕâÀïÊÇÎªÁËÌáÊ¾Ê¹ÓÃ¿¨Æ¬Ê±ÊÇ·ñĞèÒªÖ¸ÏòÄ¿±ê£»¿ÉÑ¡Ñ¡Ïî°üÀ¨¡°ÆÕÍ¨·¨Êõ¡±¡°Ö¸Ïò·¨Êõ¡±¡°ÆÕÍ¨Ëæ´Ó¡±¡°ÆÕÍ¨Õ½ºğËæ´Ó¡±¡°Ö¸ÏòÕ½ºğËæ´Ó¡±£¬ÆäÖĞÖ¸Ïò·¨ÊõĞèÒªÖ¸Ïòtarget·¢¶¯£¬Ö¸ÏòÕ½ºğËæ´ÓÔòĞèÒªÏÈÕÙ»½ºóÔÙÖ¸¶¨Ò»¸ö¿ÉÑ¡µ¥Î»·¢¶¯Õ½ºğ
     }
 
     public BaseInfo cardInfo;
