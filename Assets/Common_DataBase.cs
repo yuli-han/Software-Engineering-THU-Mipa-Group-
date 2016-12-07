@@ -7,10 +7,18 @@ public class Common_DataBase
 {
     static int nowItemId = 0;
     //需要为卡片的属性定一个类，并且将其作为卡片的成员。
-    static public GameObject GetCard(int cardId)
+    static public GameObject GetCard(int cardId, bool amplify = false)
     {
-        GameObject newCard = GameObject.Find("GamePlayScene_CardFactory")
+		GameObject newCard;
+		if(amplify){
+			newCard = GameObject.Find("GamePlayScene_CardFactory")
+            .GetComponent<GamePlayScene_CardFactory>().CreateNewBigCard(cardId);
+		}
+		else{
+			newCard = GameObject.Find("GamePlayScene_CardFactory")
             .GetComponent<GamePlayScene_CardFactory>().CreateNewCard(cardId);
+		}
+        
         Common_CardInfo.BaseInfo info=new Common_CardInfo.BaseInfo();
         switch (cardId)
         {
@@ -28,6 +36,28 @@ public class Common_DataBase
                 info.name = "愤怒的小鸡";
                 info.description = "激怒：杀死场上的所有死亡之翼";
                 break;
+			case 3:
+                info.cost = 1;
+                info.atk = 1;
+                info.hp = 1;
+                info.name = "愤怒的小鸡";
+                info.description = "激怒：杀死场上的所有死亡之翼";
+                break;
+			case 4:
+                info.cost = 1;
+                info.atk = 1;
+                info.hp = 1;
+                info.name = "愤怒的小鸡";
+                info.description = "激怒：杀死场上的所有死亡之翼";
+                break;
+			case 5:
+                info.cost = 6;
+                info.atk = 5;
+                info.hp = 5;
+                info.name = "西尔瓦娜丝";
+                info.description = "亡语：获取MiPa";
+                break;
+			
         }
         info.id = cardId;
         nowItemId++;

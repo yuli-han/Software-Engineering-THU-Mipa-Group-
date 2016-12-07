@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler{
 	
 	public void OnPointerEnter(PointerEventData eventData){
-		Debug.Log("in Panal");
+		//Debug.Log("in Panal");
 		if(eventData.pointerDrag ==null)
 			return;
 		Draggerable d = eventData.pointerDrag.GetComponent<Draggerable>();
@@ -15,7 +15,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 	}
 	
 	public void OnPointerExit(PointerEventData eventData){
-		Debug.Log("leave Panal");
+		//Debug.Log("leave Panal");
 		if(eventData.pointerDrag ==null)
 			return;
 		Draggerable d = eventData.pointerDrag.GetComponent<Draggerable>();
@@ -28,7 +28,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 	public void OnDrop(PointerEventData eventData){
 		if(eventData.pointerDrag ==null)
 			return;
-		Debug.Log(eventData.pointerDrag.name + "was dropped on" + gameObject.name);
+		//Debug.Log(eventData.pointerDrag.name + "was dropped on" + gameObject.name);
 		
 		Draggerable d = eventData.pointerDrag.GetComponent<Draggerable>();
 		if(d != null){
