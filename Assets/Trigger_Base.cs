@@ -19,23 +19,23 @@ class Trigger
 		//使用方法是利用&符号连接多个类。
 		public int target;
 
-		public static const int Anytime=1;//这个被标记就代表任何单位都可以
+		static public readonly int Anytime=1;//这个被标记就代表任何单位都可以
 		//以下两个将一一排他。如果两个都没标记就代表均可。只标记了一个就代表不要另一个
-		public static const int Enemy=2;//敌军
-		public static const int Friend=4;//友军。这个是包括自己的。
+		public static readonly int Enemy=2;//敌军
+		public static readonly int Friend=4;//友军。这个是包括自己的。
 
-		public static const int Myself=8;//使用单位自己。这个和下面那个估计没有用，是我蠢了，捂脸
-		public static const int Others=16;//除了使用者以外。
+		public static readonly int Myself=8;//使用单位自己。这个和下面那个估计没有用，是我蠢了，捂脸
+		public static readonly int Others=16;//除了使用者以外。
 
-		public static const int Hero=32;//英雄
-		public static const int Unit=64;//随从
+		public static readonly int Hero=32;//英雄
+		public static readonly int Unit=64;//随从
 
 		//下面为各种种族。只要标记了一个，就意味着其他没标记的都当作不能被指向。当然你可以标记多个
-		public static const int Animal=128;//野兽
-		public static const int Tecnical=256;//机械
-		public static const int Evavl=512;//恶魔，好吧我英语不好，之后改
-		public static const int Dragon=1024;//龙
-		public static const int Fish=2048;//鱼人。如果你吐槽说鱼不等于鱼人，你就输了。
+		public static readonly int Animal=128;//野兽
+		public static readonly int Tecnical=256;//机械
+		public static readonly int Evavl=512;//恶魔，好吧我英语不好，之后改
+		public static readonly int Dragon=1024;//龙
+		public static readonly int Fish=2048;//鱼人。如果你吐槽说鱼不等于鱼人，你就输了。
 	}
 	public TriggerTarget thisTarget;
 
@@ -46,24 +46,24 @@ class Trigger
 		public int conditionTime;//触发时机
 
 //conditionType组
-		public static const int OnAnyTime=0;
-		public static const int OnAttack=1;
-		public static const int OnAttacked=2;
-		public static const int OnDead=3;
-		public static const int OnSummon=4;//召唤时。这个时间不包括“召唤自己”
-		public static const int OnPlayCard=5;
+		public static readonly int OnAnyTime=0;
+		public static readonly int OnAttack=1;
+		public static readonly int OnAttacked=2;
+		public static readonly int OnDead=3;
+		public static readonly int OnSummon=4;//召唤时。这个时间不包括“召唤自己”
+		public static readonly int OnPlayCard=5;
 
 //conditionTarget组
-		public static const int OnAnyUnit=0;
-		public static const int OnEnemy=1;
-		public static const int OnFriend=2;
-		public static const int OnHero=4;
-		public static const int OnUnit=8;
+		public static readonly int OnAnyUnit=0;
+		public static readonly int OnEnemy=1;
+		public static readonly int OnFriend=2;
+		public static readonly int OnHero=4;
+		public static readonly int OnUnit=8;
 
 //conditimeTime组
-		public static const int TimeAnyTime=0;//无时机
-		public static const int TimeBefore=1;//事件发生前
-		public static const int TimeAfter=2;//事件发生后
+		public static readonly int TimeAnyTime=0;//无时机
+		public static readonly int TimeBefore=1;//事件发生前
+		public static readonly int TimeAfter=2;//事件发生后
 	}
 	public TriggerCondition thisCondition;
 
@@ -74,15 +74,15 @@ class Trigger
 		{
 		}
 	}
-	public class thisResult;
+	public TriggerResult thisResult;
 
 //构造函数就应该直接给定两个Trigger条件以供后用
 	public Trigger(TriggerTarget target,TriggerCondition condition,TriggerResult result)
-{
+    {
 	thisTarget=target;
 	thisCondition=condition;
 	thisResult=result;
-}
+    }
 
 //实际执行的执行方式
 	public void exec(TriggerInput input)

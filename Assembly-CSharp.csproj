@@ -52,6 +52,7 @@
      <Compile Include="Assets\Common_NowCardSet.cs" />
      <Compile Include="Assets\GamePlayScene_CardFactory.cs" />
      <Compile Include="Assets\GamePlayScene_GameCenterScript.cs" />
+     <Compile Include="Assets\Trigger_Base.cs" />
      <Compile Include="Assets\play\Scripts\CardFlipper.cs" />
      <Compile Include="Assets\play\Scripts\CardModel.cs" />
      <Compile Include="Assets\play\Scripts\DebugChangeCard.cs" />
