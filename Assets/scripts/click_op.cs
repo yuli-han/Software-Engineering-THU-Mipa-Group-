@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class click : MonoBehaviour {
+public class click_op : MonoBehaviour {
 	
 	int id = 1;
 	void OnMouseDown()
@@ -12,7 +12,7 @@ public class click : MonoBehaviour {
 		id = id+1;
 		if(id > 5)
 			id = 1;
-		c.transform.SetParent(GameObject.Find("Canvas/Hand").transform);
+		c.transform.SetParent(GameObject.Find("Canvas/Field_op").transform);
 		c.GetComponent<Common_CardInfo>().cardInfo.position = c.transform.parent.GetComponent<canvas_position>().position;
 	}
 }

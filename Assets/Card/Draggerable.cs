@@ -13,6 +13,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	
 	GameObject placeholder = null;
 	
+	GameObject attackTarget = null;
+	
 	Vector3 BigCardPosition;
 	
 	void Awake(){
@@ -23,6 +25,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	
 	public void OnBeginDrag(PointerEventData eventData){
 		
+		if(this.GetComponent<Common_CardInfo>().cardInfo.position > 2)
+			return;
 		if(!GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
 			//Debug.Log("OnBeginDrag");
@@ -40,6 +44,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		placeholderParent = parentToReturnTo;
 		
 		this.transform.SetParent(this.transform.parent.parent);*/
+			//Debug.Log(this.GetComponent<Common_CardInfo>().cardInfo.position.ToString());
+			
 			if(bigCard!=null)
 			{
 				Destroy(bigCard);
@@ -56,7 +62,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		
 		if(placeholder == null)
 		{
-			Debug.Log(eventData.pointerDrag.name  + "OnDrag Fail");
+			//Debug.Log(eventData.pointerDrag.name  + "OnDrag Fail");
 			if(!GetComponent<CanvasGroup>().blocksRaycasts)
 				GetComponent<CanvasGroup>().blocksRaycasts = true;
 			return;
@@ -84,17 +90,20 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	
 	public void OnEndDrag(PointerEventData eventData){
 		
-		
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
 			//Debug.Log("OnEndDrag");
 			if(placeholder!=null)
 			{
-				this.transform.SetParent(parentToReturnTo);
-				this.transform.SetSiblingIndex( placeholder.transform.GetSiblingIndex() );
-				GetComponent<CanvasGroup>().blocksRaycasts = true;
-			
-				Destroy(placeholder);
+				
+				
+					this.transform.SetParent(parentToReturnTo);
+					this.transform.SetSiblingIndex( placeholder.transform.GetSiblingIndex() );
+					GetComponent<CanvasGroup>().blocksRaycasts = true;
+				
+					this.GetComponent<Common_CardInfo>().cardInfo.position = this.transform.parent.GetComponent<canvas_position>().position;
+					Destroy(placeholder);
+				
 			}
 			GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick = false;
 		}
@@ -138,8 +147,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		}
 		bigCard.transform.position = BigCardPosition;
 		
-		
-		//Debug.Log("Mouse Enter Card");
+		if(this.GetComponent<Common_CardInfo>().cardInfo.position > 2)
+			return;
 		placeholder = new GameObject();
 		placeholder.transform.SetParent( this.transform.parent );
 		LayoutElement le = placeholder.AddComponent<LayoutElement>();
@@ -155,16 +164,18 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		
 		this.transform.SetParent(this.transform.parent.parent);
 		float up = 40f;
-		
-		localposition.y+=up;
+		if(this.GetComponent<Common_CardInfo>().cardInfo.position == 1)
+			localposition.y+=up;
 		this.transform.position = localposition;
 	}
 	
 	public void OnPointerExit(PointerEventData eventData){
 		
 		//Debug.Log("Mouse Leave Card");
+		
 		if(bigCard!=null)
 			Destroy(bigCard);
+		
 		if(!GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick && placeholder!=null)
 		{
 			this.transform.SetParent(parentToReturnTo);

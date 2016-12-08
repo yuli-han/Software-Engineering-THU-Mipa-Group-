@@ -26,35 +26,35 @@ public class Common_DataBase
                 info.cost = 10;
                 info.atk = 12;
                 info.hp = 12;
-                info.name = "卖萌之翼";
+                info.name = "Cute Wing";
                 info.description = "战吼：秒杀所有队友，秒杀自己所有手牌";
                 break;
             case 2:
                 info.cost = 1;
                 info.atk = 1;
                 info.hp = 1;
-                info.name = "愤怒的小鸡";
+                info.name = "Angry Bird";
                 info.description = "激怒：杀死场上的所有死亡之翼";
                 break;
 			case 3:
                 info.cost = 1;
                 info.atk = 1;
                 info.hp = 1;
-                info.name = "愤怒的小鸡";
+                info.name = "Alexstrasza";
                 info.description = "激怒：杀死场上的所有死亡之翼";
                 break;
 			case 4:
                 info.cost = 1;
                 info.atk = 1;
                 info.hp = 1;
-                info.name = "愤怒的小鸡";
+                info.name = "Illidan Stormrage";
                 info.description = "激怒：杀死场上的所有死亡之翼";
                 break;
 			case 5:
                 info.cost = 6;
                 info.atk = 5;
                 info.hp = 5;
-                info.name = "西尔瓦娜丝";
+                info.name = "Sylvanas";
                 info.description = "亡语：获取MiPa";
                 break;
 			

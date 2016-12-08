@@ -19,7 +19,7 @@ public class Common_CardInfo : MonoBehaviour {
         public int id;
         public int itemId;
         public int position;
-        //void* Trigger;//触发器，类型未定。强烈限制每个卡片只允许拥有一个效果
+        Trigger trigger;//触发器，类型未定。强烈限制每个卡片只允许拥有一个效果
 		//int CardType;//卡片类型。这里是为了提示使用卡片时是否需要指向目标；可选选项包括“普通法术”“指向法术”“普通随从”“普通战吼随从”“指向战吼随从”，其中指向法术需要指向target发动，指向战吼随从则需要先召唤后再指定一个可选单位发动战吼
     }
 
