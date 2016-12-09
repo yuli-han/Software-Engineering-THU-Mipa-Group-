@@ -7,6 +7,7 @@ public void OnAttackEvent(GameObject user,GameObject target)
 	user.GetComponent<Common_CardInfo>().cardInfo.hp-=target.GetComponent<Common_CardInfo>().cardInfo.atk;
 	target.GetComponent<Common_CardInfo>().cardInfo.hp-=user.GetComponent<Common_CardInfo>().cardInfo.atk;
 	
+<<<<<<< HEAD
 	//判定自身是否死亡
 	if(user.GetComponent<Common_CardInfo>().cardInfo.hp<=0)
 	{
@@ -19,4 +20,6 @@ public void OnAttackEvent(GameObject user,GameObject target)
 		Destory(target);//target.destroy;
 	}
 	
+=======
+>>>>>>> b158073489a025111d2bd1ceaaf4e234fedfb8f1
 }
