@@ -30,20 +30,23 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		if(!GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
 			//Debug.Log("OnBeginDrag");
-			/*placeholder = new GameObject();
-			placeholder.transform.SetParent( this.transform.parent );
-			LayoutElement le = placeholder.AddComponent<LayoutElement>();
-		le.preferredWidth = this.GetComponent<LayoutElement>().preferredWidth;
-		le.preferredHeight = this.GetComponent<LayoutElement>().preferredHeight;
-		le.flexibleWidth = 0;
-		le.flexibleHeight = 0;
+			if(this.GetComponent<Common_CardInfo>().cardInfo.position == 2){
+				placeholder = new GameObject();
+				placeholder.transform.SetParent( this.transform.parent );
+				LayoutElement le = placeholder.AddComponent<LayoutElement>();
+				le.preferredWidth = this.GetComponent<LayoutElement>().preferredWidth;
+				le.preferredHeight = this.GetComponent<LayoutElement>().preferredHeight;
+				le.flexibleWidth = 0;
+				le.flexibleHeight = 0;
 		
-		placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
-		Debug.Log(this.transform.GetSiblingIndex().ToString());
-		parentToReturnTo = this.transform.parent;
-		placeholderParent = parentToReturnTo;
+				placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
+				//Debug.Log(this.transform.GetSiblingIndex().ToString());
+				parentToReturnTo = this.transform.parent;
+				placeholderParent = parentToReturnTo;
 		
-		this.transform.SetParent(this.transform.parent.parent);*/
+				this.transform.SetParent(this.transform.parent.parent);
+			}
+		    
 			//Debug.Log(this.GetComponent<Common_CardInfo>().cardInfo.position.ToString());
 			
 			if(bigCard!=null)
@@ -131,6 +134,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		Vector3 localposition = this.transform.position;
 		int bigId = GetComponent<Common_CardInfo>().cardInfo.id;
 		bigCard=Common_DataBase.GetCard(bigId,true);
+		bigCard.GetComponent<Common_CardInfo>().cardInfo = this.GetComponent<Common_CardInfo>().cardInfo;
 		bigCard.transform.SetParent(GameObject.Find("Canvas").transform);
 		if(localposition.y>400){
 			BigCardPosition.y = localposition.y - 250f;
@@ -147,7 +151,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		}
 		bigCard.transform.position = BigCardPosition;
 		
-		if(this.GetComponent<Common_CardInfo>().cardInfo.position > 2)
+		if(this.GetComponent<Common_CardInfo>().cardInfo.position >= 2)
 			return;
 		placeholder = new GameObject();
 		placeholder.transform.SetParent( this.transform.parent );

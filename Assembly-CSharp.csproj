@@ -60,11 +60,13 @@
      <Compile Include="Assets\scripts\CardAmplify.cs" />
      <Compile Include="Assets\scripts\CardMove.cs" />
      <Compile Include="Assets\scripts\Draw_frame.cs" />
+     <Compile Include="Assets\scripts\IfDead.cs" />
      <Compile Include="Assets\scripts\canvas_position.cs" />
      <Compile Include="Assets\scripts\click.cs" />
      <Compile Include="Assets\scripts\click_op.cs" />
      <None Include="Assets\tempScript\OnSummon_IF_haveTarget.txt" />
      <None Include="Assets\tempScript\DrawCardEvent.txt" />
+     <None Include="Assets\tempScript\Dead.txt" />
      <None Include="Assets\tempScript\OnTurnEnd_OR_TurnStartEvent.txt" />
      <None Include="Assets\tempScript\OnPlaySpellCard_MarkTargets.txt" />
      <None Include="Assets\tempScript\OnSummon_Mark_Targets.txt" />

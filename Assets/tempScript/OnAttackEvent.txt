@@ -6,20 +6,5 @@ public void OnAttackEvent(GameObject user,GameObject target)
 	//血量结算
 	user.GetComponent<Common_CardInfo>().cardInfo.hp-=target.GetComponent<Common_CardInfo>().cardInfo.atk;
 	target.GetComponent<Common_CardInfo>().cardInfo.hp-=user.GetComponent<Common_CardInfo>().cardInfo.atk;
-	
-<<<<<<< HEAD
-	//判定自身是否死亡
-	if(user.GetComponent<Common_CardInfo>().cardInfo.hp<=0)
-	{
-		Destroy(user);//user.destroy;
-	}
-	
-	//判定对手是否死亡
-	if(target.GetComponent<Common_CardInfo>().cardInfo.hp<=0)
-	{
-		Destory(target);//target.destroy;
-	}
-	
-=======
->>>>>>> b158073489a025111d2bd1ceaaf4e234fedfb8f1
+
 }
