@@ -10,13 +10,13 @@ public void OnAttackEvent(GameObject user,GameObject target)
 	//判定自身是否死亡
 	if(user.GetComponent<Common_CardInfo>().cardInfo.hp<=0)
 	{
-		//user.destroy;
+		Destroy(user);//user.destroy;
 	}
 	
 	//判定对手是否死亡
 	if(target.GetComponent<Common_CardInfo>().cardInfo.hp<=0)
 	{
-		//target.destroy;
+		Destory(target);//target.destroy;
 	}
 	
 }
