@@ -63,6 +63,14 @@
      <Compile Include="Assets\scripts\canvas_position.cs" />
      <Compile Include="Assets\scripts\click.cs" />
      <Compile Include="Assets\scripts\click_op.cs" />
+     <None Include="Assets\tempScript\OnSummon_IF_haveTarget.txt" />
+     <None Include="Assets\tempScript\DrawCardEvent.txt" />
+     <None Include="Assets\tempScript\OnTurnEnd_OR_TurnStartEvent.txt" />
+     <None Include="Assets\tempScript\OnPlaySpellCard_MarkTargets.txt" />
+     <None Include="Assets\tempScript\OnSummon_Mark_Targets.txt" />
+     <None Include="Assets\tempScript\IF_IN_Range.txt" />
+     <None Include="Assets\tempScript\Example_TriggerResultExec.txt" />
+     <None Include="Assets\tempScript\OnAttackEvent.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
