@@ -27,5 +27,18 @@ namespace TriggerExecSpace
 			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp-=thisDamage;
 		}
 	}
-
+	
+	public class MultipleDamage : Trigger.TriggerResult
+	{
+		int thisDamage;
+		public MultipleDamage(int damage)
+		{
+			thisDamage=damage;
+		}
+		public void exec(Trigger.TriggerInput input)
+		{
+			
+			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp-=thisDamage;
+		}
+	}
 }

@@ -1,0 +1,10 @@
+using UnityEngine;
+using System.Collections;
+
+public void OnAttackEvent(GameObject user,GameObject target)
+{
+	//ÑªÁ¿½áËã
+	user.GetComponent<Common_CardInfo>().cardInfo.hp-=target.GetComponent<Common_CardInfo>().cardInfo.atk;
+	target.GetComponent<Common_CardInfo>().cardInfo.hp-=user.GetComponent<Common_CardInfo>().cardInfo.atk;
+
+}

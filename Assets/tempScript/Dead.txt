@@ -1,0 +1,11 @@
+using UnityEngine;
+using System.Collections;
+
+public void Dead(GameObject item)
+{
+	//ÅĞ¶Ï×Ô¼ºÊÇ·ñËÀÍö
+	if(item.GetComponent<Common_CardInfo>().cardInfo.hp<=0)
+	{
+		Destroy(item);//item.destroy;
+	}
+}
