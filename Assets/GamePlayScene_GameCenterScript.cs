@@ -5,7 +5,15 @@ using System.Collections;
 
 public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
-    GameObject[] CardCollection;//提示：这个只存储牌库里的牌，而不管理手牌等
+	public GameObject[] CardCollection;//提示：这个只存储牌库里的牌，而不管理手牌等
+	public GameObject[] CardCollection_op;
+	//需要保存对手的牌库！捂脸中
+	//还有双方的法力水晶
+	public int nowcost;//我方当前法力水晶
+	public int maxcost;//我方最大法力水晶	
+	public int nowcost_op;//敌方当前法力水晶
+	public int maxcost_op;//敌方最大法力水晶
+	public int nowturn;//当前是谁的回合
 	public bool ifclick;
 	
 	// Use this for initialization
