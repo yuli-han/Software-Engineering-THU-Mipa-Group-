@@ -4,13 +4,13 @@ using System.Collections;
 
 //基类就直接命名为Trigger了！（捂脸）不过继承类命名仍然要是"Trigger_"系列呀！
 //工作方式：分为主动触发（法术或战吼）和被动触发。无论什么时候，输入时应有输入变量；主动触发类的要确认TriggerTarget，而被动触发类的则要确认TriggerCondition
-class Trigger
+namespace Trigger
 {
 	public class TriggerInput//输入Trigger时应有的变量。需要的变量应当尽可能少
 	{
 		//对于主动触发式，CardUser可以置为空；对于被动触发式，诸如进行攻击啥的，则应当把CardUser设为发动的卡片。
-		GameObject CardUser;
-		GameObject CardTarget;
+		public GameObject CardUser;
+		public GameObject CardTarget;
 	}
 
 
@@ -37,7 +37,7 @@ class Trigger
 		public static readonly int Dragon=1024;//龙
 		public static readonly int Fish=2048;//鱼人。如果你吐槽说鱼不等于鱼人，你就输了。
 	}
-	public TriggerTarget thisTarget;
+	
 
 	public class TriggerCondition//触发条件。这里的触发条件是被动触发的trigger的被动触发条件。所有的触发条件只能允许一个。
 	{
@@ -65,60 +65,74 @@ class Trigger
 		public static readonly int TimeBefore=1;//事件发生前
 		public static readonly int TimeAfter=2;//事件发生后
 	}
-	public TriggerCondition thisCondition;
 
 //执行方式
 	public class TriggerResult
 	{
-		public void exec(Trigger.TriggerInput input)
+		public void exec(TriggerInput input)
 		{
 		}
 	}
-	public TriggerResult thisResult;
+
 
 //构造函数就应该直接给定两个Trigger条件以供后用
-	public Trigger(TriggerTarget target=new TriggerTarget(),TriggerCondition condition=new TriggerCondition(),TriggerResult result=new TriggerResult())
+    public class Trigger
     {
-	thisTarget=target;
-	thisCondition=condition;
-	thisResult=result;
-    }
+            public TriggerCondition thisCondition;
+            public TriggerTarget thisTarget;
+            public TriggerResult thisResult;
+
+            public Trigger()
+            {
+                thisCondition=new TriggerCondition();
+                thisTarget=new TriggerTarget();
+                thisResult=new TriggerResult();
+            }
+
+	    public Trigger(TriggerTarget target,TriggerCondition condition,TriggerResult result)
+        {
+	        thisTarget=target;
+	        thisCondition=condition;
+	        thisResult=result;
+        }
 
 //实际执行的执行方式
-	public void exec(TriggerInput input)
-	{
-		this.thisResult.exec(input);
-	}
+	    public void exec(TriggerInput input)
+	    {
+	    	this.thisResult.exec(input);
+	    }
 
-    public static bool IsInRange(GameObject user, GameObject target, Trigger.TriggerTarget range)
-    {
-        //按顺序判断是否正确了
-        //任何的情况下，直接为真
-        if ((range.target & Trigger.TriggerTarget.Anyone) == 1) return true;
-
-        //每个组一一判断，有一组不对的时候判定为假并跳出。没有跳出则在最后为真运行。
-
-        //敌友组
-        if (!((range.target & Trigger.TriggerTarget.Enemy) == 0 && (range.target & Trigger.TriggerTarget.Friend) == 0))
+        public static bool IsInRange(GameObject user, GameObject target, TriggerTarget range)
         {
-            int userPos;
-            int targetPos;
+            //按顺序判断是否正确了
+            //任何的情况下，直接为真
+            if ((range.target & TriggerTarget.Anyone) == 1) return true;
 
-            if (user.GetComponent<Common_CardInfo>().cardInfo.position <= 2) userPos = 1; else userPos = 2;
-            if (target.GetComponent<Common_CardInfo>().cardInfo.position <= 2) targetPos = 1; else targetPos = 2;
-            if (userPos == targetPos && (range.target & Trigger.TriggerTarget.Friend)==0) return false;
-            if (userPos != targetPos && (range.target & Trigger.TriggerTarget.Enemy)==0) return false;
+            //每个组一一判断，有一组不对的时候判定为假并跳出。没有跳出则在最后为真运行。
+
+            //敌友组
+            if (!((range.target & TriggerTarget.Enemy) == 0 && (range.target & TriggerTarget.Friend) == 0))
+            {
+                int userPos;
+                int targetPos;
+
+                if (user.GetComponent<Common_CardInfo>().cardInfo.position <= 2) userPos = 1; else userPos = 2;
+                if (target.GetComponent<Common_CardInfo>().cardInfo.position <= 2) targetPos = 1; else targetPos = 2;
+                if (userPos == targetPos && (range.target & TriggerTarget.Friend) == 0) return false;
+                if (userPos != targetPos && (range.target & TriggerTarget.Enemy) == 0) return false;
+            }
+
+            //自身组
+            if (!((range.target & TriggerTarget.Myself) == 0 && (range.target & TriggerTarget.Others) == 0))
+            {
+                if (user == target && (range.target & TriggerTarget.Myself) == 0) return false;
+                if (user != target && (range.target & TriggerTarget.Others) == 0) return false;
+            }
+
+
+
+            return true;
         }
-
-        //自身组
-        if (!((range.target & Trigger.TriggerTarget.Myself) == 0 && (range.target & Trigger.TriggerTarget.Others) == 0))
-        {
-            if (user == target && (range.target & Trigger.TriggerTarget.Myself)==0) return false;
-            if (user != target && (range.target & Trigger.TriggerTarget.Others)==0) return false;
-        }
-
-
-
-        return true;
     }
+    
 }
