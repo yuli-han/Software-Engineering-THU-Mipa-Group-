@@ -52,7 +52,9 @@
      <Compile Include="Assets\Common_NowCardSet.cs" />
      <Compile Include="Assets\GamePlayScene_CardFactory.cs" />
      <Compile Include="Assets\GamePlayScene_GameCenterScript.cs" />
+     <Compile Include="Assets\IsInRange.cs" />
      <Compile Include="Assets\Trigger.cs" />
+     <Compile Include="Assets\TriggerExecSpace.cs" />
      <Compile Include="Assets\play\Scripts\CardFlipper.cs" />
      <Compile Include="Assets\play\Scripts\CardModel.cs" />
      <Compile Include="Assets\play\Scripts\DebugChangeCard.cs" />
@@ -69,9 +71,10 @@
      <None Include="Assets\tempScript\DrawCardEvent.txt" />
      <None Include="Assets\tempScript\Dead.txt" />
      <None Include="Assets\tempScript\OnTurnEnd_OR_TurnStartEvent.txt" />
+     <None Include="Assets\tempScript\IsInRange.txt" />
+     <None Include="Assets\tempScript\AutoTriggering.txt" />
      <None Include="Assets\tempScript\OnPlaySpellCard_MarkTargets.txt" />
      <None Include="Assets\tempScript\OnSummon_Mark_Targets.txt" />
-     <None Include="Assets\tempScript\IF_IN_Range.txt" />
      <None Include="Assets\tempScript\Example_TriggerResultExec.txt" />
      <None Include="Assets\tempScript\OnAttackEvent.txt" />
  <Reference Include="UnityEngine.UI">

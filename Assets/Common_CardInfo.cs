@@ -22,11 +22,11 @@ public class Common_CardInfo : MonoBehaviour {
 
         Trigger thisTrigger;//触发器。大体上是已经决定下来了使用方法
 		int CardType;//卡片类型。这里是为了提示使用卡片时是否需要指向目标；可选选项包括“普通法术”“指向法术”“普通随从”“普通战吼随从”“指向战吼随从”，其中指向法术需要指向target发动，指向战吼随从则需要先召唤后再指定一个可选单位发动战吼
-	public static readonly int normalUnit=1;//普通随从，当然包括光环随从及亡语随从啦
-	public static readonly int aimBattleUnit=2;//指向战吼随从
-	public static readonly int noaimBattleUnit=3;//非指向战吼随从
-	public static readonly int aimSpell=4;//指向法术
-	public static readonly int noaimSpell=5;//非指向法术
+		public static readonly int normalUnit=1;//普通随从，当然包括光环随从及亡语随从啦
+		public static readonly int aimBattleUnit=2;//指向战吼随从
+		public static readonly int noaimBattleUnit=3;//非指向战吼随从
+		public static readonly int aimSpell=4;//指向法术
+		public static readonly int noaimSpell=5;//非指向法术
     }
 
     public BaseInfo cardInfo;
