@@ -1,0 +1,15 @@
+//这个函数的功能是直接实现获取所有的被指向的单位
+
+public GameObject[] MarkTarget(GameObject user,Trigger.TriggerTarget range)
+{
+	GameObject[] output;
+	//第一步：获得所有单位
+	GameObject.Find("Canvas???");
+	//第二步：遍历每个单位，然后判断这个单位是否满足你的目标
+	foreach(??? availbleCard)
+	{
+		if(IsInrange(user,availbleCard,range))
+			output.add(availbleCard);
+	}
+	return output;
+}

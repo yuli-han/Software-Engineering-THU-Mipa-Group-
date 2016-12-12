@@ -1,0 +1,5 @@
+
+bool If_HaveTarget(GameObject user,Trigger.TriggerTarget range)
+{
+	return MarkTarget(user,range).length!=0;
+}

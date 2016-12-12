@@ -19,7 +19,7 @@ class Trigger
 		//使用方法是利用&符号连接多个类。
 		public int target;
 
-		static public readonly int Anytime=1;//这个被标记就代表任何单位都可以
+		static public readonly int Anyone=1;//这个被标记就代表任何单位都可以
 		//以下两个将一一排他。如果两个都没标记就代表均可。只标记了一个就代表不要另一个
 		public static readonly int Enemy=2;//敌军
 		public static readonly int Friend=4;//友军。这个是包括自己的。
@@ -77,7 +77,7 @@ class Trigger
 	public TriggerResult thisResult;
 
 //构造函数就应该直接给定两个Trigger条件以供后用
-	public Trigger(TriggerTarget target,TriggerCondition condition,TriggerResult result)
+	public Trigger(TriggerTarget target=new TriggerTarget,TriggerCondition condition=new TriggerCondition,TriggerResult result=new TriggerResult)
     {
 	thisTarget=target;
 	thisCondition=condition;
