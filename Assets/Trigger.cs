@@ -77,7 +77,7 @@ class Trigger
 	public TriggerResult thisResult;
 
 //构造函数就应该直接给定两个Trigger条件以供后用
-	public Trigger(TriggerTarget target=new TriggerTarget,TriggerCondition condition=new TriggerCondition,TriggerResult result=new TriggerResult)
+	public Trigger(TriggerTarget target=new TriggerTarget(),TriggerCondition condition=new TriggerCondition(),TriggerResult result=new TriggerResult())
     {
 	thisTarget=target;
 	thisCondition=condition;
@@ -89,4 +89,36 @@ class Trigger
 	{
 		this.thisResult.exec(input);
 	}
+
+    public static bool IsInRange(GameObject user, GameObject target, Trigger.TriggerTarget range)
+    {
+        //按顺序判断是否正确了
+        //任何的情况下，直接为真
+        if ((range.target & Trigger.TriggerTarget.Anyone) == 1) return true;
+
+        //每个组一一判断，有一组不对的时候判定为假并跳出。没有跳出则在最后为真运行。
+
+        //敌友组
+        if (!((range.target & Trigger.TriggerTarget.Enemy) == 0 && (range.target & Trigger.TriggerTarget.Friend) == 0))
+        {
+            int userPos;
+            int targetPos;
+
+            if (user.GetComponent<Common_CardInfo>().cardInfo.position <= 2) userPos = 1; else userPos = 2;
+            if (target.GetComponent<Common_CardInfo>().cardInfo.position <= 2) targetPos = 1; else targetPos = 2;
+            if (userPos == targetPos && (range.target & Trigger.TriggerTarget.Friend)==0) return false;
+            if (userPos != targetPos && (range.target & Trigger.TriggerTarget.Enemy)==0) return false;
+        }
+
+        //自身组
+        if (!((range.target & Trigger.TriggerTarget.Myself) == 0 && (range.target & Trigger.TriggerTarget.Others) == 0))
+        {
+            if (user == target && (range.target & Trigger.TriggerTarget.Myself)==0) return false;
+            if (user != target && (range.target & Trigger.TriggerTarget.Others)==0) return false;
+        }
+
+
+
+        return true;
+    }
 }
