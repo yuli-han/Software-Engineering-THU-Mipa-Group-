@@ -63,21 +63,24 @@ public class Common_DataBase
 				info.CardType=Common_CardInfo.BaseInfo.normalUnit;
                 break;
 			case 6:
-				info.cost=4;
-				info.name="水球术";
-				info.description="对一个单位造成5点伤害/n 都觉得火球术超模，那么水球术总不超模了吧！";
-				info.CardType=Common_CardInfo.BaseInfo.aimSpell;//这个标签指示了这张卡是一个指向法术卡
-				//info.Trigger=new Trigger;
-				info.Trigger.thisTarget.target=Trigger.TriggerTarget.Anyone;//在这里指明了这个卡可以攻击任何单位
-				info.Trigger.thisResult=new TriggerExecSpace.DealDamage(5);
+
+			info.cost=4;
+			info.name="水球术";
+			info.description="对一个单位造成5点伤害/n 都觉得火球术超模，那么水球术总不超模了吧！";
+			info.CardType=Common_CardInfo.BaseInfo.aimSpell;//这个标签指示了这张卡是一个指向法术卡
+			info.thisTrigger=new Trigger.Trigger();
+			info.thisTrigger.thisTarget.target=Trigger.TriggerTarget.Anyone;//在这里指明了这个卡可以攻击任何单位
+            info.thisTrigger.thisResult = new TriggerExecSpace.DealDamage(5);
+            break;
 			case 7:
-				info.cost=3;
-				info.name="光明箭";
-				info.description="对一个敌方单位造成4点伤害";
-				info.CardType=Common_CardInfo.BaseInfo.aimSpell;//这个标签指示了这张卡是一个指向法术卡
-				//info.Trigger=new Trigger;
-				info.Trigger.thisTarget.target=Trigger.TriggerTarget.Enemy;//在这里则指示了只能攻击敌方单位
-				info.Trigger.thisResult=new TriggerExecSpace.DealDamage(4);
+			info.cost=3;
+			info.name="光明箭";
+			info.description="对一个敌方单位造成4点伤害";
+			info.CardType=Common_CardInfo.BaseInfo.aimSpell;//这个标签指示了这张卡是一个指向法术卡
+            info.thisTrigger = new Trigger.Trigger();
+			info.thisTrigger.thisTarget.target=Trigger.TriggerTarget.Enemy;//在这里则指示了只能攻击敌方单位
+            info.thisTrigger.thisResult = new TriggerExecSpace.DealDamage(4);
+            break;
         }
         info.id = cardId;
         nowItemId++;
