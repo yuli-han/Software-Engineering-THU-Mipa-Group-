@@ -56,17 +56,6 @@
      <Compile Include="Assets\GamePlayScene_TurnEndButton.cs" />
      <Compile Include="Assets\Trigger.cs" />
      <Compile Include="Assets\TriggerExecSpace.cs" />
-     <Compile Include="Assets\hyl\MainScene_CardGroup1.cs" />
-     <Compile Include="Assets\hyl\MainScene_CardGroup2.cs" />
-     <Compile Include="Assets\hyl\MainScene_CardGroup3.cs" />
-     <Compile Include="Assets\hyl\MainScene_CardGroupManager.cs" />
-     <Compile Include="Assets\hyl\MainScene_ChangeCardGroup.cs" />
-     <Compile Include="Assets\hyl\MainScene_CreateCardGroup.cs" />
-     <Compile Include="Assets\hyl\MainScene_DeleteCardGroup.cs" />
-     <Compile Include="Assets\hyl\MainScene_HoldGame.cs" />
-     <Compile Include="Assets\hyl\MainScene_JoinGame.cs" />
-     <Compile Include="Assets\hyl\MainScene_LastPage.cs" />
-     <Compile Include="Assets\hyl\MainScene_NextPage.cs" />
      <Compile Include="Assets\play\Scripts\CardFlipper.cs" />
      <Compile Include="Assets\play\Scripts\CardModel.cs" />
      <Compile Include="Assets\play\Scripts\DebugChangeCard.cs" />

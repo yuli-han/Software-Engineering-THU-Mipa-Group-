@@ -16,6 +16,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	public int maxcost_op;//敌方最大法力水晶
 	public int nowturn;//当前是谁的回合
 	public int thisplayer;//这个数字用于提示自己的玩家编号
+	public GameObject suspend;
+	public bool ifsuspend;
 	public bool ifclick;
 	
 	
@@ -52,6 +54,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		maxcost_op=0;
 		thisplayer=0;
 		ifclick = false;
+		ifsuspend = false;
+		suspend = null;
         //初始化第五步：启动Trigger_GameStart，游戏开始。
 	}
 

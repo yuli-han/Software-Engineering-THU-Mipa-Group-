@@ -113,7 +113,7 @@ namespace Trigger
         {
             //按顺序判断是否正确了
             //任何的情况下，直接为真
-			Debug.Log("IsInRange:"+(range.target & TriggerTarget.Anyone));
+			//Debug.Log("IsInRange:"+(range.target & TriggerTarget.Anyone));
             if ((range.target & TriggerTarget.Anyone) == 1) return true;
 
             //每个组一一判断，有一组不对的时候判定为假并跳出。没有跳出则在最后为真运行。
