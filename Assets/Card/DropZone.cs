@@ -10,6 +10,8 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 			return;
 		if(eventData.pointerDrag.GetComponent<Common_CardInfo>().cardInfo.position == 2)
 			return;
+		if(eventData.pointerDrag.GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell)
+			return;
 		Draggerable d = eventData.pointerDrag.GetComponent<Draggerable>();
 		if(d != null){
 			d.placeholderParent = this.transform;
@@ -22,7 +24,8 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 			return;
 		if(eventData.pointerDrag.GetComponent<Common_CardInfo>().cardInfo.position == 2)
 			return;
-	
+		if(eventData.pointerDrag.GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell)
+			return;
 		Draggerable d = eventData.pointerDrag.GetComponent<Draggerable>();
 		if(d != null && d.placeholderParent==this.transform){
 			d.placeholderParent = d.parentToReturnTo;
@@ -36,7 +39,8 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 		//Debug.Log(eventData.pointerDrag.name + "was dropped on" + gameObject.name);
 		if(eventData.pointerDrag.GetComponent<Common_CardInfo>().cardInfo.position == 2)
 			return;
-		
+		if(eventData.pointerDrag.GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell)
+			return;
 		Draggerable d = eventData.pointerDrag.GetComponent<Draggerable>();
 		if(d != null){
 			d.parentToReturnTo = this.transform;

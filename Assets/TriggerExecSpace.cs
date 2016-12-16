@@ -1,6 +1,7 @@
 //搞几个示例代码......？不对，是直接搞几个类好了。
 
 //所有Trigger实现，将写在此类里面.....也不一定。可以写在不同的文件里，但是都要在这个namespace里面
+using UnityEngine;
 
 namespace TriggerExecSpace
 {
@@ -22,8 +23,9 @@ namespace TriggerExecSpace
 		{
 			thisDamage=damage;
 		}
-		public void exec(Trigger.TriggerInput input)
+		public override void exec(Trigger.TriggerInput input)
 		{
+			Debug.Log("Let's Damage");
 			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp-=thisDamage;
 		}
 	}

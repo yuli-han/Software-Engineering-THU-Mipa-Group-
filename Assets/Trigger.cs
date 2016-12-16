@@ -11,6 +11,12 @@ namespace Trigger
 		//对于主动触发式，CardUser可以置为空；对于被动触发式，诸如进行攻击啥的，则应当把CardUser设为发动的卡片。
 		public GameObject CardUser;
 		public GameObject CardTarget;
+		
+		public TriggerInput(GameObject user, GameObject Target)
+		{
+			CardUser = user;
+			CardTarget = Target;
+		}
 	}
 
 
@@ -69,7 +75,7 @@ namespace Trigger
 //执行方式
 	public class TriggerResult
 	{
-		public void exec(TriggerInput input)
+		public virtual void exec(TriggerInput input)
 		{
 		}
 	}
@@ -106,6 +112,7 @@ namespace Trigger
         {
             //按顺序判断是否正确了
             //任何的情况下，直接为真
+			Debug.Log("IsInRange:"+(range.target & TriggerTarget.Anyone));
             if ((range.target & TriggerTarget.Anyone) == 1) return true;
 
             //每个组一一判断，有一组不对的时候判定为假并跳出。没有跳出则在最后为真运行。

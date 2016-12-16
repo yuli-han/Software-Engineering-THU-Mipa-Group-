@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -420,6 +420,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4b252a694bca1144abdf71585b4ea210, type: 3}
   - {fileID: 21300000, guid: 5cb1a3011edb0f1499b6a07d71a4be7f, type: 3}
   - {fileID: 21300000, guid: ccd171121a1fa1c40881246e47c27582, type: 3}
+  - {fileID: 21300000, guid: c0483021219de214bb1cff32c54422ef, type: 3}
+  - {fileID: 21300000, guid: 7fef546f9e7660d4d86cd8556a5a9b35, type: 3}
 --- !u!1 &769204961
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,15 +501,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 8f2c96bda8d30264fab7f455065d87db, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -950,7 +952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1193,4 +1195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d144604ce18d7a48b3ec91ae979ccf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardCollection: []
+  CardCollection_op: []
+  nowcost: 0
+  maxcost: 0
+  nowcost_op: 0
+  maxcost_op: 0
+  nowturn: 0
   ifclick: 0

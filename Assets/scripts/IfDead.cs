@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class IfDead : MonoBehaviour {
@@ -12,9 +13,12 @@ public class IfDead : MonoBehaviour {
 	void Update () {
 		GameObject myPanal = GameObject.Find("Canvas/Field");
 		GameObject opPanal = GameObject.Find("Canvas/Field_op");
+		GameObject handPanal = GameObject.Find("Canvas/Hand");
 		for(int i=0; i<myPanal.transform.childCount; i++){
 			if(myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>()== null)
 				continue;
+			if(myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell)
+				return;
 			if(myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.hp<=0){
 				Destroy(myPanal.transform.GetChild(i).gameObject);
 			}
@@ -23,8 +27,19 @@ public class IfDead : MonoBehaviour {
 		for(int i=0; i<opPanal.transform.childCount; i++){
 			if(opPanal.transform.GetChild(i).GetComponent<Common_CardInfo>()== null)
 				continue;
+			if(opPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell)
+				continue;
 			if(opPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.hp<=0){
 				Destroy(opPanal.transform.GetChild(i).gameObject);
+			}
+		}
+		
+		for(int i=0; i<handPanal.transform.childCount; i++){
+			if(handPanal.transform.GetChild(i).GetComponent<Common_CardInfo>()== null)
+				continue;
+			if(handPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell){
+				if(handPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.ifdelete)
+					Destroy(handPanal.transform.GetChild(i).gameObject);
 			}
 		}
 	}
