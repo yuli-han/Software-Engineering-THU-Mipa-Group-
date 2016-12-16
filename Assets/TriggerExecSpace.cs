@@ -27,5 +27,20 @@ namespace TriggerExecSpace
 			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp-=thisDamage;
 		}
 	}
-
+    
+	/*public class DealDamageToAll : Trigger.TriggerResult//AOE暂时是伪代码，不知道目标选择
+	{
+		int thisDamage;
+		public DealDamageToAll(int damage)
+		{
+			thisDamage=damage;
+		}
+		public void exec(Trigger.TriggerInput input)
+		{
+			foreach(GameObject obj1 in Trigger.Trigger.MarkTarget（input.user,input.user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.TriggerTarget)
+			{
+			obj1.GetComponent<Common_CardInfo>().cardInfo.hp-=thisDamage;
+			}
+		}
+	}*/
 }
