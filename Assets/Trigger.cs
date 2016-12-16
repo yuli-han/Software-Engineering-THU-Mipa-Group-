@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 //基类就直接命名为Trigger了！（捂脸）不过继承类命名仍然要是"Trigger_"系列呀！
@@ -142,25 +143,25 @@ namespace Trigger
         }
     public static bool IfHaveTarget(GameObject user,TriggerTarget range)
 {
-	return MarkTarget(user,range).Count()!=0;
+	return MarkTarget(user,range).Count!=0;
 }
 
 public static List<GameObject> MarkTarget(GameObject user,TriggerTarget range)
 {
-	List<GameObject> output;
+	List<GameObject> output=new List<GameObject>();
 	//第一步：获得所有单位
 	GameObject Panal1=GameObject.Find("Canvas/Field");
 	GameObject Panal2=GameObject.Find("Canvas/Field_op");
 	//第二步：遍历每个单位，然后判断这个单位是否满足你的目标
 	for(int i=0;i<Panal1.transform.childCount;i++)
 	{
-		if(IsInRange(user,Panal1.transform.GetChild(i),range))
-			output.add(Panal1.transform.GetChild(i));
+		if(IsInRange(user,Panal1.transform.GetChild(i).gameObject,range))
+			output.Add(Panal1.transform.GetChild(i).gameObject);
 	}
 	for(int i=0;i<Panal2.transform.childCount;i++)
 	{
-		if(IsInRange(user,Panal2.transform.GetChild(i),range))
-			output.add(Panal2.transform.GetChild(i));
+		if(IsInRange(user,Panal2.transform.GetChild(i).gameObject,range))
+			output.Add(Panal2.transform.GetChild(i).gameObject);
 	}
 	return output;
 }

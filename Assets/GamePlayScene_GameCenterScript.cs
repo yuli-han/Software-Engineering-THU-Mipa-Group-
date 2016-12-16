@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 //GamePlayScene核心的代码。嘛，也就是整体控制器
 
@@ -16,6 +17,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	public int nowturn;//当前是谁的回合
 	public int thisplayer;//这个数字用于提示自己的玩家编号
 	public bool ifclick;
+	
 	
 	// Use this for initialization
 	void Start () {
@@ -68,7 +70,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			//复原所有随从是否攻击
 GameObject myPanal = GameObject.Find("Canvas/Field");
 		for(int i=0; i<myPanal.transform.childCount; i++)
-		myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().attack=true;
+		myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.attack=true;
 
 		}
 		else
@@ -82,7 +84,7 @@ GameObject myPanal = GameObject.Find("Canvas/Field");
 			//复原所有随从是否攻击
 GameObject myPanal = GameObject.Find("Canvas/Field_op");
 		for(int i=0; i<myPanal.transform.childCount; i++)
-		myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().attack=true;
+		myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.attack=true;
 
 		}
 	}
@@ -93,9 +95,9 @@ GameObject myPanal = GameObject.Find("Canvas/Field_op");
 		DrawCard_op();
 		return;
 	}
-		if(CardCollection.Count()!=0)
+		if(CardCollection.Count!=0)
 		{
-			int num=Common_Random.random(0,CardCollection.Count()-1);
+			int num=Common_Random.random(0,CardCollection.Count-1);
 			CardCollection[num].transform.SetParent(GameObject.Find("Canvas/Hand").transform);
 			CardCollection.RemoveAt(num);
 		}
@@ -103,9 +105,9 @@ GameObject myPanal = GameObject.Find("Canvas/Field_op");
 	}
 	void DrawCard_op()
 	{
-		if(CardCollection.Count()!=0)
+		if(CardCollection.Count!=0)
 		{
-			int num=Common_Random.random(0,CardCollection.Count()-1);
+			int num=Common_Random.random(0,CardCollection.Count-1);
 			CardCollection[num].transform.SetParent(GameObject.Find("Canvas/Hand").transform);
 			CardCollection.RemoveAt(num);
 		}

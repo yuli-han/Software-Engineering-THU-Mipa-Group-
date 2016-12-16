@@ -44,7 +44,7 @@ namespace TriggerExecSpace
 		}
 		public void exec(Trigger.TriggerInput input)
 		{
-			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp-=thisDamage;
+			
 			if(input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp>input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.maxhp)
 			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp=input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.maxhp;
 		}
