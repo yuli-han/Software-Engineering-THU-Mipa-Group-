@@ -26,6 +26,7 @@ public class Common_DataBase
                 info.cost = 10;
                 info.atk = 12;
                 info.hp = 12;
+                info.maxhp = 12;
                 info.name = "Cute Wing";
                 info.description = "战吼：秒杀所有队友，秒杀自己所有手牌";
 info.CardType=Common_CardInfo.BaseInfo.normalUnit;
@@ -33,6 +34,7 @@ info.CardType=Common_CardInfo.BaseInfo.normalUnit;
             case 2:
                 info.cost = 1;
                 info.atk = 1;
+                info.maxhp = 1;
                 info.hp = 1;
                 info.name = "Angry Bird";
                 info.description = "激怒：杀死场上的所有死亡之翼";
@@ -41,6 +43,7 @@ info.CardType=Common_CardInfo.BaseInfo.normalUnit;
 			case 3:
                 info.cost = 1;
                 info.atk = 1;
+                info.maxhp = 1;
                 info.hp = 1;
                 info.name = "Alexstrasza";
                 info.description = "激怒：杀死场上的所有死亡之翼";
@@ -49,6 +52,7 @@ info.CardType=Common_CardInfo.BaseInfo.normalUnit;
 			case 4:
                 info.cost = 1;
                 info.atk = 1;
+                info.maxhp = 1;
                 info.hp = 1;
                 info.name = "Illidan Stormrage";
                 info.description = "激怒：杀死场上的所有死亡之翼";
@@ -57,6 +61,7 @@ info.CardType=Common_CardInfo.BaseInfo.normalUnit;
 			case 5:
                 info.cost = 6;
                 info.atk = 5;
+                info.maxhp = 5;
                 info.hp = 5;
                 info.name = "Sylvanas";
                 info.description = "亡语：获取MiPa";

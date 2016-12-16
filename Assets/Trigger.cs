@@ -133,6 +133,30 @@ namespace Trigger
 
             return true;
         }
+    public static bool IfHaveTarget(GameObject user,TriggerTarget range)
+{
+	return MarkTarget(user,range).Count()!=0;
+}
+
+public static List<GameObject> MarkTarget(GameObject user,TriggerTarget range)
+{
+	List<GameObject> output;
+	//第一步：获得所有单位
+	GameObject Panal1=GameObject.Find("Canvas/Field");
+	GameObject Panal2=GameObject.Find("Canvas/Field_op");
+	//第二步：遍历每个单位，然后判断这个单位是否满足你的目标
+	for(int i=0;i<Panal1.transform.childCount;i++)
+	{
+		if(IsInRange(user,Panal1.transform.GetChild(i),range))
+			output.add(Panal1.transform.GetChild(i));
+	}
+	for(int i=0;i<Panal2.transform.childCount;i++)
+	{
+		if(IsInRange(user,Panal2.transform.GetChild(i),range))
+			output.add(Panal2.transform.GetChild(i));
+	}
+	return output;
+}
+
     }
-    
 }
