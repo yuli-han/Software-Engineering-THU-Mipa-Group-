@@ -15,10 +15,16 @@ public class Common_CardInfo : MonoBehaviour {
         public int cost;
         public int atk;
         public int hp;
+	public int maxhp;
+
         //额外数据
         public int id;
         public int itemId;
         public int position;
+
+		public bool ifdelete;
+
+		public bool attack;//提示是否可以攻击；本系列没有风怒（但是也许有冲锋）所以只需要标识是否已经攻击过即可
 
 
         public Trigger.Trigger thisTrigger;//触发器。大体上是已经决定下来了使用方法
@@ -28,6 +34,7 @@ public class Common_CardInfo : MonoBehaviour {
 	public static readonly int noaimBattleUnit=3;//非指向战吼随从
 	public static readonly int aimSpell=4;//指向法术
 	public static readonly int noaimSpell=5;//非指向法术
+
 
     }
 
@@ -44,8 +51,16 @@ public class Common_CardInfo : MonoBehaviour {
         this.transform.FindChild("Card Name").GetComponent<Text>().text = cardInfo.name;
         this.transform.Find("Description").GetComponent<Text>().text = cardInfo.description;
         this.transform.Find("Cost").GetComponent<Text>().text = cardInfo.cost.ToString();
-        this.transform.Find("Attack").GetComponent<Text>().text = cardInfo.atk.ToString();
-        this.transform.Find("Life").GetComponent<Text>().text = cardInfo.hp.ToString();
+		if(this.cardInfo.CardType < BaseInfo.aimSpell)
+		{
+			this.transform.Find("Attack").GetComponent<Text>().text = cardInfo.atk.ToString();
+			this.transform.Find("Life").GetComponent<Text>().text = cardInfo.hp.ToString();
+		}
+		else{
+			this.transform.Find("Attack").GetComponent<Text>().text = "";
+			this.transform.Find("Life").GetComponent<Text>().text = "";
+		}
+        
 
 	}
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 //基类就直接命名为Trigger了！（捂脸）不过继承类命名仍然要是"Trigger_"系列呀！
@@ -11,6 +12,12 @@ namespace Trigger
 		//对于主动触发式，CardUser可以置为空；对于被动触发式，诸如进行攻击啥的，则应当把CardUser设为发动的卡片。
 		public GameObject CardUser;
 		public GameObject CardTarget;
+		
+		public TriggerInput(GameObject user, GameObject Target)
+		{
+			CardUser = user;
+			CardTarget = Target;
+		}
 	}
 
 
@@ -69,7 +76,7 @@ namespace Trigger
 //执行方式
 	public class TriggerResult
 	{
-		public void exec(TriggerInput input)
+		public virtual void exec(TriggerInput input)
 		{
 		}
 	}
@@ -106,6 +113,7 @@ namespace Trigger
         {
             //按顺序判断是否正确了
             //任何的情况下，直接为真
+			Debug.Log("IsInRange:"+(range.target & TriggerTarget.Anyone));
             if ((range.target & TriggerTarget.Anyone) == 1) return true;
 
             //每个组一一判断，有一组不对的时候判定为假并跳出。没有跳出则在最后为真运行。
@@ -133,6 +141,30 @@ namespace Trigger
 
             return true;
         }
+    public static bool IfHaveTarget(GameObject user,TriggerTarget range)
+{
+	return MarkTarget(user,range).Count!=0;
+}
+
+public static List<GameObject> MarkTarget(GameObject user,TriggerTarget range)
+{
+	List<GameObject> output=new List<GameObject>();
+	//第一步：获得所有单位
+	GameObject Panal1=GameObject.Find("Canvas/Field");
+	GameObject Panal2=GameObject.Find("Canvas/Field_op");
+	//第二步：遍历每个单位，然后判断这个单位是否满足你的目标
+	for(int i=0;i<Panal1.transform.childCount;i++)
+	{
+		if(IsInRange(user,Panal1.transform.GetChild(i).gameObject,range))
+			output.Add(Panal1.transform.GetChild(i).gameObject);
+	}
+	for(int i=0;i<Panal2.transform.childCount;i++)
+	{
+		if(IsInRange(user,Panal2.transform.GetChild(i).gameObject,range))
+			output.Add(Panal2.transform.GetChild(i).gameObject);
+	}
+	return output;
+}
+
     }
-    
 }
