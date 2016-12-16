@@ -111,6 +111,8 @@ namespace Trigger
 
         public static bool IsInRange(GameObject user, GameObject target, TriggerTarget range)
         {
+		//首先最可怕的事情是手牌要排除排除
+		if((target.GetComponent<Common_CardInfo>().cardInfo.position==1)||(target.GetComponent<Common_CardInfo>().cardInfo.position==4)) return false;
             //按顺序判断是否正确了
             //任何的情况下，直接为真
 			Debug.Log("IsInRange:"+(range.target & TriggerTarget.Anyone));
