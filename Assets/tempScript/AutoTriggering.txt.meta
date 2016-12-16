@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/tempScript/AutoTriggering.txt.meta
+guid: eb85cbf9794bb8045a09136b9eb7bd86
+timeCreated: 1481508429
+=======
 guid: dfeceb7be1d33804b81823569b381ef1
 timeCreated: 1481526485
+>>>>>>> 11c36d334ea1b40f0e961500b40cd725f1f1af42:Assets/tempScript/AutoTriggering.txt.meta
 licenseType: Free
 TextScriptImporter:
   userData: 
