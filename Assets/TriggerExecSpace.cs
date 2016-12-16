@@ -34,6 +34,24 @@ namespace TriggerExecSpace
 			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp-=thisDamage;
 		}
 	}
+<<<<<<< HEAD
+    
+	/*public class DealDamageToAll : Trigger.TriggerResult//AOE暂时是伪代码，不知道目标选择
+	{
+		int thisDamage;
+		public DealDamageToAll(int damage)
+		{
+			thisDamage=damage;
+		}
+		public void exec(Trigger.TriggerInput input)
+		{
+			foreach(GameObject obj1 in Trigger.Trigger.MarkTarget（input.user,input.user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.TriggerTarget)
+			{
+			obj1.GetComponent<Common_CardInfo>().cardInfo.hp-=thisDamage;
+			}
+		}
+	}*/
+=======
 
 	public class HealUnit : Trigger.TriggerResult
 	{
@@ -83,4 +101,5 @@ namespace TriggerExecSpace
 			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp=input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.maxhp;
 		}
 	}
+>>>>>>> bd742164963fe6224e9a5880337af0140be5711c
 }
