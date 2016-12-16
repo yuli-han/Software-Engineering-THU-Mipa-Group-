@@ -36,18 +36,25 @@ public class Common_DataBase
                 info.atk = 1;
                 info.maxhp = 1;
                 info.hp = 1;
-                info.name = "Angry Bird";
-                info.description = "激怒：杀死场上的所有死亡之翼";
-				info.CardType=Common_CardInfo.BaseInfo.normalUnit;
+                info.name = "精灵弓箭手";
+                info.description = "战吼：对一个敌方随从造成1点伤害。";
+			info.thisTrigger=new Trigger.Trigger();
+				info.thisTrigger.thisTarget.target=Trigger.TriggerTarget.Enemy;//在这里指明了这个卡可以攻击任何单位
+				info.thisTrigger.thisResult = new TriggerExecSpace.DealDamage(1);
+	info.CardType=Common_CardInfo.BaseInfo.aimBattleUnit;
                 break;
 			case 3:
-                info.cost = 1;
-                info.atk = 1;
-                info.maxhp = 1;
-                info.hp = 1;
-                info.name = "Alexstrasza";
-                info.description = "激怒：杀死场上的所有死亡之翼";
-				info.CardType=Common_CardInfo.BaseInfo.normalUnit;
+                info.cost = 2;
+                info.atk = 2;
+                info.maxhp = 3;
+                info.hp = 3;
+                info.name = "火焰打脸者";
+                info.description = "对一个随机敌方单位造成1点伤害";
+				info.CardType=Common_CardInfo.BaseInfo.noaimBattleUnit;
+info.thisTrigger=new Trigger.Trigger();
+				info.thisTrigger.thisTarget.target=Trigger.TriggerTarget.Enemy;//在这里指明了这个卡可以攻击任何单位
+				info.thisTrigger.thisResult = new TriggerExecSpace.DealRandomDamage(1);
+
                 break;
 			case 4:
                 info.cost = 1;
