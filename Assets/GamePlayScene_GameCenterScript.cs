@@ -19,6 +19,10 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	public GameObject suspend;
 	public bool ifsuspend;
 	public bool ifclick;
+	public GameObject[] Hint;
+	
+	public AnimationCurve scaleCurve;
+    public float duration = 0.5f;
 	
 	
 	// Use this for initialization
@@ -62,7 +66,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		suspend = null;
         //初始化第五步：启动Trigger_GameStart，游戏开始。
 	}
-
+	
 	//也就是回合结束->回合开始
 	public void TurnChange()
 	{
@@ -71,19 +75,23 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		{
 			//回合更新3部曲：
 			//抽卡
+			StopCoroutine(TurnRound(0));
+			StartCoroutine(TurnRound(0));
 			DrawCard();
 			//复原法力水晶
 			if(maxcost<10)maxcost++;
 			nowcost=maxcost;
 			//复原所有随从是否攻击
-		GameObject myPanal = GameObject.Find("Canvas/Field");
-		for(int i=0; i<myPanal.transform.childCount; i++)
-			myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.attack=true;
+			GameObject myPanal = GameObject.Find("Canvas/Field");
+			for(int i=0; i<myPanal.transform.childCount; i++)
+				myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.attack=true;
 		}
 		else
 		{
 			//回合更新3部曲：
 			//抽卡
+			StopCoroutine(TurnRound(1));
+			StartCoroutine(TurnRound(1));
 			DrawCard_op();
 			//复原法力水晶
 			if(maxcost_op<10)maxcost_op++;
@@ -95,6 +103,61 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
 		}
 	}
+	IEnumerator TurnRound(int id){
+		GameObject HintTextEnd;
+		GameObject HintTextStart;
+		if(id == 0){
+			HintTextEnd = Instantiate(Hint[0]);
+		}
+		else{
+			HintTextEnd = Instantiate(Hint[2]);
+		}
+		
+		
+		//fly1
+		float time = 0f;
+		Vector3 startPosition = GameObject.Find("StartPoint").transform.position;
+		Vector3 endPosition = GameObject.Find("EndPoint").transform.position;
+		Vector3 currentPosition = startPosition;
+		float delta = endPosition.x - startPosition.x;
+		HintTextEnd.transform.position  = startPosition;
+		 while (time <= 1f)
+        {
+            float positionX = startPosition.x+ scaleCurve.Evaluate(time)*delta;
+            time += Time.deltaTime / duration;
+
+            currentPosition.x = positionX;
+            HintTextEnd.transform.position = currentPosition;
+
+            yield return new WaitForFixedUpdate();
+        }
+		
+		Destroy(HintTextEnd);
+		//fly2
+		
+		time = 0f;
+		currentPosition = startPosition;
+		if(id == 0){
+			HintTextStart = Instantiate(Hint[1]);
+		}
+		else{
+			HintTextStart = Instantiate(Hint[3]);
+		}
+		HintTextStart.transform.position  = startPosition;
+		 while (time <= 1f)
+        {
+            float positionX = startPosition.x+ scaleCurve.Evaluate(time)*delta;
+            time += Time.deltaTime / duration;
+
+            currentPosition.x = positionX;
+            HintTextStart.transform.position = currentPosition;
+
+            yield return new WaitForFixedUpdate();
+        }
+		
+		Destroy(HintTextStart);
+	}
+	
 	void DrawCard(int user=0)
 	{
 	if(user==1)
