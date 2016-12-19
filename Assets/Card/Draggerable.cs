@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 
 
-public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler{
+public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler{
 	
 	public Transform parentToReturnTo = null;
 	public Transform placeholderParent = null;
@@ -26,6 +26,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	public void OnBeginDrag(PointerEventData eventData){
 		
 		if(this.GetComponent<Common_CardInfo>().cardInfo.position > 2)
+			return;
+		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 			return;
 		if(!GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
@@ -63,6 +65,9 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	
 	public void OnDrag(PointerEventData eventData){
 		
+		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
+			return;
+		
 		if(placeholder == null)
 		{
 			//Debug.Log(eventData.pointerDrag.name  + "OnDrag Fail");
@@ -73,7 +78,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		
 		this.transform.position = eventData.position;
 		
-		if(placeholder.transform.parent != placeholderParent)
+		if(placeholder.transform.parent != placeholderParent){
 			placeholder.transform.SetParent(placeholderParent);
 		
 		int newSiblingIndex = placeholderParent.childCount;
@@ -88,24 +93,48 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			}
 		}
 		
-		placeholder.transform.SetSiblingIndex(newSiblingIndex);
+		placeholder.transform.SetSiblingIndex(newSiblingIndex);}
 	}
 	
 	public void OnEndDrag(PointerEventData eventData){
+		
+		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
+		{
+			//Debug.Log("战吼");
+			//GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend = false;
+			return;
+		}
 		
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
 			//Debug.Log("OnEndDrag");
 			if(placeholder!=null)
-			{
+			{	
+				int ini = this.GetComponent<Common_CardInfo>().cardInfo.position;
+				this.transform.SetParent(parentToReturnTo);
+				this.transform.SetSiblingIndex( placeholder.transform.GetSiblingIndex() );
+				GetComponent<CanvasGroup>().blocksRaycasts = true;
 				
-				
-					this.transform.SetParent(parentToReturnTo);
-					this.transform.SetSiblingIndex( placeholder.transform.GetSiblingIndex() );
-					GetComponent<CanvasGroup>().blocksRaycasts = true;
-				
-					this.GetComponent<Common_CardInfo>().cardInfo.position = this.transform.parent.GetComponent<canvas_position>().position;
-					Destroy(placeholder);
+				this.GetComponent<Common_CardInfo>().cardInfo.position = this.transform.parent.GetComponent<canvas_position>().position;
+				Destroy(placeholder);
+				if(ini == 1 && this.GetComponent<Common_CardInfo>().cardInfo.position == 2){
+					if(this.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.aimBattleUnit)
+					{
+						if(Trigger.Trigger.IfHaveTarget(this.gameObject,this.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget))
+						{
+							Debug.Log("请点击战吼目标");
+							GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend = this.gameObject;
+							GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend = true;
+						}
+					}
+					else
+						if(this.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.noaimBattleUnit)
+						{
+							//Debug.Log("PrepareToExec");
+							Trigger.TriggerInput newInput = new Trigger.TriggerInput(this.gameObject,null);
+							this.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
+						}
+				}
 				
 			}
 			GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick = false;
@@ -113,6 +142,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		
 		//ifclick = false;
 	}
+	
 	
 	public void OnPointerEnter(PointerEventData eventData){
 		
@@ -189,5 +219,28 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			Destroy(placeholder);
 		}
 		
+	}
+	
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		
+		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
+		{
+			if(bigCard!=null)
+				Destroy(bigCard);
+			Debug.Log("我点了 "+this.GetComponent<Common_CardInfo>().cardInfo.name);
+			GameObject obj = GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend;
+			if(obj == this.gameObject)
+				return;
+			if(Trigger.Trigger.IsInRange(obj,this.gameObject,obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget))
+			{
+				Trigger.TriggerInput newInput = new Trigger.TriggerInput(obj,this.gameObject);
+				obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
+				Debug.Log("已经触发战吼");
+				//GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend = null;
+				GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend = false;
+			}
+						
+		}
 	}
 }

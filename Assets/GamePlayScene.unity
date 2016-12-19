@@ -1202,4 +1202,7 @@ MonoBehaviour:
   nowcost_op: 0
   maxcost_op: 0
   nowturn: 0
+  thisplayer: 0
+  suspend: {fileID: 0}
+  ifsuspend: 0
   ifclick: 0
