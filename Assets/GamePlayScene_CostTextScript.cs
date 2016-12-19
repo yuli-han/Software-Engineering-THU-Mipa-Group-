@@ -6,19 +6,19 @@ public class GamePlayScene_CostTextScript : MonoBehaviour
 
 	public int number;//代表谁的文字
 
-	void update()
+	void Update()
 	{
 		if(number==0)
 		{
 			int now=GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost;
 			int maxint=GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().maxcost;
-			GetComponent<TextMash>().Text=now+"/"+max;
+			GetComponent<TextMesh>().text=now+"/"+maxint;
 		}
 		if(number==1)
 		{
-			int now=GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost;
-			int maxint=GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().maxcost;
-			GetComponent<TextMash>().Text=now+"/"+max;
+			int now=GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost_op;
+			int maxint=GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().maxcost_op;
+			GetComponent<TextMesh>().text=now+"/"+maxint;
 		}
 
 	}
