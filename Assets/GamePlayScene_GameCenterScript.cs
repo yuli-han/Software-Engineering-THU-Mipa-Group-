@@ -33,8 +33,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         int[] cardSet = Common_NowCardSet.CardSet;
 	
 	//此处为测试用的简单卡组
-	int length=9;
-	int cardSet={1,2,3,1,2,3,1,2,3};
+	length=9;
+	cardSet=new int[9]{1,2,3,1,2,3,1,2,3};
 
 	CardCollection=new List<GameObject>();
         //生成的卡片按顺序铺在场上
