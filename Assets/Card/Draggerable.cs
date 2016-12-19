@@ -230,8 +230,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				Destroy(bigCard);
 			Debug.Log("我点了 "+this.GetComponent<Common_CardInfo>().cardInfo.name);
 			GameObject obj = GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend;
-			if(obj == this.gameObject)
-				return;
+			//if(obj == this.gameObject)
+			//	return;
 			if(Trigger.Trigger.IsInRange(obj,this.gameObject,obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget))
 			{
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(obj,this.gameObject);
