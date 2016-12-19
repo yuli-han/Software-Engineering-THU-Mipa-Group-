@@ -29,6 +29,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			return;
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 			return;
+		if(this.GetComponent<Common_CardInfo>().cardInfo.cost > GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost)
+			return;
 		if(!GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
 			//Debug.Log("OnBeginDrag");
@@ -67,7 +69,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 			return;
-		
+		if(this.GetComponent<Common_CardInfo>().cardInfo.cost > GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost)
+			return;
 		if(placeholder == null)
 		{
 			//Debug.Log(eventData.pointerDrag.name  + "OnDrag Fail");
@@ -104,7 +107,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			//GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend = false;
 			return;
 		}
-		
+		if(this.GetComponent<Common_CardInfo>().cardInfo.cost > GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost)
+			return;
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
 			//Debug.Log("OnEndDrag");
@@ -118,6 +122,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				this.GetComponent<Common_CardInfo>().cardInfo.position = this.transform.parent.GetComponent<canvas_position>().position;
 				Destroy(placeholder);
 				if(ini == 1 && this.GetComponent<Common_CardInfo>().cardInfo.position == 2){
+					GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=this.GetComponent<Common_CardInfo>().cardInfo.cost;
 					if(this.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.aimBattleUnit)
 					{
 						if(Trigger.Trigger.IfHaveTarget(this.gameObject,this.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget))
@@ -230,8 +235,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				Destroy(bigCard);
 			Debug.Log("我点了 "+this.GetComponent<Common_CardInfo>().cardInfo.name);
 			GameObject obj = GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend;
-			if(obj == this.gameObject)
-				return;
+			//if(obj == this.gameObject)
+			//	return;
 			if(Trigger.Trigger.IsInRange(obj,this.gameObject,obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget))
 			{
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(obj,this.gameObject);

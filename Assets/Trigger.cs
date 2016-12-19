@@ -112,6 +112,7 @@ namespace Trigger
         public static bool IsInRange(GameObject user, GameObject target, TriggerTarget range)
         {
 		//首先最可怕的事情是手牌要排除排除
+		Debug.Log("username："+user.name+";targetname:"+target.name);
 		if((target.GetComponent<Common_CardInfo>().cardInfo.position==1)||(target.GetComponent<Common_CardInfo>().cardInfo.position==4)) return false;
             //按顺序判断是否正确了
             //任何的情况下，直接为真
@@ -157,11 +158,15 @@ public static List<GameObject> MarkTarget(GameObject user,TriggerTarget range)
 	//第二步：遍历每个单位，然后判断这个单位是否满足你的目标
 	for(int i=0;i<Panal1.transform.childCount;i++)
 	{
+		if(Panal1.transform.GetChild(i).GetComponent<Common_CardInfo>()== null)
+				continue;
 		if(IsInRange(user,Panal1.transform.GetChild(i).gameObject,range))
 			output.Add(Panal1.transform.GetChild(i).gameObject);
 	}
 	for(int i=0;i<Panal2.transform.childCount;i++)
 	{
+		if(Panal2.transform.GetChild(i).GetComponent<Common_CardInfo>()== null)
+				continue;
 		if(IsInRange(user,Panal2.transform.GetChild(i).gameObject,range))
 			output.Add(Panal2.transform.GetChild(i).gameObject);
 	}
