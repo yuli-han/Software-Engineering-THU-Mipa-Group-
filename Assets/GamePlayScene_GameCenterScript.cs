@@ -33,8 +33,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         int[] cardSet = Common_NowCardSet.CardSet;
 	
 	//此处为测试用的简单卡组
-	int length=9;
-	int cardSet={1,2,3,1,2,3,1,2,3};
+	length=9;
+	cardSet=new int[9]{1,2,3,1,2,3,1,2,3};
 
 	CardCollection=new List<GameObject>();
         //生成的卡片按顺序铺在场上
@@ -76,10 +76,9 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			if(maxcost<10)maxcost++;
 			nowcost=maxcost;
 			//复原所有随从是否攻击
-GameObject myPanal = GameObject.Find("Canvas/Field");
+		GameObject myPanal = GameObject.Find("Canvas/Field");
 		for(int i=0; i<myPanal.transform.childCount; i++)
-		myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.attack=true;
-
+			myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.attack=true;
 		}
 		else
 		{
@@ -90,9 +89,9 @@ GameObject myPanal = GameObject.Find("Canvas/Field");
 			if(maxcost_op<10)maxcost_op++;
 			nowcost_op=maxcost_op;
 			//复原所有随从是否攻击
-GameObject myPanal = GameObject.Find("Canvas/Field_op");
-		for(int i=0; i<myPanal.transform.childCount; i++)
-		myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.attack=true;
+			GameObject myPanal = GameObject.Find("Canvas/Field_op");
+			for(int i=0; i<myPanal.transform.childCount; i++)
+				myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.attack=true;
 
 		}
 	}
@@ -107,17 +106,19 @@ GameObject myPanal = GameObject.Find("Canvas/Field_op");
 		{
 			int num=Common_Random.random(0,CardCollection.Count-1);
 			CardCollection[num].transform.SetParent(GameObject.Find("Canvas/Hand").transform);
+			CardCollection[num].GetComponent<Common_CardInfo>().cardInfo.position=1;
 			CardCollection.RemoveAt(num);
 		}
 
 	}
 	void DrawCard_op()
 	{
-		if(CardCollection.Count!=0)
+		if(CardCollection_op.Count!=0)
 		{
-			int num=Common_Random.random(0,CardCollection.Count-1);
-			CardCollection[num].transform.SetParent(GameObject.Find("Canvas/Hand").transform);
-			CardCollection.RemoveAt(num);
+			int num=Common_Random.random(0,CardCollection_op.Count-1);
+			CardCollection_op[num].transform.SetParent(GameObject.Find("Canvas/Hand_op").transform);
+			CardCollection_op[num].GetComponent<Common_CardInfo>().cardInfo.position=4;
+			CardCollection_op.RemoveAt(num);
 		}
 
 	}
