@@ -22,7 +22,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	public GameObject[] Hint;
 	
 	public AnimationCurve scaleCurve;
-    public float duration = 0.5f;
+    public float duration = 1f;
 	
 	
 	// Use this for initialization
@@ -106,24 +106,26 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	IEnumerator TurnRound(int id){
 		GameObject HintTextEnd;
 		GameObject HintTextStart;
-		if(id == 0){
+		if(id == 1){
 			HintTextEnd = Instantiate(Hint[0]);
+			HintTextEnd.transform.SetParent(GameObject.Find("Canvas").transform);
 		}
 		else{
 			HintTextEnd = Instantiate(Hint[2]);
+			HintTextEnd.transform.SetParent(GameObject.Find("Canvas").transform);
 		}
 		
 		
 		//fly1
 		float time = 0f;
-		Vector3 startPosition = GameObject.Find("StartPoint").transform.position;
-		Vector3 endPosition = GameObject.Find("EndPoint").transform.position;
+		Vector3 startPosition = new Vector3(0f,400f,0f);
+		Vector3 endPosition = new Vector3(1200f,400f,0f);
 		Vector3 currentPosition = startPosition;
 		float delta = endPosition.x - startPosition.x;
 		HintTextEnd.transform.position  = startPosition;
-		 while (time <= 1f)
+		 while (time <= 2f)
         {
-            float positionX = startPosition.x+ scaleCurve.Evaluate(time)*delta;
+            float positionX = startPosition.x+ scaleCurve.Evaluate(time/2)*delta;
             time += Time.deltaTime / duration;
 
             currentPosition.x = positionX;
@@ -133,20 +135,25 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         }
 		
 		Destroy(HintTextEnd);
+		
+		//等将来对手有操作的话这两部分应该分开写；
+		yield return new WaitForSeconds(0.3f);
 		//fly2
 		
 		time = 0f;
 		currentPosition = startPosition;
-		if(id == 0){
+		if(id == 1){
 			HintTextStart = Instantiate(Hint[1]);
+			HintTextStart.transform.SetParent(GameObject.Find("Canvas").transform);
 		}
 		else{
 			HintTextStart = Instantiate(Hint[3]);
+			HintTextStart.transform.SetParent(GameObject.Find("Canvas").transform);
 		}
 		HintTextStart.transform.position  = startPosition;
-		 while (time <= 1f)
+		 while (time <= 2f)
         {
-            float positionX = startPosition.x+ scaleCurve.Evaluate(time)*delta;
+            float positionX = startPosition.x+ scaleCurve.Evaluate(time/2)*delta;
             time += Time.deltaTime / duration;
 
             currentPosition.x = positionX;

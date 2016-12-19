@@ -69,7 +69,7 @@ public class Common_CardInfo : MonoBehaviour {
         if (this.cardInfo.position == 2 || this.cardInfo.position == 3)
             if (this.cardInfo.attack)
             {
-                this.GetComponent<Image>().color = new Color(0.9f, 0.9f, 0.9f, 1.0f);
+                this.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
             else
             {
@@ -85,7 +85,7 @@ public class Common_CardInfo : MonoBehaviour {
             }
             else
             {
-                this.GetComponent<Image>().color = new Color(0.9f, 0.9f, 0.9f, 1.0f);
+                this.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f, 1.0f);
             }
 
     }
