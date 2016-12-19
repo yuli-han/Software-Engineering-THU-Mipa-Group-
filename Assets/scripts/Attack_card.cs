@@ -19,6 +19,7 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 					return;
 				Debug.Log("Card " + d.GetComponent<Common_CardInfo>().cardInfo.name + " attacks " + "card " + this.GetComponent<Common_CardInfo>().cardInfo.name);
 				OnAttackEvent(d,this.gameObject);
+				d.GetComponent<Common_CardInfo>().cardInfo.attack = false;
 			}
 			else
 				if(d.GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell)
@@ -29,7 +30,7 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 						Trigger.TriggerInput newInput = new Trigger.TriggerInput(d,this.gameObject);
 						d.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
 						d.GetComponent<Common_CardInfo>().cardInfo.ifdelete=true;
-						
+						GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=d.GetComponent<Common_CardInfo>().cardInfo.cost;
 					}
 				}
 		}

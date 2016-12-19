@@ -29,8 +29,20 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			return;
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 			return;
-		if(this.GetComponent<Common_CardInfo>().cardInfo.cost > GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost)
-			return;
+		if(this.GetComponent<Common_CardInfo>().cardInfo.cost > GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost){
+			
+			if(this.GetComponent<Common_CardInfo>().cardInfo.position == 1)
+			{
+				Debug.Log("费用太高了");
+				return;
+			}
+					
+		}		
+		if(this.GetComponent<Common_CardInfo>().cardInfo.position == 2 && !this.GetComponent<Common_CardInfo>().cardInfo.attack)
+		{
+			Debug.Log("还不能攻击");
+			return;	
+		}
 		if(!GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
 			//Debug.Log("OnBeginDrag");
@@ -70,6 +82,9 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 			return;
 		if(this.GetComponent<Common_CardInfo>().cardInfo.cost > GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost)
+				if(this.GetComponent<Common_CardInfo>().cardInfo.position == 1)
+					return;
+		if(this.GetComponent<Common_CardInfo>().cardInfo.position == 2 && !this.GetComponent<Common_CardInfo>().cardInfo.attack)
 			return;
 		if(placeholder == null)
 		{
@@ -107,8 +122,6 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			//GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend = false;
 			return;
 		}
-		if(this.GetComponent<Common_CardInfo>().cardInfo.cost > GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost)
-			return;
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
 			//Debug.Log("OnEndDrag");
@@ -122,6 +135,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				this.GetComponent<Common_CardInfo>().cardInfo.position = this.transform.parent.GetComponent<canvas_position>().position;
 				Destroy(placeholder);
 				if(ini == 1 && this.GetComponent<Common_CardInfo>().cardInfo.position == 2){
+					Debug.Log("我减了"+ this.GetComponent<Common_CardInfo>().cardInfo.cost.ToString());
 					GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=this.GetComponent<Common_CardInfo>().cardInfo.cost;
 					if(this.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.aimBattleUnit)
 					{
