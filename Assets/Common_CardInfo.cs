@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+[RequireComponent(typeof(Image))]
 public class Common_CardInfo : MonoBehaviour {
     
     //卡片数据暂存器。将这个Script附着在卡片上面作为卡片数据，以方便计算以及显示。
@@ -55,6 +56,14 @@ public class Common_CardInfo : MonoBehaviour {
 		{
 			this.transform.Find("Attack").GetComponent<Text>().text = cardInfo.atk.ToString();
 			this.transform.Find("Life").GetComponent<Text>().text = cardInfo.hp.ToString();
+			if(this.cardInfo.position==2 || this.cardInfo.position==3)
+			if(this.cardInfo.attack)
+			{
+				this.GetComponent<Image>().Color
+			}
+			else
+			{
+			}
 		}
 		else{
 			this.transform.Find("Attack").GetComponent<Text>().text = "";
