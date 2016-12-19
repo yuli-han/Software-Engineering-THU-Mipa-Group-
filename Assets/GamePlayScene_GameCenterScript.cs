@@ -113,11 +113,11 @@ GameObject myPanal = GameObject.Find("Canvas/Field_op");
 	}
 	void DrawCard_op()
 	{
-		if(CardCollection.Count!=0)
+		if(CardCollection_op.Count!=0)
 		{
-			int num=Common_Random.random(0,CardCollection.Count-1);
-			CardCollection[num].transform.SetParent(GameObject.Find("Canvas/Hand").transform);
-			CardCollection.RemoveAt(num);
+			int num=Common_Random.random(0,CardCollection_op.Count-1);
+			CardCollection_op[num].transform.SetParent(GameObject.Find("Canvas/Hand_op").transform);
+			CardCollection_op.RemoveAt(num);
 		}
 
 	}
