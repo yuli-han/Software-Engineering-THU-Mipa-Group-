@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GamePlayScene_TurnEndButton :MonoBehaviour
 {
-	private ended=false;
+	private bool ended=false;
 
 
 	void OnMouseDown()
@@ -20,7 +20,7 @@ public class GamePlayScene_TurnEndButton :MonoBehaviour
 	{
 		ended=true;
 		transform.Translate(0,0,-40);
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(3f);
 		transform.Translate(0,0,40);
 		ended=false;
 	}
