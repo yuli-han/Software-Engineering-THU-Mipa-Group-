@@ -85,7 +85,7 @@ public class Common_CardInfo : MonoBehaviour {
             }
             else
             {
-                this.GetComponent<Image>().color = new Color(0.9f, 0.9f, 0.9f, 1.0f);
+                this.GetComponent<Image>().color = new Color(0.8f, 0.8f, 0.8f, 1.0f);
             }
 
     }

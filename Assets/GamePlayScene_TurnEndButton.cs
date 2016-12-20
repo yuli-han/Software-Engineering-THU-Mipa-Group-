@@ -7,8 +7,10 @@ public class GamePlayScene_TurnEndButton :MonoBehaviour
 	
 	void OnMouseDown()
 	{
+		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
+			return;
 		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().TurnChange();
-	StartCoroutine(ButtonInside());
+		StartCoroutine(ButtonInside());
 	}
 
 //使按钮按下1秒

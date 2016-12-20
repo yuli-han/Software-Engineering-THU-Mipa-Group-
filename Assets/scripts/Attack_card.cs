@@ -15,6 +15,8 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 			//trigger whatever you want, activator: d; accepter: this.
 			//like: d attack this   ----- attack(d,this);
 			if(d.GetComponent<Common_CardInfo>().cardInfo.position == 2){
+				if(!d.GetComponent<Common_CardInfo>().cardInfo.attack)
+					return;
 				if(this.GetComponent<Common_CardInfo>().cardInfo.position != 3)
 					return;
 				Debug.Log("Card " + d.GetComponent<Common_CardInfo>().cardInfo.name + " attacks " + "card " + this.GetComponent<Common_CardInfo>().cardInfo.name);
