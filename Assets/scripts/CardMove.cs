@@ -5,6 +5,7 @@ public class CardMove : MonoBehaviour {
 	
 	public AnimationCurve scaleCurve;
 	public AnimationCurve positionCurve;
+	public AnimationCurve attackPath;
 	public GameObject cardBack;
 	float duration = 0.5f;
 	
@@ -76,5 +77,10 @@ public class CardMove : MonoBehaviour {
 			yield return new WaitForFixedUpdate();
 		}
 		this.transform.SetParent(GameObject.Find("Canvas/Hand").transform);
+	}
+	
+	IEnumerator CardAttckMove(Vector3 start, Vector3 end)
+	{
+		yield return new WaitForFixedUpdate();
 	}
 }
