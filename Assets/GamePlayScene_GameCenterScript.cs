@@ -22,7 +22,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	public GameObject[] Hint;
 	
 	public AnimationCurve scaleCurve;
-    public float duration = 1f;
+    public float duration = 0.5f;
 	
 	
 	// Use this for initialization
@@ -118,18 +118,16 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		
 		//fly1
 		float time = 0f;
-		Vector3 startPosition = new Vector3(0f,400f,0f);
-		Vector3 endPosition = new Vector3(1200f,400f,0f);
-		Vector3 currentPosition = startPosition;
-		float delta = endPosition.x - startPosition.x;
+		Vector3 startPosition = new Vector3(520f,380f,0f);
 		HintTextEnd.transform.position  = startPosition;
-		 while (time <= 2f)
+		 while (time <= 2.5f)
         {
-            float positionX = startPosition.x+ scaleCurve.Evaluate(time/2)*delta;
+            float scale = scaleCurve.Evaluate(time/2.5f);
             time += Time.deltaTime / duration;
 
-            currentPosition.x = positionX;
-            HintTextEnd.transform.position = currentPosition;
+            Vector3 localScale = HintTextEnd.transform.localScale;
+            localScale.x = scale;
+            HintTextEnd.transform.localScale = localScale;
 
             yield return new WaitForFixedUpdate();
         }
@@ -137,11 +135,10 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		Destroy(HintTextEnd);
 		
 		//等将来对手有操作的话这两部分应该分开写；
-		yield return new WaitForSeconds(0.3f);
+		yield return new WaitForSeconds(0.5f);
 		//fly2
 		
 		time = 0f;
-		currentPosition = startPosition;
 		if(id == 1){
 			HintTextStart = Instantiate(Hint[1]);
 			HintTextStart.transform.SetParent(GameObject.Find("Canvas").transform);
@@ -151,13 +148,14 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			HintTextStart.transform.SetParent(GameObject.Find("Canvas").transform);
 		}
 		HintTextStart.transform.position  = startPosition;
-		 while (time <= 2f)
+		 while (time <= 2.5f)
         {
-            float positionX = startPosition.x+ scaleCurve.Evaluate(time/2)*delta;
+            float scale = scaleCurve.Evaluate(time/2.5f);
             time += Time.deltaTime / duration;
 
-            currentPosition.x = positionX;
-            HintTextStart.transform.position = currentPosition;
+            Vector3 localScale = HintTextStart.transform.localScale;
+            localScale.x = scale;
+            HintTextStart.transform.localScale = localScale;
 
             yield return new WaitForFixedUpdate();
         }
