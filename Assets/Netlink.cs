@@ -4,10 +4,11 @@ using System.Collections;
 using System.Net;
 using System.Net.Sockets;
 
+
 //Netlink用于直接地传输信息：
 //最好的做法是任何事件发生时向远端传输一个等价事件，然后远端取下事件后作为等价事件拿出。
 
-public class Netlink
+public class Netlink : MonoBehaviour
 {
 	private TcpListener listener;
 	private TcpClient client;
@@ -26,11 +27,12 @@ public class Netlink
 	{
 		client=listener.AcceptTcpClient();
 		//然后做点什么广播来声明你接收了一个连接
+        	yield return 0;
 	}
 
 	public int Client(string address,int port)
 	{
-		IPEndPoint remotePoint=new IPEndPoint(IPAdress.Parse(address),port);
+		IPEndPoint remotePoint=new IPEndPoint(IPAddress.Parse(address),port);
 		client=new TcpClient();
 		client.Connect(remotePoint);
 
@@ -41,8 +43,9 @@ public class Netlink
 	public int CloseLink()
 	{
 		if(client!=null)
-			client.close();
+			client.Close();
 		client=null;
+        return 0;
 	}
 
 
