@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
+  placeholder: {fileID: 0}
 --- !u!114 &114000012351983192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -413,6 +414,74 @@ MonoBehaviour:
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  attackPath:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.5
+      value: 0.00000011920929
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  waggle:
+    serializedVersion: 2
+    m_Curve:
+    - time: -0.032748975
+      value: 0.0011572242
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.23173535
+      value: 1.025447
+      inSlope: 1.1539459
+      outSlope: 1.1539459
+      tangentMode: 0
+    - time: 0.50168866
+      value: -0.9752074
+      inSlope: 1.4489889
+      outSlope: 1.4489889
+      tangentMode: 0
+    - time: 0.7582155
+      value: 1.0170572
+      inSlope: 1.0675192
+      outSlope: 1.0675192
+      tangentMode: 0
+    - time: 1.0183727
+      value: -0.0059047937
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  deathCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
+    - time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
