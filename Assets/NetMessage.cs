@@ -8,9 +8,9 @@ public class NetMessage
 {
 	public interface MSGPack
 	{
-		int unitId;
-		public string sendMSG();//将类转换为MSG并予以传输
-		public void recvMSG(string input);//将MSG转换回类
+        //int unitId;
+	    string sendMSG();//将类转换为MSG并予以传输
+		void recvMSG(string input);//将MSG转换回类
 	}
 	
 	static int Attack=1;

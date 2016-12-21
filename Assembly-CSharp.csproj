@@ -55,6 +55,7 @@
      <Compile Include="Assets\GamePlayScene_CostTextScript.cs" />
      <Compile Include="Assets\GamePlayScene_GameCenterScript.cs" />
      <Compile Include="Assets\GamePlayScene_TurnEndButton.cs" />
+     <Compile Include="Assets\MoveInterface.cs" />
      <Compile Include="Assets\NetMessage.cs" />
      <Compile Include="Assets\Netlink.cs" />
      <Compile Include="Assets\Trigger.cs" />

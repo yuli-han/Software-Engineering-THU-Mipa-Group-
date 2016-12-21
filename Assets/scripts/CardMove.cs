@@ -1,4 +1,4 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CardMove : MonoBehaviour {
@@ -33,7 +33,7 @@ public class CardMove : MonoBehaviour {
 		float time = 0f;
 		CardBack.transform.position = new Vector3(1200f,380f,0f);
 		CardBack.transform.SetParent(GameObject.Find("Canvas").transform);
-		//é£žåˆ°(520f,380f,0f)
+		//·Éµ½(520f,380f,0f)
 		while(time<1.2f)
 		{
 			float x = 1200f - 680f*positionCurve.Evaluate(time/4);
@@ -85,15 +85,16 @@ public class CardMove : MonoBehaviour {
 	public void cardAttack(GameObject start, GameObject end)
 	{
 		
-		//StopCoroutine(CardAttckMove(start,end));
-        StartCoroutine(CardAttckMove(start,end));
 	}
 	
-	IEnumerator CardAttckMove(GameObject start, GameObject end)
+//	IEnumerator CardAttckMove(GameObject start, GameObject end)
+	public class CardAttackMove : MoveInterface
 	{
-		float time = 0f;//Debug.Log(start.ToString()+" ç»™æˆ‘åŠ¨èµ·æ¥ "+ end.ToString());
+	public void Move(Trigger.TriggerInput input)
+	{
+		float time = 0f;//Debug.Log(start.ToString()+" ¸øÎÒ¶¯ÆðÀ´ "+ end.ToString());
 		Vector3 beginPosition = start.GetComponent<Draggerable>().placeholder.transform.position;
-		while(time<2f)//ç§»åŠ¨æ”»å‡»çš„åŠ¨ç”»
+		while(time<2f)//ÒÆ¶¯¹¥»÷µÄ¶¯»­
 		{
 			Vector3 location = beginPosition - (1f-attackPath.Evaluate(time/2))*(beginPosition - end.transform.position)*0.8f;
 			time += Time.deltaTime / duration;
@@ -103,7 +104,7 @@ public class CardMove : MonoBehaviour {
 		}
 		Vector3 delta = new Vector3(10f,0f,0f);
 		Vector3 endPosition = end.transform.position;
-		while(time<2.6f)//å·¦å³æŠ–åŠ¨çš„åŠ¨ç”»
+		while(time<2.6f)//×óÓÒ¶¶¶¯µÄ¶¯»­
 		{
 			Vector3 location = beginPosition - waggle.Evaluate((time-2f)/0.6f)*delta;
 			Vector3 location2 = endPosition - waggle.Evaluate((time-2f)/0.6f)*delta;
@@ -113,10 +114,10 @@ public class CardMove : MonoBehaviour {
 			yield return new WaitForFixedUpdate();
 		}
 		if(this.GetComponent<Common_CardInfo>().cardInfo.hp <= end.GetComponent<Common_CardInfo>().cardInfo.atk)
-		while(time<3.6f)//æ—‹è½¬æ­»äº¡çš„åŠ¨ç”»
+		while(time<3.6f)//Ðý×ªËÀÍöµÄ¶¯»­
 		{
 			float scale = deathCurve.Evaluate((time-2.6f)/0.6f);
-			//Debug.Log(time.ToString()+" å®žéªŒ " +scale.ToString());
+			//Debug.Log(time.ToString()+" ÊµÑé " +scale.ToString());
 			time += Time.deltaTime / duration;
 			//Quaternion q = Quaternion.Euler(new Vector3(0f,0f,360f*scale));
 			
@@ -134,10 +135,10 @@ public class CardMove : MonoBehaviour {
 		}
 		OnAttackEvent(start,end);
 	}
-	
+	}
 	public void OnAttackEvent(GameObject user,GameObject target)
 	{
-		//è¡€é‡ç»“ç®—
+		//ÑªÁ¿½áËã
 		user.GetComponent<Common_CardInfo>().cardInfo.hp-=target.GetComponent<Common_CardInfo>().cardInfo.atk;
 		target.GetComponent<Common_CardInfo>().cardInfo.hp-=user.GetComponent<Common_CardInfo>().cardInfo.atk;
 	}
