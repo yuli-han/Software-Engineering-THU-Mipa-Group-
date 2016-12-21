@@ -11,7 +11,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	//bool ifclick;
 	GameObject bigCard;
 	
-	GameObject placeholder = null;
+	public GameObject placeholder = null;
 	
 	GameObject attackTarget = null;
 	
@@ -249,10 +249,9 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				Destroy(bigCard);
 			Debug.Log("我点了 "+this.GetComponent<Common_CardInfo>().cardInfo.name);
 			GameObject obj = GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend;
-			//if(obj == this.gameObject)
-			//	return;
 			if(Trigger.Trigger.IsInRange(obj,this.gameObject,obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget))
 			{
+				//加入造成伤害的动画
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(obj,this.gameObject);
 				obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
 				Debug.Log("已经触发战吼");

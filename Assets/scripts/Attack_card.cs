@@ -20,7 +20,8 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 				if(this.GetComponent<Common_CardInfo>().cardInfo.position != 3)
 					return;
 				Debug.Log("Card " + d.GetComponent<Common_CardInfo>().cardInfo.name + " attacks " + "card " + this.GetComponent<Common_CardInfo>().cardInfo.name);
-				OnAttackEvent(d,this.gameObject);
+				
+				d.GetComponent<CardMove>().cardAttack(d,this.gameObject);
 				d.GetComponent<Common_CardInfo>().cardInfo.attack = false;
 			}
 			else
@@ -28,7 +29,7 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 				{
 					//Debug.Log("Card " + d.GetComponent<Common_CardInfo>().cardInfo.name + " releases on " + "card " + this.GetComponent<Common_CardInfo>().cardInfo.name);
 					if(Trigger.Trigger.IsInRange(d,this.gameObject,d.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget)){
-						//Debug.Log("PrepareToExec");
+						//加入造成伤害动画
 						Trigger.TriggerInput newInput = new Trigger.TriggerInput(d,this.gameObject);
 						d.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
 						d.GetComponent<Common_CardInfo>().cardInfo.ifdelete=true;
@@ -37,13 +38,5 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 				}
 		}
 	}
-	
-	public void OnAttackEvent(GameObject user,GameObject target)
-	{
-		//血量结算
-		user.GetComponent<Common_CardInfo>().cardInfo.hp-=target.GetComponent<Common_CardInfo>().cardInfo.atk;
-		target.GetComponent<Common_CardInfo>().cardInfo.hp-=user.GetComponent<Common_CardInfo>().cardInfo.atk;
-	
-	}
-	
+		
 }
