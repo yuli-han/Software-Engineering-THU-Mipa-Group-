@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CardMove : MonoBehaviour {
@@ -9,6 +10,7 @@ public class CardMove : MonoBehaviour {
 	public AnimationCurve waggle;
 	public AnimationCurve deathCurve;
 	public GameObject cardBack;
+	public GameObject textBlood;
 	float duration = 0.5f;
 	
 	public void flyAndFlip()
@@ -103,15 +105,32 @@ public class CardMove : MonoBehaviour {
 		}
 		Vector3 delta = new Vector3(10f,0f,0f);
 		Vector3 endPosition = end.transform.position;
-		while(time<2.6f)//左右抖动的动画
+		GameObject reduceBlood = Instantiate(textBlood);
+		GameObject reduceBlood2 = Instantiate(textBlood);
+		reduceBlood.transform.SetParent(GameObject.Find("Canvas").transform);
+		reduceBlood2.transform.SetParent(GameObject.Find("Canvas").transform);
+		reduceBlood.transform.position = start.transform.position;
+		reduceBlood2.transform.position = end.transform.position;
+		reduceBlood.GetComponent<Text>().text = "-"+end.GetComponent<Common_CardInfo>().cardInfo.atk.ToString();
+		reduceBlood2.GetComponent<Text>().text = "-"+start.GetComponent<Common_CardInfo>().cardInfo.atk.ToString();
+		
+		while(time<2.6f)//左右抖动的动画加掉血
 		{
 			Vector3 location = beginPosition - waggle.Evaluate((time-2f)/0.6f)*delta;
 			Vector3 location2 = endPosition - waggle.Evaluate((time-2f)/0.6f)*delta;
 			time+=Time.deltaTime / duration;
 			start.transform.position = location;
 			end.transform.position = location2;
+			reduceBlood.transform.position = reduceBlood.transform.position + new Vector3(0f,2f,0f);
+			Color c = reduceBlood.GetComponent<Text>().color;
+			c.a = 255f*deathCurve.Evaluate((2.6f-time)/0.6f);
+			reduceBlood.GetComponent<Text>().color = c;
+			reduceBlood2.transform.position = reduceBlood2.transform.position + new Vector3(0f,2f,0f);
+			reduceBlood2.GetComponent<Text>().color = c;
 			yield return new WaitForFixedUpdate();
 		}
+		Destroy(reduceBlood);
+		Destroy(reduceBlood2);
 		if(this.GetComponent<Common_CardInfo>().cardInfo.hp <= end.GetComponent<Common_CardInfo>().cardInfo.atk)
 		while(time<3.6f)//旋转死亡的动画
 		{
