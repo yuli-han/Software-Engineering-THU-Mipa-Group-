@@ -76,6 +76,11 @@ namespace Trigger
 //执行方式
 	public class TriggerResult
 	{
+		public int thisMove;
+		public virtual void doMove(TriggerInput input,int extra = 0)
+		{
+			input.CardUser.GetComponent<CardMove>().Move(input,thisMove,extra);
+		}
 		public virtual void exec(TriggerInput input)
 		{
 		}
@@ -88,15 +93,14 @@ namespace Trigger
             public TriggerCondition thisCondition;
             public TriggerTarget thisTarget;
             public TriggerResult thisResult;
-		    public MoveInterface thisMove;
+		    
 		
             public Trigger()
             {
                 thisCondition=new TriggerCondition();
                 thisTarget=new TriggerTarget();
                 thisResult=new TriggerResult();
-			    thisMove=null;
-            }
+			}
 
 	    public Trigger(TriggerTarget target,TriggerCondition condition,TriggerResult result)
         {
@@ -108,8 +112,7 @@ namespace Trigger
 //实际执行的执行方式
 	    public void exec(TriggerInput input)
 	    {
-		if(thisMove!=null)thisMove.Move(input);
-	    	this.thisResult.exec(input);
+		   	this.thisResult.doMove(input);
 	    }
 
         public static bool IsInRange(GameObject user, GameObject target, TriggerTarget range)

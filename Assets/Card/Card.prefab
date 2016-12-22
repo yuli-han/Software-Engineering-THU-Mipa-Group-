@@ -461,7 +461,7 @@ MonoBehaviour:
       inSlope: 1.0675192
       outSlope: 1.0675192
       tangentMode: 0
-    - time: 1.0183727
+    - time: 1.0011412
       value: -0.0059047937
       inSlope: 0
       outSlope: 0
@@ -486,6 +486,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   cardBack: {fileID: 1000010917184700, guid: 825d463b4330dc04f8003ac8c0acb467, type: 2}
+  textBlood: {fileID: 1000011149753314, guid: ca7182582c60cc245abe3ede96400289, type: 2}
+  Image_ball: {fileID: 1000014026203486, guid: 88c86eeefa1cef646a326405252c5d76, type: 2}
 --- !u!114 &114000012932569874
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 //GamePlayScene核心的代码。嘛，也就是整体控制器
 
@@ -56,8 +57,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
         //初始化第四步：设置状态为初始状态。
 		nowturn=0;
-		nowcost=0;
-		maxcost=0;
+		nowcost=10;
+		maxcost=10;
 		nowcost_op=0;
 		maxcost_op=0;
 		thisplayer=0;
@@ -120,14 +121,21 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		float time = 0f;
 		Vector3 startPosition = new Vector3(520f,380f,0f);
 		HintTextEnd.transform.position  = startPosition;
-		 while (time <= 2.5f)
+		 while (time <= 2f)
         {
-            float scale = scaleCurve.Evaluate(time/2.5f);
+            float scale = scaleCurve.Evaluate(time/2f);
             time += Time.deltaTime / duration;
 
             Vector3 localScale = HintTextEnd.transform.localScale;
             localScale.x = scale;
-            HintTextEnd.transform.localScale = localScale;
+			if(time < 1)
+				HintTextEnd.transform.localScale = localScale;
+			else
+			{
+				Color c = HintTextEnd.GetComponent<Text>().color;
+				c.a = scale;
+				HintTextEnd.GetComponent<Text>().color = c;
+			}
 
             yield return new WaitForFixedUpdate();
         }
@@ -155,7 +163,14 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
             Vector3 localScale = HintTextStart.transform.localScale;
             localScale.x = scale;
-            HintTextStart.transform.localScale = localScale;
+			if(time < 1)
+				HintTextStart.transform.localScale = localScale;
+			else
+			{
+				Color c = HintTextStart.GetComponent<Text>().color;
+				c.a = scale;
+				HintTextStart.GetComponent<Text>().color = c;
+			}
 
             yield return new WaitForFixedUpdate();
         }
