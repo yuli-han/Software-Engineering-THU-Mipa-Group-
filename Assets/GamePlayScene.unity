@@ -90,106 +90,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &158342975
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1620891921}
-    m_Modifications:
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -199
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -161
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 132
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 155
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ca7182582c60cc245abe3ede96400289, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &237944845 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100004, guid: bf5bf5dc5325b7e4887fa7daf8a0bae3, type: 3}
@@ -1125,7 +1025,6 @@ RectTransform:
   - {fileID: 1736413612}
   - {fileID: 502595379}
   - {fileID: 858056610}
-  - {fileID: 2102878220}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
@@ -1725,8 +1624,3 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   duration: 0.5
---- !u!224 &2102878220 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224000014212523288, guid: ca7182582c60cc245abe3ede96400289,
-    type: 2}
-  m_PrefabInternal: {fileID: 158342975}

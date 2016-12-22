@@ -57,8 +57,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
         //初始化第四步：设置状态为初始状态。
 		nowturn=0;
-		nowcost=0;
-		maxcost=0;
+		nowcost=10;
+		maxcost=10;
 		nowcost_op=0;
 		maxcost_op=0;
 		thisplayer=0;
