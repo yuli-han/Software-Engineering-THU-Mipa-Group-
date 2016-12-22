@@ -28,9 +28,13 @@ namespace TriggerExecSpace
 		{
 			thisDamage=damage;
 		}
+		public override void doMove(Trigger.TriggerInput input,int extra = 0)
+		{
+			base.doMove(input,thisDamage);
+		}
 		public override void exec(Trigger.TriggerInput input)
 		{
-			Debug.Log("Let's Damage");
+			
 			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp-=thisDamage;
 		}
 	}
