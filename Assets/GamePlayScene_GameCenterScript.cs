@@ -37,37 +37,39 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         int length = Common_NowCardSet.Length;
         int[] cardSet = Common_NowCardSet.CardSet;
 	
-	//此处为测试用的简单卡组
-	length=9;
-	cardSet=new int[9]{1,2,3,1,2,3,1,2,3};
+	    //此处为测试用的简单卡组
+        Debug.Log("Warning: You are using TestCardSet!");
+	    length=9;
+	    cardSet=new int[9]{1,2,3,1,2,3,1,2,3};
 
-	CardCollection=new List<GameObject>();
+	    CardCollection=new List<GameObject>();
         //生成的卡片按顺序铺在场上
         for (int i = 0; i < length; i++)
         {
             CardCollection.Add(Common_DataBase.GetCard(cardSet[i]));
         }
 
-	int length_op=Common_NowCardSet.Length_op;
-	int[] cardSet_op=Common_NowCardSet.CardSet_op;
-
-	CardCollection_op=new List<GameObject>();
-        //生成的卡片按顺序铺在场上
-        for (int i = 0; i < length_op; i++)
-        {
-            CardCollection_op.Add(Common_DataBase.GetCard(cardSet_op[i]));
-        }
-
-        
         //然后应该要通过网络获取对方卡组。因为还没有加入联网测试功能所以选择将双方卡组设为相同。
 
-		CardCollection_op=new List<GameObject>();
-        //生成的卡片按顺序铺在场上
-        for (int i = 0; i < length; i++)
-        {
-            CardCollection_op.Add(Common_DataBase.GetCard(cardSet[i]));
-        }
 
+	    int length_op=Common_NowCardSet.Length_op;
+	    int[] cardSet_op=Common_NowCardSet.CardSet_op;
+
+	    CardCollection_op=new List<GameObject>();
+        if (length_op != 0)
+        {
+            for (int i = 0; i < length_op; i++)
+            {
+                CardCollection_op.Add(Common_DataBase.GetCard(cardSet_op[i]));
+            }
+        }
+        else//说明对手卡组为空，是测试状态，使用我方卡组作副本
+        {
+            for (int i = 0; i < length; i++)
+            {
+                CardCollection_op.Add(Common_DataBase.GetCard(cardSet[i]));
+            }
+        }
 		
         //初始化第二步：根据英雄信息，将头像和英雄技能按钮置于场上。
 
@@ -240,6 +242,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		while(true)
 		{
 			NetMessage nextMSG=Netlink.RecvMessage();
+            if (nextMSG == null) break;//为空代表显然我们没有联网，而是单机测试
 			if(nextMSG.infoType==NetMessage.Attack)
 			{
 				GameObject user=GetCard(nextMSG.addint1);

@@ -17,6 +17,8 @@ public class Netlink : MonoBehaviour
     private static StreamReader reader;
     private static StreamWriter writer;
 
+    public static int id;
+
     public static int Host(int port)
 	{
 		listener=new TcpListener(port);
@@ -25,6 +27,26 @@ public class Netlink : MonoBehaviour
         netStream = client.GetStream();
         reader = new StreamReader(netStream);
         writer = new StreamWriter(netStream);
+        id = 0;
+        //一旦发生连接，立刻完成的工作：1，交换随机数种子；2，交换双方卡组
+
+        //交换随机数种子
+        Common_Random.init();
+        int next = Common_Random.random(0, 32767);
+        Common_Random.init(next);
+        writer.WriteLine(next.ToString());
+
+        //交换双方卡组
+        writer.WriteLine(Common_NowCardSet.Length);
+        for (int i = 0; i < Common_NowCardSet.Length; i++)
+        {
+            writer.WriteLine(Common_NowCardSet.CardSet[i]);
+        }
+        Common_NowCardSet.Length_op = int.Parse(reader.ReadLine());
+        for (int i = 0; i < Common_NowCardSet.Length_op; i++)
+        {
+            Common_NowCardSet.CardSet_op[i] = int.Parse(reader.ReadLine());
+        }
 
 		//然后应该检测是否成功地连接到了对方
 		return 0;
@@ -38,6 +60,23 @@ public class Netlink : MonoBehaviour
         netStream = client.GetStream();
         reader = new StreamReader(netStream);
         writer = new StreamWriter(netStream);
+        id = 1;
+        //交换随机数种子
+        int nextRan = int.Parse(reader.ReadLine());
+        Common_Random.init(nextRan);
+
+        //交换双方卡组
+        writer.WriteLine(Common_NowCardSet.Length);
+        for (int i = 0; i < Common_NowCardSet.Length; i++)
+        {
+            writer.WriteLine(Common_NowCardSet.CardSet[i]);
+        }
+        Common_NowCardSet.Length_op = int.Parse(reader.ReadLine());
+        for (int i = 0; i < Common_NowCardSet.Length_op; i++)
+        {
+            Common_NowCardSet.CardSet_op[i] = int.Parse(reader.ReadLine());
+        }
+
 
 		//然后应该检测是否成功地连接到了对方
 		return 0;

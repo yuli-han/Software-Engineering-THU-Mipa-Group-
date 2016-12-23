@@ -12,7 +12,7 @@ namespace TriggerExecSpace
 		{
 			DamageTotal=total;
 		}
-		public void exec(Trigger.TriggerInput input)
+		public override void exec(Trigger.TriggerInput input)
 		{
 			//实现事情的做法可以分为两步：获得所有合适的单位；然后随机造成伤害。
 			//所以需要的第一步是判断可打击范围。这个使用专门的函数为佳
@@ -46,7 +46,7 @@ namespace TriggerExecSpace
 		{
 			thisHeal=heal;
 		}
-		public void exec(Trigger.TriggerInput input)
+		public override void exec(Trigger.TriggerInput input)
 		{
 			
 			if(input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp>input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.maxhp)
@@ -61,7 +61,7 @@ namespace TriggerExecSpace
 		{
 			CardNum=number;
 		}
-		public void exec(Trigger.TriggerInput input)
+		public override void exec(Trigger.TriggerInput input)
 		{
 			//需要在卡片里保留一个方法来获得自己属于哪边
 			for(int i=0;i<CardNum;i++)
@@ -85,7 +85,7 @@ namespace TriggerExecSpace
 			atk=atkch;
 			hp=hpch;
 		}
-		public void exec(Trigger.TriggerInput input)
+		public override void exec(Trigger.TriggerInput input)
 		{
 			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.atk+=atk;
 			if(input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.atk<0)input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.atk=0;

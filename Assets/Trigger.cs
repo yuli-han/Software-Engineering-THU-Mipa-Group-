@@ -76,7 +76,7 @@ namespace Trigger
 //ִ�з�ʽ
 	public class TriggerResult
 	{
-		public int thisMove;
+		public int thisMove=0;
 		public virtual void doMove(TriggerInput input,int extra = 0)
 		{
 			input.CardUser.GetComponent<CardMove>().Move(input,thisMove,extra);
