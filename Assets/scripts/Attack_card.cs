@@ -27,12 +27,11 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 			else
 				if(d.GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell)
 				{
-					//Debug.Log("Card " + d.GetComponent<Common_CardInfo>().cardInfo.name + " releases on " + "card " + this.GetComponent<Common_CardInfo>().cardInfo.name);
 					if(Trigger.Trigger.IsInRange(d,this.gameObject,d.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget)){
 						//加入造成伤害动画
 						Trigger.TriggerInput newInput = new Trigger.TriggerInput(d,this.gameObject);
 						d.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
-						d.GetComponent<Common_CardInfo>().cardInfo.ifdelete=true;
+						//d.GetComponent<Common_CardInfo>().cardInfo.ifdelete=true;
 						GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=d.GetComponent<Common_CardInfo>().cardInfo.cost;
 					}
 				}

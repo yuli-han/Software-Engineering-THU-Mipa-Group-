@@ -14,32 +14,44 @@ public class CardMove : MonoBehaviour {
 	public GameObject Image_ball;
 	float duration = 0.5f;
 	
-	public void flyAndFlip()
+	public void flyAndFlip(int id =0)
 	{
-		StopCoroutine(moveAndFlip());
-        StartCoroutine(moveAndFlip());
+		StopCoroutine(moveAndFlip(id));
+        StartCoroutine(moveAndFlip(id));
 	}
 	
-	IEnumerator moveAndFlip()
+	IEnumerator moveAndFlip(int id)
 	{
 		Vector3 handPosition;
 		int count = GameObject.Find("Canvas/Hand").transform.childCount;
 		if(count>0)
 		{
-			handPosition = GameObject.Find("Canvas/Hand").transform.GetChild(count-1).position;
+			if(id==0)
+				handPosition = GameObject.Find("Canvas/Hand").transform.GetChild(count-1).position;
+			else
+				handPosition = GameObject.Find("Canvas/Hand_op").transform.GetChild(count-1).position;
 			handPosition.x+=110f;
 		}
 		else
-			handPosition = new Vector3(512f,50f,0f);
+		{
+			if(id == 0)handPosition = new Vector3(512f,50f,0f);
+			else handPosition = new Vector3(512f,600f,0f);//可能坐标参数需要调整
+		}
+			
 		
 		GameObject CardBack = Instantiate(cardBack);
 		float time = 0f;
-		CardBack.transform.position = new Vector3(1200f,380f,0f);
+		Vector3 de;
+		if(id == 0)
+			de = new Vector3(1200f,280f,0f);
+		else
+			de = new Vector3(1200f,480f,0f);//可能坐标参数需要调整
+		CardBack.transform.position = de;
 		CardBack.transform.SetParent(GameObject.Find("Canvas").transform);
-		//飞到(520f,380f,0f)
+		
 		while(time<1.2f)
 		{
-			float x = 1200f - 680f*positionCurve.Evaluate(time/4);
+			float x = de.x - (de.x - handPosition.x)*positionCurve.Evaluate(time/4);
             time += Time.deltaTime / duration;
 
             Vector3 local = CardBack.transform.position;
@@ -74,10 +86,9 @@ public class CardMove : MonoBehaviour {
 
             yield return new WaitForFixedUpdate();
 		}
-		//(520,380,0)
 		while(time<3.3f)
 		{
-			Vector3 location = handPosition - positionCurve.Evaluate((time-0.3f)/3)*(handPosition - new Vector3(520f,380f,0f));
+			Vector3 location = handPosition - positionCurve.Evaluate((time-0.3f)/3)*(handPosition - new Vector3(handPosition.x,de.y,0f));
 			time += Time.deltaTime / duration;
 			this.transform.position = location;
 			yield return new WaitForFixedUpdate();
@@ -131,29 +142,25 @@ public class CardMove : MonoBehaviour {
 		}
 		Destroy(reduceBlood);
 		Destroy(reduceBlood2);
-		if(this.GetComponent<Common_CardInfo>().cardInfo.hp <= end.GetComponent<Common_CardInfo>().cardInfo.atk)
+		
 		while(time<3.6f)//旋转死亡的动画
 		{
 			float scale = deathCurve.Evaluate((time-2.6f)/0.6f);
-			//Debug.Log(time.ToString()+" 实验 " +scale.ToString());
 			time += Time.deltaTime / duration;
-			//Quaternion q = Quaternion.Euler(new Vector3(0f,0f,360f*scale));
-			
 			Vector3 rotation = this.transform.localEulerAngles; 
 			rotation.z = 360f*scale; 
-			this.transform.localEulerAngles = rotation;
-			//this.transform.rotation = q;
-			
+			if(this.GetComponent<Common_CardInfo>().cardInfo.hp <= end.GetComponent<Common_CardInfo>().cardInfo.atk)
+				this.transform.localEulerAngles = rotation;
 			Vector3 localScale = this.transform.localScale;
             localScale.x = 1f-scale;
 			localScale.y = 1f-scale;
-			this.transform.localScale = localScale;
+			if(this.GetComponent<Common_CardInfo>().cardInfo.hp <= end.GetComponent<Common_CardInfo>().cardInfo.atk)
+				this.transform.localScale = localScale;
 			if(end.GetComponent<Common_CardInfo>().cardInfo.hp <= this.GetComponent<Common_CardInfo>().cardInfo.atk)
 			{
 				end.transform.localScale = localScale;
 				end.transform.localEulerAngles = rotation;
 			}
-			
 			yield return new WaitForFixedUpdate();
 		}
 		OnAttackEvent(start,end);
@@ -187,7 +194,6 @@ public class CardMove : MonoBehaviour {
                 Debug.Log("afterSpell");
 				break;
 		}
-		//input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
 	}
 		
 	IEnumerator battleMove(Trigger.TriggerInput input, int damage)
@@ -233,7 +239,7 @@ public class CardMove : MonoBehaviour {
 	}
 	IEnumerator SpellDamage(Trigger.TriggerInput input, int damage)
 	{
-		/*float time = 0f;
+		float time = 0f;
 		GameObject Ball = Instantiate(Image_ball);
 		Ball.transform.SetParent(GameObject.Find("Canvas").transform);
 		Ball.transform.position = new Vector3(512f,150f,0f);
@@ -246,8 +252,8 @@ public class CardMove : MonoBehaviour {
 				
 			yield return new WaitForFixedUpdate();
 		}
-		Destroy(Ball);*/
-		/*time = 0f;
+		Destroy(Ball);
+		time = 0f;
 		Vector3 delta = new Vector3(10f,0f,0f);
 		Vector3 beginPosition = input.CardTarget.transform.position;
 		GameObject reduceBlood = Instantiate(textBlood);
@@ -270,10 +276,7 @@ public class CardMove : MonoBehaviour {
 		while(time<1.8f)//旋转死亡的动画
 		{
 			float scale = deathCurve.Evaluate(time-0.8f);
-			//Debug.Log(time.ToString()+" 实验 " +scale.ToString());
-			time += Time.deltaTime / duration;
-			//Quaternion q = Quaternion.Euler(new Vector3(0f,0f,360f*scale));
-		
+			time += Time.deltaTime / duration;		
 			Vector3 rotation = input.CardTarget.transform.localEulerAngles; 
 			rotation.z = 360f*scale; 
 			input.CardTarget.transform.localEulerAngles = rotation;		
@@ -281,12 +284,9 @@ public class CardMove : MonoBehaviour {
 			localScale.x = 1f-scale;
 			localScale.y = 1f-scale;
 			input.CardTarget.transform.localScale = localScale;
-		
 			yield return new WaitForFixedUpdate();
-		}*/
-        Debug.Log("WithOutSpell");
-		yield return 0;
-        Debug.Log("WithInSpell");
+		}
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
+		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.ifdelete=true;
 	}	
 }
