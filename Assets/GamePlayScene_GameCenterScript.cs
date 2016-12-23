@@ -229,7 +229,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
 			}
 			if(nextMSG.infoType==NetMessage.DrawCard)
-			{
+			{//暂不需要，一般来说各种法术都回自动调用
 			}
 			if(nextMSG.infoType==NetMessage.Summon)
 			{
