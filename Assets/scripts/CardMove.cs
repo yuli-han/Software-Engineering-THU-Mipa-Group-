@@ -9,6 +9,7 @@ public class CardMove : MonoBehaviour {
 	public AnimationCurve attackPath;
 	public AnimationCurve waggle;
 	public AnimationCurve deathCurve;
+	public Sprite __cardBack;
 	public GameObject cardBack;
 	public GameObject textBlood;
 	public GameObject Image_ball;
@@ -23,7 +24,11 @@ public class CardMove : MonoBehaviour {
 	IEnumerator moveAndFlip(int id)
 	{
 		Vector3 handPosition;
-		int count = GameObject.Find("Canvas/Hand").transform.childCount;
+		int count;
+		if(id == 0)
+			count = GameObject.Find("Canvas/Hand").transform.childCount;
+		else
+			count = GameObject.Find("Canvas/Hand_op").transform.childCount;
 		if(count>0)
 		{
 			if(id==0)
@@ -35,7 +40,7 @@ public class CardMove : MonoBehaviour {
 		else
 		{
 			if(id == 0)handPosition = new Vector3(512f,50f,0f);
-			else handPosition = new Vector3(512f,600f,0f);//可能坐标参数需要调整
+			else handPosition = new Vector3(512f,650f,0f);//可能坐标参数需要调整
 		}
 			
 		
@@ -60,40 +65,65 @@ public class CardMove : MonoBehaviour {
 
             yield return new WaitForFixedUpdate();
 		}
-		while(time<1.8f)
-		{
-			float scale = scaleCurve.Evaluate((time-0.3f)/3);
-            time += Time.deltaTime / duration;
+		if(id == 0){
+			while(time<1.8f)
+			{
+				float scale = scaleCurve.Evaluate((time-0.3f)/3);
+				time += Time.deltaTime / duration;
 
-            Vector3 localScale = CardBack.transform.localScale;
-            localScale.x = scale;
-            CardBack.transform.localScale = localScale;
+				Vector3 localScale = CardBack.transform.localScale;
+				localScale.x = scale;
+				CardBack.transform.localScale = localScale;
 
-            yield return new WaitForFixedUpdate();
+				yield return new WaitForFixedUpdate();
+			}
+			this.transform.SetParent(GameObject.Find("Canvas").transform);
+			this.transform.position = CardBack.transform.position;
+			this.transform.localScale = CardBack.transform.localScale;
+			Destroy(CardBack);
+			while(time<2.4f)
+			{
+				float scale = scaleCurve.Evaluate((time-0.3f)/3);
+				time += Time.deltaTime / duration;
+
+				Vector3 localScale = this.transform.localScale;
+				localScale.x = scale;
+				this.transform.localScale = localScale;
+
+				yield return new WaitForFixedUpdate();
+			}	
+			while(time<3.3f)
+			{
+				Vector3 location = handPosition - positionCurve.Evaluate((time-0.3f)/3)*(handPosition - new Vector3(handPosition.x,de.y,0f));
+				time += Time.deltaTime / duration;
+				this.transform.position = location;
+				yield return new WaitForFixedUpdate();
+			}
 		}
-		this.transform.SetParent(GameObject.Find("Canvas").transform);
-		this.transform.position = CardBack.transform.position;
-		this.transform.localScale = CardBack.transform.localScale;
-		Destroy(CardBack);
-		while(time<2.4f)
-		{
-			float scale = scaleCurve.Evaluate((time-0.3f)/3);
-            time += Time.deltaTime / duration;
-
-            Vector3 localScale = this.transform.localScale;
-            localScale.x = scale;
-            this.transform.localScale = localScale;
-
-            yield return new WaitForFixedUpdate();
+		if(id == 1){
+				this.transform.SetParent(GameObject.Find("Canvas").transform);
+				this.transform.position = CardBack.transform.position;
+				for(int i=0; i<this.transform.childCount; i++){
+					if(this.transform.GetChild(i).GetComponent<Image>()!=null)
+						this.transform.GetChild(i).GetComponent<Image>().color = new Color(1f,1f,1f,0f);
+					else
+						this.transform.GetChild(i).GetComponent<Text>().color = new Color(1f,1f,1f,0f);
+				}
+				this.GetComponent<Image>().sprite = __cardBack;
+				Destroy(CardBack);
+				while(time<2.1f)
+				{
+					
+					Vector3 location = handPosition - positionCurve.Evaluate((time-1.2f)/3+0.7f)*(handPosition - new Vector3(handPosition.x,de.y,0f));
+					time += Time.deltaTime / duration;
+					this.transform.position = location;
+					yield return new WaitForFixedUpdate();
+				}
 		}
-		while(time<3.3f)
-		{
-			Vector3 location = handPosition - positionCurve.Evaluate((time-0.3f)/3)*(handPosition - new Vector3(handPosition.x,de.y,0f));
-			time += Time.deltaTime / duration;
-			this.transform.position = location;
-			yield return new WaitForFixedUpdate();
-		}
-		this.transform.SetParent(GameObject.Find("Canvas/Hand").transform);
+		if(id == 0)
+			this.transform.SetParent(GameObject.Find("Canvas/Hand").transform);
+		else
+			this.transform.SetParent(GameObject.Find("Canvas/Hand").transform);
 	}
 	
 	public void cardAttack(GameObject start, GameObject end)
