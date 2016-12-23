@@ -219,7 +219,9 @@ public class CardMove : MonoBehaviour {
 				StartCoroutine(battleMove(input,extra));
 				break;
 			case 2:
+                Debug.Log("BeforeSpell");
 				StartCoroutine(SpellDamage(input,extra));
+                Debug.Log("afterSpell");
 				break;
 		}
 	}

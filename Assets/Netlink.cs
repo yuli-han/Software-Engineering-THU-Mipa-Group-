@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Net;
 using System.Net.Sockets;
+using System.IO;
 
 
 //Netlink用于直接地传输信息：
@@ -10,53 +11,76 @@ using System.Net.Sockets;
 
 public class Netlink : MonoBehaviour
 {
-	private TcpListener listener;
-	private TcpClient client;
-	
-	
-	public int Host(int port)
+	private static TcpListener listener;
+    private static TcpClient client;
+    private static NetworkStream netStream;
+    private static StreamReader reader;
+    private static StreamWriter writer;
+
+    public static int Host(int port)
 	{
 		listener=new TcpListener(port);
-		listener.Start(10);
-		StartCoroutine(WaitForClient());
-
-		return 0;
-	}
-	
-	private IEnumerator WaitForClient()
-	{
+		listener.Start(2);
 		client=listener.AcceptTcpClient();
-		//然后做点什么广播来声明你接收了一个连接
-        	yield return 0;
-	}
-
-	public int Client(string address,int port)
-	{
-		IPEndPoint remotePoint=new IPEndPoint(IPAddress.Parse(address),port);
-		client=new TcpClient();
-		client.Connect(remotePoint);
+        netStream = client.GetStream();
+        reader = new StreamReader(netStream);
+        writer = new StreamWriter(netStream);
 
 		//然后应该检测是否成功地连接到了对方
 		return 0;
 	}
 
-	public int CloseLink()
+    public static int Client(string address, int port)
 	{
+		IPEndPoint remotePoint=new IPEndPoint(IPAddress.Parse(address),port);
+		client=new TcpClient();
+		client.Connect(remotePoint);
+        netStream = client.GetStream();
+        reader = new StreamReader(netStream);
+        writer = new StreamWriter(netStream);
+
+		//然后应该检测是否成功地连接到了对方
+		return 0;
+	}
+
+    public static int CloseLink()
+	{
+        if (reader != null)
+            reader.Close();
+        reader = null;
+        if (writer != null)
+            writer.Close();
+        writer = null;
+        if (netStream != null)
+            netStream.Close();
+        netStream = null;
+
 		if(client!=null)
 			client.Close();
 		client=null;
+        if (listener != null)
+            listener.Stop();
+        listener = null;
         return 0;
 	}
 
-
-
-	public void SendMessage()
+    public static void SendMessage(int input, Trigger.TriggerInput inputTrigger)
 	{
 		if(client==null)return;
+        NetMessage tempmsg = NetMessage.toMSG(input, inputTrigger);
+        writer.WriteLine(tempmsg.ToString());
 	}
 
-	public void RecvMessage()
+    public static void SendMessage(NetMessage inputMessage)
 	{
 		if(client==null)return;
+        writer.WriteLine(inputMessage.ToString());
+	}
+
+    public static NetMessage RecvMessage()
+	{
+		if(client==null)return null;
+        string next = reader.ReadLine();
+        return NetMessage.toMSG(next);
 	}
 }

@@ -112,6 +112,7 @@ namespace Trigger
 //实际执行的执行方式
 	    public void exec(TriggerInput input)
 	    {
+            Debug.Log("beforeExec");
 		   	this.thisResult.doMove(input);
 	    }
 
