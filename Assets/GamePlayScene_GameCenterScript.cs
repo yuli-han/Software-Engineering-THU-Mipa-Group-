@@ -207,6 +207,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		if(CardCollection.Count!=0)
 		{
 			int num=Common_Random.random(0,CardCollection.Count-1);
+			Debug.Log("∏¯Œ“≥È≈∆£°£°£°");
 			CardCollection[num].GetComponent<CardMove>().flyAndFlip();
 			//CardCollection[num].transform.SetParent(GameObject.Find("Canvas/Hand").transform);
 			CardCollection[num].GetComponent<Common_CardInfo>().cardInfo.position=1;

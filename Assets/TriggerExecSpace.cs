@@ -61,7 +61,7 @@ namespace TriggerExecSpace
 		{
 			CardNum=number;
 		}
-		public void exec(Trigger.TriggerInput input)
+		public override void exec(Trigger.TriggerInput input)
 		{
 			//需要在卡片里保留一个方法来获得自己属于哪边
 			for(int i=0;i<CardNum;i++)
