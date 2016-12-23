@@ -13,6 +13,9 @@ public class GamePlayScene_TurnEndButton :MonoBehaviour
 			return;
 	if(ended)return;	GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().TurnChange();
 		StartCoroutine(ButtonInside());
+	//然后是时候开始等待对方的操作了！
+	GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().EnemyTurn();
+
 	}
 
 //使按钮按下1秒
