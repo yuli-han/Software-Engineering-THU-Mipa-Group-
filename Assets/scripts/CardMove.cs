@@ -41,7 +41,7 @@ public class CardMove : MonoBehaviour {
 		else
 		{
 			if(id == 0)handPosition = new Vector3(512f,50f,0f);
-			else handPosition = new Vector3(512f,650f,0f);//可能坐标参数需要调整
+			else handPosition = new Vector3(512f,720f,0f);//可能坐标参数需要调整
 		}
 			
 		
