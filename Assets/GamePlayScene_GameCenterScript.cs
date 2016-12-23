@@ -47,6 +47,17 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         {
             CardCollection.Add(Common_DataBase.GetCard(cardSet[i]));
         }
+
+	int length_op=Common_NowCardSet.Length_op;
+	int[] cardSet_op=Common_NowCardSet.CardSet_op;
+
+	CardCollection=new List<GameObject>();
+        //生成的卡片按顺序铺在场上
+        for (int i = 0; i < length; i++)
+        {
+            CardCollection.Add(Common_DataBase.GetCard(cardSet[i]));
+        }
+
         
         //然后应该要通过网络获取对方卡组。因为还没有加入联网测试功能所以选择将双方卡组设为相同。
 
@@ -178,7 +189,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		Destroy(HintTextStart);
 	}
 	
-	void DrawCard(int user=0)
+	public void DrawCard(int user=0)
 	{
 	if(user==1)
 	{
@@ -195,7 +206,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		}
 
 	}
-	void DrawCard_op()
+	public void DrawCard_op()
 	{
 		if(CardCollection_op.Count!=0)
 		{
@@ -222,8 +233,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			NetMessage nextMSG=Netlink.RecvMessage();
 			if(nextMSG.infoType==NetMessage.Attack)
 			{
-				GameObject user=GetCard(NetMessage.addint1);
-				GameObject target=GetCard(NetMessage.addint2);
+				GameObject user=GetCard(nextMSG.addint1);
+				GameObject target=GetCard(nextMSG.addint2);
 				user.GetComponent<CardMove>().cardAttack(user,target);
 				user.GetComponent<Common_CardInfo>().cardInfo.attack = false;
 
@@ -233,12 +244,27 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			}
 			if(nextMSG.infoType==NetMessage.Summon)
 			{
+				GameObject user=GetCard(nextMSG.addint1);
+				GameObject target=GetCard(nextMSG.addint2);
+				
 			}
 			if(nextMSG.infoType==NetMessage.SpellCard)
 			{
+				GameObject user=GetCard(nextMSG.addint1);
+				GameObject target=GetCard(nextMSG.addint2);
+				
+				Trigger.TriggerInput newInput = new Trigger.TriggerInput(user,target);
+				user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
+			GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=user.GetComponent<Common_CardInfo>().cardInfo.cost;
+
 			}
 			if(nextMSG.infoType==NetMessage.TriggerExec)
-			{
+			{//注：TriggerExec特指发动随从效果；因为法术效果直接作为SpellCard的效果
+				GameObject user=GetCard(nextMSG.addint1);
+				GameObject target=GetCard(nextMSG.addint2);
+				Trigger.TriggerInput newInput = new Trigger.TriggerInput(user,target);
+				user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
+
 			}
 			if(nextMSG.infoType==NetMessage.TurnChange)
 			{

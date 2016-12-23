@@ -65,11 +65,11 @@ namespace TriggerExecSpace
 		{
 			//需要在卡片里保留一个方法来获得自己属于哪边
 			for(int i=0;i<CardNum;i++)
-			if(input.user.GetComponent<Common_CardInfo>().cardInfo.position<=2)
-			GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenter>().DrawCard();
+			if(input.CardUser.GetComponent<Common_CardInfo>().cardInfo.position<=2)
+			GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().DrawCard();
 	else
 		{
-	GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenter>().DrawCard_op();
+	GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().DrawCard_op();
 
 		}
 		}

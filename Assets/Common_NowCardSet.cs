@@ -1,9 +1,9 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 using System.IO;
 
-//NowCardSet:æ˜¯ç±»å‹é—´äº¤æµå¡ç»„æ•°æ®çš„å…¬æœ‰ç±»ã€‚ç›´æ¥é‡‡ç”¨é™æ€ç±»ã€‚
+//NowCardSet:ÊÇÀàĞÍ¼ä½»Á÷¿¨×éÊı¾İµÄ¹«ÓĞÀà¡£Ö±½Ó²ÉÓÃ¾²Ì¬Àà¡£
 
 public class Common_NowCardSet {
     static string FileName;
@@ -20,22 +20,25 @@ public class Common_NowCardSet {
         }
 
     }
-    static public void SaveCardFile()//ä¸éœ€è¦åå­—ï¼Œè‡ªåŠ¨åˆ©ç”¨å³å¯è¯»å–çš„æ–‡ä»¶åå³å¯ã€‚
+    static public void SaveCardFile()//²»ĞèÒªÃû×Ö£¬×Ô¶¯ÀûÓÃ¼´¿É¶ÁÈ¡µÄÎÄ¼şÃû¼´¿É¡£
     {
         FileStream fs = new FileStream(FileName, FileMode.Create);
         StreamWriter sw = new StreamWriter(fs);
-        //å¼€å§‹å†™å…¥
+        //¿ªÊ¼Ğ´Èë
         for (int i = 0; i < Length; i++)
         {
             sw.Write(CardSet[i]+'\n');
         }
-        //æ¸…ç©ºç¼“å†²åŒº
+        //Çå¿Õ»º³åÇø
         sw.Flush();
-        //å…³é—­æµ
+        //¹Ø±ÕÁ÷
         sw.Close();
         fs.Close();
     }
-    public static int[] CardSet;//å¡ç»„
-    public static int Length;//å¡ç»„é•¿åº¦
+    public static int[] CardSet;//¿¨×é
+    public static int Length;//¿¨×é³¤¶È
+	public static int[] CardSet_op;
+	public static int Length_op;
+
 }
 

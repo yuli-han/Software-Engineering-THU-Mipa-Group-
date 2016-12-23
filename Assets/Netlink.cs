@@ -11,13 +11,13 @@ using System.IO;
 
 public class Netlink : MonoBehaviour
 {
-	private TcpListener listener;
-	private TcpClient client;
-    private NetworkStream netStream;
-    private StreamReader reader;
-    private StreamWriter writer;
+	private static TcpListener listener;
+    private static TcpClient client;
+    private static NetworkStream netStream;
+    private static StreamReader reader;
+    private static StreamWriter writer;
 
-	public int Host(int port)
+    public static int Host(int port)
 	{
 		listener=new TcpListener(port);
 		listener.Start(2);
@@ -29,8 +29,8 @@ public class Netlink : MonoBehaviour
 		//然后应该检测是否成功地连接到了对方
 		return 0;
 	}
-	
-	public int Client(string address,int port)
+
+    public static int Client(string address, int port)
 	{
 		IPEndPoint remotePoint=new IPEndPoint(IPAddress.Parse(address),port);
 		client=new TcpClient();
@@ -43,7 +43,7 @@ public class Netlink : MonoBehaviour
 		return 0;
 	}
 
-	public int CloseLink()
+    public static int CloseLink()
 	{
         if (reader != null)
             reader.Close();
@@ -64,20 +64,20 @@ public class Netlink : MonoBehaviour
         return 0;
 	}
 
-	public void SendMessage(int input,Trigger.TriggerInput inputTrigger)
+    public static void SendMessage(int input, Trigger.TriggerInput inputTrigger)
 	{
 		if(client==null)return;
         NetMessage tempmsg = NetMessage.toMSG(input, inputTrigger);
         writer.WriteLine(tempmsg.ToString());
 	}
 
-	public void SendMessage(NetMessage inputMessage)
+    public static void SendMessage(NetMessage inputMessage)
 	{
 		if(client==null)return;
         writer.WriteLine(inputMessage.ToString());
 	}
 
-	public NetMessage RecvMessage()
+    public static NetMessage RecvMessage()
 	{
 		if(client==null)return null;
         string next = reader.ReadLine();
