@@ -182,7 +182,9 @@ public class CardMove : MonoBehaviour {
 				StartCoroutine(battleMove(input,extra));
 				break;
 			case 2:
+                Debug.Log("BeforeSpell");
 				StartCoroutine(SpellDamage(input,extra));
+                Debug.Log("afterSpell");
 				break;
 		}
 		//input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
@@ -282,7 +284,9 @@ public class CardMove : MonoBehaviour {
 		
 			yield return new WaitForFixedUpdate();
 		}*/
-		yield return new WaitForSeconds(1f);
+        Debug.Log("WithOutSpell");
+		yield return 0;
+        Debug.Log("WithInSpell");
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
 	}	
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
+using System.Text;
 
 //NetMessage:网络数据传输用的接口。期待传输的数据类都应当以此为接口往复传输数据
 
@@ -29,22 +30,29 @@ public class NetMessage
 		{
 			if(inputTrigger.CardUser==null)
                 output.addint1 = 0;
-            else output.addint1 = inputTrigger.CardUser.GetComponent<Common_CardInfo>().cardInfo.itemid;
+            else output.addint1 = inputTrigger.CardUser.GetComponent<Common_CardInfo>().cardInfo.itemId;
 			if(inputTrigger.CardTarget==null)
                 output.addint2 = 0;
-            else output.addint2 = inputTrigger.CardTarget.GetComponent<Common_CardInfo>().cardInfo.itemid;
+            else output.addint2 = inputTrigger.CardTarget.GetComponent<Common_CardInfo>().cardInfo.itemId;
 
 		}
+        return output;
 	}
 
-    public static NetMessage toMSG(string input)
-    {
-        return null;
-    }
+        public static NetMessage toMSG(string input)
+        {
+            NetMessage output = new NetMessage();
+            output.infoType = int.Parse(input.Substring(0, input.IndexOf(" ")));
+            input = input.Remove(0, input.IndexOf(" ")+1);
+            output.addint1 = int.Parse(input.Substring(0, input.IndexOf(" ")));
+            input = input.Remove(0, input.IndexOf(" ")+1);
+            output.addint2 = int.Parse(input);
 
+            return output;
+        }
 	public override string ToString()
 	{
-        return null;
+        	return ""+infoType+" "+addint1+" "+addint2;
 	}
 		
 

@@ -206,4 +206,45 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		}
 
 	}
+
+	//说明：根据itemid获得对应的卡片，从全局
+	public GameObject GetCard(int itemid)
+	{
+		return GameObject.Find("Card"+itemid);
+	}
+
+	//在对手回合时，无限读取对手操作直到对手发送结束（或者认输）的指令
+	//只要这个过程能正确执行，网络的问题就解决了一半
+	void EnemyTurn()
+	{
+		while(true)
+		{
+			NetMessage nextMSG=Netlink.RecvMessage();
+			if(nextMSG.infoType==NetMessage.Attack)
+			{
+				GameObject user=GetCard(NetMessage.addint1);
+				GameObject target=GetCard(NetMessage.addint2);
+				user.GetComponent<CardMove>().cardAttack(user,target);
+				user.GetComponent<Common_CardInfo>().cardInfo.attack = false;
+
+			}
+			if(nextMSG.infoType==NetMessage.DrawCard)
+			{
+			}
+			if(nextMSG.infoType==NetMessage.Summon)
+			{
+			}
+			if(nextMSG.infoType==NetMessage.SpellCard)
+			{
+			}
+			if(nextMSG.infoType==NetMessage.TriggerExec)
+			{
+			}
+			if(nextMSG.infoType==NetMessage.TurnChange)
+			{
+				this.TurnChange();
+				break;
+			}
+		}
+	}
 }
