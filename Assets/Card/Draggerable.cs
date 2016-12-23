@@ -164,7 +164,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	
 	
 	public void OnPointerEnter(PointerEventData eventData){
-		
+		if(this.GetComponent<Common_CardInfo>().cardInfo.position == 4)
+			return;
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
 			return ;
@@ -242,7 +243,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		
+		if(this.GetComponent<Common_CardInfo>().cardInfo.position == 4)
+			return;
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 		{
 			if(bigCard!=null)

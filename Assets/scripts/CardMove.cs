@@ -17,12 +17,13 @@ public class CardMove : MonoBehaviour {
 	
 	public void flyAndFlip(int id =0)
 	{
-		StopCoroutine(moveAndFlip(id));
+		//StopCoroutine(moveAndFlip(id));
         StartCoroutine(moveAndFlip(id));
 	}
 	
 	IEnumerator moveAndFlip(int id)
 	{
+		//Debug.Log("Íæ¼Ò"+id.ToString());
 		Vector3 handPosition;
 		int count;
 		if(id == 0)
@@ -123,7 +124,7 @@ public class CardMove : MonoBehaviour {
 		if(id == 0)
 			this.transform.SetParent(GameObject.Find("Canvas/Hand").transform);
 		else
-			this.transform.SetParent(GameObject.Find("Canvas/Hand").transform);
+			this.transform.SetParent(GameObject.Find("Canvas/Hand_op").transform);
 	}
 	
 	public void cardAttack(GameObject start, GameObject end)
