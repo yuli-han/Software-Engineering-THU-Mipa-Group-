@@ -61,6 +61,14 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         
         //然后应该要通过网络获取对方卡组。因为还没有加入联网测试功能所以选择将双方卡组设为相同。
 
+		CardCollection_op=new List<GameObject>();
+        //生成的卡片按顺序铺在场上
+        for (int i = 0; i < length; i++)
+        {
+            CardCollection_op.Add(Common_DataBase.GetCard(cardSet[i]));
+        }
+
+		
         //初始化第二步：根据英雄信息，将头像和英雄技能按钮置于场上。
 
         //初始化第三步：初始化各个控件的信息
@@ -211,7 +219,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		if(CardCollection_op.Count!=0)
 		{
 			int num=Common_Random.random(0,CardCollection_op.Count-1);
-			CardCollection_op[num].transform.SetParent(GameObject.Find("Canvas/Hand_op").transform);
+			CardCollection[num].GetComponent<CardMove>().flyAndFlip(1);
+			//CardCollection_op[num].transform.SetParent(GameObject.Find("Canvas/Hand_op").transform);
 			CardCollection_op[num].GetComponent<Common_CardInfo>().cardInfo.position=4;
 			CardCollection_op.RemoveAt(num);
 		}

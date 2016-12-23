@@ -485,6 +485,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  __cardBack: {fileID: 21300000, guid: 33d4a11c3d46b524a877883af25f8625, type: 3}
   cardBack: {fileID: 1000010917184700, guid: 825d463b4330dc04f8003ac8c0acb467, type: 2}
   textBlood: {fileID: 1000011149753314, guid: ca7182582c60cc245abe3ede96400289, type: 2}
   Image_ball: {fileID: 1000014026203486, guid: 88c86eeefa1cef646a326405252c5d76, type: 2}
