@@ -257,8 +257,9 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			if(nextMSG.infoType==NetMessage.Summon)
 			{
 				GameObject user=GetCard(nextMSG.addint1);
-				GameObject target=GetCard(nextMSG.addint2);
-				
+				int point=nextMSG.addint2;
+				//ÔÝÈ±
+				user.GetComponent<Draggerable>().summonUnit(point);
 			}
 			if(nextMSG.infoType==NetMessage.SpellCard)
 			{
