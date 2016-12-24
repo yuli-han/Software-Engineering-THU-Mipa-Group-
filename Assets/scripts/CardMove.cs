@@ -104,11 +104,14 @@ public class CardMove : MonoBehaviour {
 		if(id == 1){
 				this.transform.SetParent(GameObject.Find("Canvas").transform);
 				this.transform.position = CardBack.transform.position;
+				
 				for(int i=0; i<this.transform.childCount; i++){
+					Color col = this.transform.GetChild(i).GetComponent<Image>().color;
+					col.a = 0f;
 					if(this.transform.GetChild(i).GetComponent<Image>()!=null)
-						this.transform.GetChild(i).GetComponent<Image>().color = new Color(1f,1f,1f,0f);
+						this.transform.GetChild(i).GetComponent<Image>().color = col;
 					else
-						this.transform.GetChild(i).GetComponent<Text>().color = new Color(1f,1f,1f,0f);
+						this.transform.GetChild(i).GetComponent<Text>().color = col;
 				}
 				this.GetComponent<Image>().sprite = __cardBack;
 				Destroy(CardBack);

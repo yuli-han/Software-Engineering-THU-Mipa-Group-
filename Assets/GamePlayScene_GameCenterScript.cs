@@ -40,7 +40,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	    //此处为测试用的简单卡组
         Debug.Log("Warning: You are using TestCardSet!");
 	    length=9;
-	    cardSet=new int[9]{1,2,3,1,2,3,1,2,3};
+	    cardSet=new int[9]{1,2,3,4,5,6,7,1,5};
 
 	    CardCollection=new List<GameObject>();
         //生成的卡片按顺序铺在场上
@@ -238,7 +238,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
 	//在对手回合时，无限读取对手操作直到对手发送结束（或者认输）的指令
 	//只要这个过程能正确执行，网络的问题就解决了一半
-	void EnemyTurn()
+	public void EnemyTurn()
 	{
 		while(true)
 		{

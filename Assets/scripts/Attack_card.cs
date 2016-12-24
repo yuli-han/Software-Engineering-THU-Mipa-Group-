@@ -23,6 +23,8 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 				
 				d.GetComponent<CardMove>().cardAttack(d,this.gameObject);
 				d.GetComponent<Common_CardInfo>().cardInfo.attack = false;
+				Trigger.TriggerInput input = new Trigger.TriggerInput(d,this.gameObject);
+				Netlink.SendMessage(NetMessage.Attack,input);
 			}
 			else
 				if(d.GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell)
@@ -31,8 +33,9 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 						//加入造成伤害动画
 						Trigger.TriggerInput newInput = new Trigger.TriggerInput(d,this.gameObject);
 						d.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
-						//d.GetComponent<Common_CardInfo>().cardInfo.ifdelete=true;
 						GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=d.GetComponent<Common_CardInfo>().cardInfo.cost;
+						
+						Netlink.SendMessage(NetMessage.SpellCard,newInput);
 					}
 				}
 		}

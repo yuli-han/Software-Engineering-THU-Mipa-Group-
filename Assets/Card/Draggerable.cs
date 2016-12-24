@@ -18,7 +18,6 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	Vector3 BigCardPosition;
 	
 	void Awake(){
-		//BigCardPosition = new Vector3(160f,600f,0f);
 		BigCardPosition.z = 0f;
 	}
 	
@@ -118,13 +117,10 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 		{
-			//Debug.Log("战吼");
-			//GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend = false;
 			return;
 		}
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick)
 		{
-			//Debug.Log("OnEndDrag");
 			if(placeholder!=null)
 			{	
 				int ini = this.GetComponent<Common_CardInfo>().cardInfo.position;
@@ -149,10 +145,15 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 					else
 						if(this.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.noaimBattleUnit)
 						{
-							//Debug.Log("PrepareToExec");
 							Trigger.TriggerInput newInput = new Trigger.TriggerInput(this.gameObject,null);
 							this.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
+							Netlink.SendMessage(NetMessage.TriggerExec,newInput);
 						}
+					NetMessage outMSG=new NetMessage();
+					outMSG.infoType=NetMessage.Summon;
+					outMSG.addint1=this.GetComponent<Common_CardInfo>().cardInfo.itemId;
+					outMSG.addint2=this.transform.GetSiblingIndex();
+					Netlink.SendMessage(outMSG);
 				}
 				
 			}
@@ -257,10 +258,25 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(obj,this.gameObject);
 				obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
 				Debug.Log("已经触发战吼");
-				//GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend = null;
 				GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend = false;
+				Netlink.SendMessage(NetMessage.TriggerExec,newInput);
 			}
 						
 		}
+	}
+	
+	public void SummonUnit(int siblingNum)
+	{
+		for(int i=0; i<this.transform.childCount; i++){
+			Color col = this.transform.GetChild(i).GetComponent<Image>().color;
+			col.a = 1f;
+			if(this.transform.GetChild(i).GetComponent<Image>()!=null)
+				this.transform.GetChild(i).GetComponent<Image>().color = col;
+			else
+				this.transform.GetChild(i).GetComponent<Text>().color = col;
+		}
+		this.GetComponent<Image>().sprite = null;
+		this.transform.SetParent(GameObject.Find("Canvas/Field_op").transform);
+		this.transform.SetSiblingIndex(siblingNum);
 	}
 }
