@@ -1,0 +1,4 @@
+//以下为程序示例：
+
+Netlink.SendMessage(NetMessage.Attack,input);//input就是Trigger.TriggerInput类
+//或者，NetMessage.Summon,NetMessage.TurnChange等，是不是很简单！
