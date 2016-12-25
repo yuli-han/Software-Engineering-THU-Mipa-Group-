@@ -35,7 +35,7 @@ public class Common_CardInfo : MonoBehaviour {
 		public static readonly int noaimBattleUnit=3;//非指向战吼随从
 		public static readonly int aimSpell=4;//指向法术
 		public static readonly int noaimSpell=5;//非指向法术
-	
+		public static readonly int Hero=6;
 
     }
 
@@ -50,7 +50,18 @@ public class Common_CardInfo : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
-		if(this.transform.FindChild("Card Name")==null)return;
+        if (this.cardInfo.CardType == BaseInfo.Hero)
+        {
+            if (this.cardInfo.position == 2)
+            {
+                GameObject.Find("hp").GetComponent<TextMesh>().text = this.cardInfo.hp + "/" + this.cardInfo.maxhp;
+            }
+            else if (this.cardInfo.position == 3)
+            {
+                GameObject.Find("hp_op").GetComponent<TextMesh>().text = this.cardInfo.hp + "/" + this.cardInfo.maxhp;
+            }
+            return;
+        }
         this.transform.FindChild("Card Name").GetComponent<Text>().text = cardInfo.name;
         this.transform.Find("Description").GetComponent<Text>().text = cardInfo.description;
         this.transform.Find("Cost").GetComponent<Text>().text = cardInfo.cost.ToString();
