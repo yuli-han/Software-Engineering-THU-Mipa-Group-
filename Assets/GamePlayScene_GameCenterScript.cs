@@ -48,7 +48,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	}
 		
         //初始化第二步：根据英雄信息，将头像和英雄技能按钮置于场上。
-        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.itemId = ++Common_DataBase.nowItemId;
+		
+		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.itemId = ++Common_DataBase.nowItemId;
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.position = 2;
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.hp = 30;
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.maxhp = 30;

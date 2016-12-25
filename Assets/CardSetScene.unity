@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.5750856, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 140796688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2e11b99ba9663a47822482d30fd164e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0779eabd75d6ae548b6446a2731eccf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &140796691
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 276766685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9486a1cb49a762c45889d4ad0ae6e2f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b3b85d1776b66346a84511285b31807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   size: 0
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 435083004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3981693725d71054da3580155e538dd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 64659292da3d66e46831151f6bcb65da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardNum: 0
@@ -717,6 +717,7 @@ GameObject:
   - 114: {fileID: 587434409}
   - 114: {fileID: 587434408}
   - 114: {fileID: 587434407}
+  - 114: {fileID: 587434411}
   m_Layer: 5
   m_Name: Scrollbar_left
   m_TagString: Untagged
@@ -838,6 +839,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 587434405}
+--- !u!114 &587434411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587434405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8bff5ac3284f14fba42a1447cc8b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 0
 --- !u!1 &623792301
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +936,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 796046501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0318d006172a4344cabfed0772203919, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c92c05b5f296bf4a876af96cab42c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &796046504
@@ -1312,7 +1325,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1814343425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a293bc3fa4c6e428500ee280ca445f, type: 3}
+  m_Script: {fileID: 11500000, guid: db8217a1949d2dc4ba20682ab60321d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &1814343429

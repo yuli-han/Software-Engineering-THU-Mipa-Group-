@@ -6,7 +6,13 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
+<<<<<<< HEAD
     <ProjectGuid>{034CD8E0-993F-A2F2-DAF2-F166396DCA23}</ProjectGuid>
+=======
+
+    <ProjectGuid>{E47DB5BB-B46A-D731-564D-F57D9E138486}</ProjectGuid>
+
+>>>>>>> origin/UnityDevelopment
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -38,14 +44,22 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
+<<<<<<< HEAD
       <HintPath>G:/unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>G:/unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+=======
+
+      <HintPath>F:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>F:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+>>>>>>> origin/UnityDevelopment
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Card\Common_Random.cs" />
+
      <Compile Include="Assets\Card\Draggerable.cs" />
      <Compile Include="Assets\Card\Draggerable_edit.cs" />
      <Compile Include="Assets\Card\DropZone.cs" />
@@ -55,6 +69,10 @@
      <Compile Include="Assets\Common_CardInfo.cs" />
      <Compile Include="Assets\Common_DataBase.cs" />
      <Compile Include="Assets\Common_NowCardSet.cs" />
+
+     <Compile Include="Assets\Common_Random.cs" />
+     <Compile Include="Assets\GamePlayScene_CardFactory.cs" />
+
      <Compile Include="Assets\GamePlayScene_CostTextScript.cs" />
      <Compile Include="Assets\GamePlayScene_GameCenterScript.cs" />
      <Compile Include="Assets\GamePlayScene_SkillIconMove.cs" />
@@ -109,6 +127,7 @@
      <None Include="Assets\tempScript\Example_TriggerResultExec.txt" />
      <None Include="Assets\tempScript\OnAttackEvent.txt" />
  <Reference Include="UnityEngine.UI">
+<<<<<<< HEAD
  <HintPath>G:/unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
@@ -116,6 +135,19 @@
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>G:/unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+=======
+
+ <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+
+ <HintPath>F:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+
+>>>>>>> origin/UnityDevelopment
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
