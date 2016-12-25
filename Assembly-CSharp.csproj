@@ -46,7 +46,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Card\Draggerable.cs" />
+     <Compile Include="Assets\Card\Draggerable_edit.cs" />
      <Compile Include="Assets\Card\DropZone.cs" />
+     <Compile Include="Assets\Card\DropZone_all.cs" />
+     <Compile Include="Assets\Card\DropZone_selected.cs" />
+     <Compile Include="Assets\Card\scrollBar.cs" />
      <Compile Include="Assets\Common_CardInfo.cs" />
      <Compile Include="Assets\Common_DataBase.cs" />
      <Compile Include="Assets\Common_NowCardSet.cs" />
@@ -62,6 +66,8 @@
      <Compile Include="Assets\TestScene\But2.cs" />
      <Compile Include="Assets\Trigger.cs" />
      <Compile Include="Assets\TriggerExecSpace.cs" />
+     <Compile Include="Assets\clear_left.cs" />
+     <Compile Include="Assets\clear_right_up.cs" />
      <Compile Include="Assets\play\Scripts\CardFlipper.cs" />
      <Compile Include="Assets\play\Scripts\CardModel.cs" />
      <Compile Include="Assets\play\Scripts\DebugChangeCard.cs" />
@@ -70,10 +76,22 @@
      <Compile Include="Assets\scripts\CardMove.cs" />
      <Compile Include="Assets\scripts\Draw_frame.cs" />
      <Compile Include="Assets\scripts\IfDead.cs" />
+     <Compile Include="Assets\scripts\MainScene_CardGroup1.cs" />
+     <Compile Include="Assets\scripts\MainScene_CardGroup2.cs" />
+     <Compile Include="Assets\scripts\MainScene_CardGroup3.cs" />
+     <Compile Include="Assets\scripts\MainScene_CardGroupManager.cs" />
+     <Compile Include="Assets\scripts\MainScene_ChangeCardGroup.cs" />
+     <Compile Include="Assets\scripts\MainScene_CreateCardGroup.cs" />
+     <Compile Include="Assets\scripts\MainScene_DeleteCardGroup.cs" />
+     <Compile Include="Assets\scripts\MainScene_HoldGame.cs" />
+     <Compile Include="Assets\scripts\MainScene_JoinGame.cs" />
+     <Compile Include="Assets\scripts\MainScene_LastPage.cs" />
+     <Compile Include="Assets\scripts\MainScene_NextPage.cs" />
      <Compile Include="Assets\scripts\Release_Magic.cs" />
      <Compile Include="Assets\scripts\canvas_position.cs" />
      <Compile Include="Assets\scripts\click.cs" />
      <Compile Include="Assets\scripts\click_op.cs" />
+     <Compile Include="Assets\scripts\initial_cardEdit.cs" />
      <Compile Include="Assets\scripts\light.cs" />
      <None Include="Assets\tempScript\DrawCardEvent.txt" />
      <None Include="Assets\tempScript\Dead.txt" />
