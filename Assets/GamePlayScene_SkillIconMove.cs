@@ -5,7 +5,8 @@ public class GamePlayScene_SkillIconMove : MonoBehaviour {
 
     int MoveType;
     float lifetime;
-
+	
+	
     Vector3 lastPos;
     Vector3 lastAngle;
 
@@ -25,15 +26,15 @@ public class GamePlayScene_SkillIconMove : MonoBehaviour {
         if (MoveType == ToUse)
         {
             lifetime = lifetime + Time.deltaTime;
-            if (lifetime >= 2f)
+            if (lifetime >= 0.6f)
             {
                 transform.position = lastPos;
-                transform.localEulerAngles = lastAngle + new Vector3(0, 0, 180f);
+                transform.localEulerAngles = lastAngle + new Vector3(180f, 0, 0);
                 MoveType = 0;
                 return;
             }
-            transform.position = lastPos + new Vector3(0, 196f*lifetime-98f*lifetime*lifetime, 0);
-            transform.localEulerAngles = lastAngle + new Vector3(0, 0, 7.5f * 360f * lifetime / 2.0f);
+            transform.position = lastPos + new Vector3(0, 6f*lifetime-10f*lifetime*lifetime, 0);
+            transform.localEulerAngles = lastAngle + new Vector3(1.5f * 360f * lifetime / 0.6f,0,0);
         }
         else if (MoveType == ToReturn)
         {

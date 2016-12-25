@@ -58,6 +58,11 @@ public class Attack_card : MonoBehaviour,IDropHandler,IPointerDownHandler{
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(obj,this.gameObject);
 				obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
 				Debug.Log("已经触发战吼");
+				if(obj.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.Hero)
+				{
+					GameObject.Find("Box_FBX/skill1").GetComponent<fireBall>().ifUse = true;
+					GameObject.Find("Box_FBX/skill1").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToUse);
+				}
 				GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend = false;
 				Netlink.SendMessage(NetMessage.TriggerExec,newInput);
 			}

@@ -288,19 +288,30 @@ public class CardMove : MonoBehaviour {
 	IEnumerator SpellDamage(Trigger.TriggerInput input, int damage)
 	{
 		float time = 0f;
-		GameObject Ball = Instantiate(Image_ball);
-		Ball.transform.SetParent(GameObject.Find("Canvas").transform);
-		Ball.transform.position = new Vector3(512f,150f,0f);
+		GameObject Ball;
+		if(GameObject.Find("Box_FBX/skill1").GetComponent<fireBall>().ball != null)
+			Ball = GameObject.Find("Box_FBX/skill1").GetComponent<fireBall>().ball;
+		else
+		{
+			Ball = Instantiate(Image_ball);
+			Ball.transform.SetParent(GameObject.Find("Canvas").transform);
+			Ball.transform.position = new Vector3(512f,150f,0f);
+		}
+		
+			
+		Vector3 ballStart = Ball.transform.position;
 		while(time<1.8f)//Ðý×ªËÀÍöµÄ¶¯»­
 		{
 			float scale = deathCurve.Evaluate(time/1.8f);
 			time += Time.deltaTime / duration;
-			Vector3 location = new Vector3(512f,150f,0f) - scale*(new Vector3(512f,150f,0f) - input.CardTarget.transform.position);
+			Vector3 location = ballStart - scale*(ballStart - input.CardTarget.transform.position);
 			Ball.transform.position = location;
 				
 			yield return new WaitForFixedUpdate();
 		}
 		Destroy(Ball);
+		if(GameObject.Find("Box_FBX/skill1").GetComponent<fireBall>().ball != null)
+			Destroy(GameObject.Find("Box_FBX/skill1").GetComponent<fireBall>().ball);
 		time = 0f;
 		Vector3 delta = new Vector3(10f,0f,0f);
 		Vector3 beginPosition = input.CardTarget.transform.position;
