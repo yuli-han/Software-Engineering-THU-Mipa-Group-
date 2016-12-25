@@ -79,7 +79,10 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.maxhp = 30;
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.CardType = Common_CardInfo.BaseInfo.Hero;
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.atk = 0;
-        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = null;//暂时设为空，之后考虑设为英雄技能trigger
+        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = new Trigger.Trigger();//暂时都是火冲，我们都是大法师
+		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget=Trigger.TriggerTarget.Anyone;
+		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult=new TriggerExecSpace.DealDamage(1);
+		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisMove=CardMove.spellDamage;
 
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.itemId = ++Common_DataBase.nowItemId;
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.position = 3;
@@ -87,7 +90,10 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.maxhp = 30;
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.CardType = Common_CardInfo.BaseInfo.Hero;
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.atk = 0;
-        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = null;//暂时设为空，之后考虑设为英雄技能trigger
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = new Trigger.Trigger();//暂时都是火冲，我们都是大法师
+		GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget=Trigger.TriggerTarget.Anyone;
+		GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult=new TriggerExecSpace.DealDamage(1);
+		GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisMove=CardMove.spellDamage;
 
 
         //初始化第三步：初始化各个控件的信息
