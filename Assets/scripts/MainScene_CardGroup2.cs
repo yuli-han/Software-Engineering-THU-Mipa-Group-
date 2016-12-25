@@ -35,15 +35,15 @@ public class MainScene_CardGroup2 : MonoBehaviour {
 			CardGroupName = MainScene_CardGroupManager.CardGroupName [CardNumber];
 			if (MainScene_CardGroupManager.IsClick [1] == 1) {
 				Vector3 ClickPosition;
-				ClickPosition.x = 2867.97f;
-				ClickPosition.y = 2854.4f;
-				ClickPosition.z = 1005.055f;
+				ClickPosition.x = 3f;
+				ClickPosition.y = 0f;
+				ClickPosition.z = 2.3f;
 				this.transform.position = ClickPosition;
 			} else {
 				Vector3 ClickPosition;
-				ClickPosition.x = 2877.97f;
-				ClickPosition.y = 2854.4f;
-				ClickPosition.z = 1005.055f;
+				ClickPosition.x = 3.8f;
+				ClickPosition.y = 0f;
+				ClickPosition.z = 2.3f;
 				this.transform.position = ClickPosition;
 			}
 		}

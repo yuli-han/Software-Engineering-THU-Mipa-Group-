@@ -184,7 +184,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		//draw big card
 		Vector3 localposition = this.transform.position;
 		int bigId = GetComponent<Common_CardInfo>().cardInfo.id;
-		bigCard=Common_DataBase.GetCard(bigId,true);
+		int bigType = GetComponent<Common_CardInfo>().cardInfo.copyType;
+		bigCard=Common_DataBase.GetCard(bigId,bigType,true);
 		bigCard.GetComponent<Common_CardInfo>().cardInfo = this.GetComponent<Common_CardInfo>().cardInfo;
 		bigCard.transform.SetParent(GameObject.Find("Canvas").transform);
 		if(localposition.y>400){

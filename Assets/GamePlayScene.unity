@@ -534,7 +534,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 49b806290632ad04d86ad79383e2a28a, type: 2}
+      objectReference: {fileID: 2100000, guid: fe827e1d8ccaae24e9fe8dd9aa83dcf4, type: 2}
     - target: {fileID: 400004, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.99
