@@ -4,6 +4,7 @@ using System.Collections;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Text;
 
 
 //Netlink用于直接地传输信息：
@@ -21,33 +22,38 @@ public class Netlink : MonoBehaviour
 
     public static int Host(int port)
 	{
-		listener=new TcpListener(port);
-		listener.Start(2);
+        listener = new TcpListener(port);
+		listener.Start(10);
 		client=listener.AcceptTcpClient();
+        //Debug.Log("OK Accept");
         netStream = client.GetStream();
         reader = new StreamReader(netStream);
         writer = new StreamWriter(netStream);
         id = 0;
+        //Debug.Log("OK Stream");
         //一旦发生连接，立刻完成的工作：1，交换随机数种子；2，交换双方卡组
 
         //交换随机数种子
         Common_Random.init();
         int next = Common_Random.random(0, 32767);
         Common_Random.init(next);
-        writer.WriteLine(next.ToString());
-
+        //writer.WriteLine(next.ToString());
+        byte[] data = Encoding.ASCII.GetBytes(next.ToString() + "\r\n");
+        netStream.Write(data, 0, data.Length);
+        Debug.Log("OK RandomSeed");
         //交换双方卡组
-        writer.WriteLine(Common_NowCardSet.Length);
+        writer.WriteLine(Common_NowCardSet.Length.ToString());
         for (int i = 0; i < Common_NowCardSet.Length; i++)
         {
-            writer.WriteLine(Common_NowCardSet.CardSet[i]);
+            writer.WriteLine(Common_NowCardSet.CardSet[i].ToString());
         }
+        Debug.Log("OK WriteInfo");
         Common_NowCardSet.Length_op = int.Parse(reader.ReadLine());
         for (int i = 0; i < Common_NowCardSet.Length_op; i++)
         {
             Common_NowCardSet.CardSet_op[i] = int.Parse(reader.ReadLine());
         }
-
+        Debug.Log("OK ReadInfo");
 		//然后应该检测是否成功地连接到了对方
 		return 0;
 	}
@@ -57,19 +63,21 @@ public class Netlink : MonoBehaviour
 		IPEndPoint remotePoint=new IPEndPoint(IPAddress.Parse(address),port);
 		client=new TcpClient();
 		client.Connect(remotePoint);
+        Debug.Log("Connect");
         netStream = client.GetStream();
         reader = new StreamReader(netStream);
         writer = new StreamWriter(netStream);
+        Debug.Log("GetStream");
         id = 1;
         //交换随机数种子
         int nextRan = int.Parse(reader.ReadLine());
         Common_Random.init(nextRan);
-
+        Debug.Log("ReadLine!");
         //交换双方卡组
-        writer.WriteLine(Common_NowCardSet.Length);
+        writer.WriteLine(Common_NowCardSet.Length.ToString());
         for (int i = 0; i < Common_NowCardSet.Length; i++)
         {
-            writer.WriteLine(Common_NowCardSet.CardSet[i]);
+            writer.WriteLine(Common_NowCardSet.CardSet[i].ToString());
         }
         Common_NowCardSet.Length_op = int.Parse(reader.ReadLine());
         for (int i = 0; i < Common_NowCardSet.Length_op; i++)

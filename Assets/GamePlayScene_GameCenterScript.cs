@@ -31,46 +31,21 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	    
 		
 		//初始化第一步：根据已有的数据来编造卡组
-        //数据来源：Common_NowCardSet.CardSet&.Length
-
-        //提示：测试时，可以将此行注释掉，改为手动设定
-        int length = Common_NowCardSet.Length;
-        int[] cardSet = Common_NowCardSet.CardSet;
 	
 	    //此处为测试用的简单卡组
         /*Debug.Log("Warning: You are using TestCardSet!");
 	    length=9;
 	    cardSet=new int[9]{1,2,3,4,5,6,7,1,5};*/
-
-	    CardCollection=new List<GameObject>();
-        //生成的卡片按顺序铺在场上
-        for (int i = 0; i < length; i++)
-        {
-            CardCollection.Add(Common_DataBase.GetCard(cardSet[i]));
-        }
-
-        //然后应该要通过网络获取对方卡组。
-        //没有加入联网测试功能时，选择将双方卡组设为相同。
-
-
-	    int length_op=Common_NowCardSet.Length_op;
-	    int[] cardSet_op=Common_NowCardSet.CardSet_op;
-
-	    CardCollection_op=new List<GameObject>();
-        if (length_op != 0)
-        {
-            for (int i = 0; i < length_op; i++)
-            {
-                CardCollection_op.Add(Common_DataBase.GetCard(cardSet_op[i]));
-            }
-        }
-        else//说明对手卡组为空，是测试状态，使用我方卡组作副本
-        {
-            for (int i = 0; i < length; i++)
-            {
-                CardCollection_op.Add(Common_DataBase.GetCard(cardSet[i]));
-            }
-        }
+	if(Netlink.id==0)
+	{
+		setCardSet(0);
+		setCardSet(1);
+	}
+	else
+	{
+		setCardSet(1);
+		setCardSet(0);
+	}
 		
         //初始化第二步：根据英雄信息，将头像和英雄技能按钮置于场上。
 		
@@ -80,7 +55,10 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.maxhp = 30;
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.CardType = Common_CardInfo.BaseInfo.Hero;
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.atk = 0;
-        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = null;//暂时设为空，之后考虑设为英雄技能trigger
+        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = new Trigger.Trigger();//暂时都是火冲，我们都是大法师
+		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget.target=Trigger.TriggerTarget.Anyone;
+		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult=new TriggerExecSpace.DealDamage(1);
+		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.thisMove=CardMove.spellDamage;
 
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.itemId = ++Common_DataBase.nowItemId;
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.position = 3;
@@ -88,7 +66,10 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.maxhp = 30;
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.CardType = Common_CardInfo.BaseInfo.Hero;
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.atk = 0;
-        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = null;//暂时设为空，之后考虑设为英雄技能trigger
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = new Trigger.Trigger();//暂时都是火冲，我们都是大法师
+		GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget.target=Trigger.TriggerTarget.Anyone;
+		GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult=new TriggerExecSpace.DealDamage(1);
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.thisMove = CardMove.spellDamage;
 
 
         //初始化第三步：初始化各个控件的信息
@@ -106,7 +87,42 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		suspend = null;
         //初始化第五步：启动Trigger_GameStart，游戏开始。
 	}
-	
+
+    void setCardSet(int id)
+    {
+        if (id == 0)
+        {        //数据来源：Common_NowCardSet.CardSet&.Length
+
+            //提示：测试时，可以将此行注释掉，改为手动设定
+            int length = Common_NowCardSet.Length;
+            int[] cardSet = Common_NowCardSet.CardSet;
+
+            CardCollection = new List<GameObject>();
+            //生成的卡片按顺序铺在场上
+            for (int i = 0; i < length; i++)
+            {
+                CardCollection.Add(Common_DataBase.GetCard(cardSet[i]));
+            }
+
+            //然后应该要通过网络获取对方卡组。
+            //没有加入联网测试功能时，选择将双方卡组设为相同。
+
+        }
+        else
+        {
+            int length_op = Common_NowCardSet.Length_op;
+            int[] cardSet_op = Common_NowCardSet.CardSet_op;
+
+            CardCollection_op = new List<GameObject>();
+
+            for (int i = 0; i < length_op; i++)
+            {
+                CardCollection_op.Add(Common_DataBase.GetCard(cardSet_op[i]));
+            }
+
+        }
+    }
+
 	//也就是回合结束->回合开始
 	public void TurnChange()
 	{
@@ -143,6 +159,9 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
 		}
 	}
+
+
+
 	IEnumerator TurnRound(int id){
 		GameObject HintTextEnd;
 		GameObject HintTextStart;
