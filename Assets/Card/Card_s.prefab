@@ -91,8 +91,8 @@ GameObject:
   - 114: {fileID: 114000013394663446}
   - 114: {fileID: 114000013042608392}
   - 225: {fileID: 225000011689408586}
-  - 114: {fileID: 114000010787250566}
   - 114: {fileID: 114000011307075600}
+  - 114: {fileID: 114000011485049658}
   m_Layer: 5
   m_Name: Card_s
   m_TagString: Untagged
@@ -194,22 +194,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114000010787250566
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012399812986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e69a52ef993e0a4d88f58917e3bc374, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IfDelete: 0
-  parentToReturnTo: {fileID: 0}
-  placeholderParent: {fileID: 0}
-  initialcanvas: {fileID: 0}
-  holderindex: -1
 --- !u!114 &114000010840652018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,6 +271,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef74f7bc4c5a6ab448ef3230e86ab3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000011485049658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012399812986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062a7de09dbec4a478c8fe1d705c50c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IfDelete: 0
+  parentToReturnTo: {fileID: 0}
+  placeholderParent: {fileID: 0}
+  initialcanvas: {fileID: 0}
+  holderindex: -1
 --- !u!114 &114000012155099660
 MonoBehaviour:
   m_ObjectHideFlags: 1

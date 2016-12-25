@@ -45,8 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\3ds_max_model\Common_DataBase.cs" />
-     <Compile Include="Assets\Card\Common_Random.cs" />
      <Compile Include="Assets\Card\Draggerable.cs" />
      <Compile Include="Assets\Card\Draggerable_edit.cs" />
      <Compile Include="Assets\Card\DropZone.cs" />
@@ -54,7 +52,9 @@
      <Compile Include="Assets\Card\DropZone_selected.cs" />
      <Compile Include="Assets\Card\scrollBar.cs" />
      <Compile Include="Assets\Common_CardInfo.cs" />
+     <Compile Include="Assets\Common_DataBase.cs" />
      <Compile Include="Assets\Common_NowCardSet.cs" />
+     <Compile Include="Assets\Common_Random.cs" />
      <Compile Include="Assets\GamePlayScene_CardFactory.cs" />
      <Compile Include="Assets\GamePlayScene_CostTextScript.cs" />
      <Compile Include="Assets\GamePlayScene_GameCenterScript.cs" />

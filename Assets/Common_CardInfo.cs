@@ -39,7 +39,7 @@ public class Common_CardInfo : MonoBehaviour {
 
     }
 
-    public BaseInfo cardInfo;
+    public BaseInfo cardInfo=new BaseInfo();
 
     
 	// Use this for initialization
