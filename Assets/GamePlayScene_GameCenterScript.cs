@@ -31,46 +31,21 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	    
 		
 		//初始化第一步：根据已有的数据来编造卡组
-        //数据来源：Common_NowCardSet.CardSet&.Length
-
-        //提示：测试时，可以将此行注释掉，改为手动设定
-        int length = Common_NowCardSet.Length;
-        int[] cardSet = Common_NowCardSet.CardSet;
 	
 	    //此处为测试用的简单卡组
         /*Debug.Log("Warning: You are using TestCardSet!");
 	    length=9;
 	    cardSet=new int[9]{1,2,3,4,5,6,7,1,5};*/
-
-	    CardCollection=new List<GameObject>();
-        //生成的卡片按顺序铺在场上
-        for (int i = 0; i < length; i++)
-        {
-            CardCollection.Add(Common_DataBase.GetCard(cardSet[i]));
-        }
-
-        //然后应该要通过网络获取对方卡组。
-        //没有加入联网测试功能时，选择将双方卡组设为相同。
-
-
-	    int length_op=Common_NowCardSet.Length_op;
-	    int[] cardSet_op=Common_NowCardSet.CardSet_op;
-
-	    CardCollection_op=new List<GameObject>();
-        if (length_op != 0)
-        {
-            for (int i = 0; i < length_op; i++)
-            {
-                CardCollection_op.Add(Common_DataBase.GetCard(cardSet_op[i]));
-            }
-        }
-        else//说明对手卡组为空，是测试状态，使用我方卡组作副本
-        {
-            for (int i = 0; i < length; i++)
-            {
-                CardCollection_op.Add(Common_DataBase.GetCard(cardSet[i]));
-            }
-        }
+	if(Netlink.id==0)
+	{
+		setCardSet(0);
+		setCardSet(1);
+	}
+	else
+	{
+		setCardSet(1);
+		setCardSet(0);
+	}
 		
         //初始化第二步：根据英雄信息，将头像和英雄技能按钮置于场上。
         GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.itemId = ++Common_DataBase.nowItemId;
@@ -112,6 +87,49 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         //初始化第五步：启动Trigger_GameStart，游戏开始。
 	}
 	
+	void setCardSet(int id)
+	{
+if(id==0)
+{        //数据来源：Common_NowCardSet.CardSet&.Length
+
+        //提示：测试时，可以将此行注释掉，改为手动设定
+        int length = Common_NowCardSet.Length;
+        int[] cardSet = Common_NowCardSet.CardSet;
+
+		CardCollection=new List<GameObject>();
+        //生成的卡片按顺序铺在场上
+        for (int i = 0; i < length; i++)
+        {
+            CardCollection.Add(Common_DataBase.GetCard(cardSet[i]));
+        }
+
+        //然后应该要通过网络获取对方卡组。
+        //没有加入联网测试功能时，选择将双方卡组设为相同。
+
+}
+else
+{
+	    int length_op=Common_NowCardSet.Length_op;
+	    int[] cardSet_op=Common_NowCardSet.CardSet_op;
+
+	    CardCollection_op=new List<GameObject>();
+        if (length_op != 0)
+        {
+            for (int i = 0; i < length_op; i++)
+            {
+                CardCollection_op.Add(Common_DataBase.GetCard(cardSet_op[i]));
+            }
+        }
+        else//说明对手卡组为空，是测试状态，使用我方卡组作副本
+        {
+            for (int i = 0; i < length; i++)
+            {
+                CardCollection_op.Add(Common_DataBase.GetCard(cardSet[i]));
+            }
+        }
+}
+	}
+
 	//也就是回合结束->回合开始
 	public void TurnChange()
 	{
@@ -148,6 +166,9 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
 		}
 	}
+
+
+
 	IEnumerator TurnRound(int id){
 		GameObject HintTextEnd;
 		GameObject HintTextStart;
