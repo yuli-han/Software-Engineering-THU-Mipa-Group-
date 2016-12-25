@@ -57,6 +57,7 @@
      <Compile Include="Assets\Common_NowCardSet.cs" />
      <Compile Include="Assets\GamePlayScene_CostTextScript.cs" />
      <Compile Include="Assets\GamePlayScene_GameCenterScript.cs" />
+     <Compile Include="Assets\GamePlayScene_SkillIconMove.cs" />
      <Compile Include="Assets\GamePlayScene_TurnEndButton.cs" />
      <Compile Include="Assets\Group_GameCenterScript.cs" />
      <Compile Include="Assets\MoveInterface.cs" />

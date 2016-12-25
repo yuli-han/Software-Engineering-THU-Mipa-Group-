@@ -477,8 +477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fd91904cd80334ab346f028d5482f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card: {fileID: 1000010860105492, guid: 5b8a6cb653a8744459312783f0ad75fc, type: 2}
-  BigCard: {fileID: 1000013309772710, guid: 349bbb43c92811340abb820f5fb9714c, type: 2}
+  Card: {fileID: 0, guid: 5b8a6cb653a8744459312783f0ad75fc, type: 2}
+  BigCard: {fileID: 0, guid: 349bbb43c92811340abb820f5fb9714c, type: 2}
   picture:
   - {fileID: 21300000, guid: 8f2c96bda8d30264fab7f455065d87db, type: 3}
   - {fileID: 21300000, guid: 411a15d232686334bbe9f43816563c4f, type: 3}
@@ -554,6 +554,10 @@ Prefab:
     - target: {fileID: 400008, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
@@ -1759,10 +1763,10 @@ MonoBehaviour:
   ifsuspend: 0
   ifclick: 0
   Hint:
-  - {fileID: 1000014091963146, guid: d3895221ef8668d41b85036c1a019671, type: 2}
-  - {fileID: 1000010329840062, guid: e96f7983c8794aa458d982450d543d22, type: 2}
-  - {fileID: 1000011723775722, guid: 97f4d10e7e2e2614ca15dde3626d5298, type: 2}
-  - {fileID: 1000010721340906, guid: 71b7b47bfb6049c45a4b9dab0f90dab4, type: 2}
+  - {fileID: 0, guid: d3895221ef8668d41b85036c1a019671, type: 2}
+  - {fileID: 0, guid: e96f7983c8794aa458d982450d543d22, type: 2}
+  - {fileID: 0, guid: 97f4d10e7e2e2614ca15dde3626d5298, type: 2}
+  - {fileID: 0, guid: 71b7b47bfb6049c45a4b9dab0f90dab4, type: 2}
   scaleCurve:
     serializedVersion: 2
     m_Curve:

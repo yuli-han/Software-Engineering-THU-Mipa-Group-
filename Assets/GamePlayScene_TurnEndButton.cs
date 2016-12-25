@@ -22,9 +22,9 @@ public class GamePlayScene_TurnEndButton :MonoBehaviour
 	private IEnumerator ButtonInside()
 	{
 		ended=true;
-		transform.Translate(0,0,-40);
+		transform.Translate(0,0,-35);
 		yield return new WaitForSeconds(3f);
-		transform.Translate(0,0,40);
+		transform.Translate(0,0,35);
 		ended=false;
 	}
 }
