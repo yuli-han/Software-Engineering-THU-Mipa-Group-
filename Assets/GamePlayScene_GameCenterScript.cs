@@ -49,7 +49,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
             CardCollection.Add(Common_DataBase.GetCard(cardSet[i]));
         }
 
-        //然后应该要通过网络获取对方卡组。因为还没有加入联网测试功能所以选择将双方卡组设为相同。
+        //然后应该要通过网络获取对方卡组。
+        //没有加入联网测试功能时，选择将双方卡组设为相同。
 
 
 	    int length_op=Common_NowCardSet.Length_op;
@@ -72,6 +73,22 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         }
 		
         //初始化第二步：根据英雄信息，将头像和英雄技能按钮置于场上。
+        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.itemId = ++Common_DataBase.nowItemId;
+        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.position = 2;
+        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.hp = 30;
+        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.maxhp = 30;
+        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.CardType = Common_CardInfo.BaseInfo.Hero;
+        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.atk = 0;
+        GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = null;//暂时设为空，之后考虑设为英雄技能trigger
+
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.itemId = ++Common_DataBase.nowItemId;
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.position = 3;
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.hp = 30;
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.maxhp = 30;
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.CardType = Common_CardInfo.BaseInfo.Hero;
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.atk = 0;
+        GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger = null;//暂时设为空，之后考虑设为英雄技能trigger
+
 
         //初始化第三步：初始化各个控件的信息
 	Common_Random.init();//随机数种子理论上应该从网络获取以同步。
