@@ -4,12 +4,12 @@ using System.Collections;
 using UnityEngine.EventSystems;
 
 
-public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler{
+public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler{
 	
 	public Transform parentToReturnTo = null;
 	public Transform placeholderParent = null;
 	//bool ifclick;
-	GameObject bigCard;
+	public GameObject bigCard;
 	
 	public GameObject placeholder = null;
 	
@@ -242,39 +242,25 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		
 	}
 	
-	public void OnPointerDown(PointerEventData eventData)
-	{
-		if(this.GetComponent<Common_CardInfo>().cardInfo.position == 4)
-			return;
-		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
-		{
-			if(bigCard!=null)
-				Destroy(bigCard);
-			Debug.Log("我点了 "+this.GetComponent<Common_CardInfo>().cardInfo.name);
-			GameObject obj = GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend;
-			if(Trigger.Trigger.IsInRange(obj,this.gameObject,obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget))
-			{
-				//加入造成伤害的动画
-				Trigger.TriggerInput newInput = new Trigger.TriggerInput(obj,this.gameObject);
-				obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
-				Debug.Log("已经触发战吼");
-				GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend = false;
-				Netlink.SendMessage(NetMessage.TriggerExec,newInput);
-			}
-						
-		}
-	}
+
 	
 	public void SummonUnit(int siblingNum)
 	{
 		for(int i=0; i<this.transform.childCount; i++){
-			Color col = this.transform.GetChild(i).GetComponent<Image>().color;
-			col.a = 1f;
+			Color col;
 			if(this.transform.GetChild(i).GetComponent<Image>()!=null)
+			{
+				col = this.transform.GetChild(i).GetComponent<Image>().color;
+				col.a = 1f;
 				this.transform.GetChild(i).GetComponent<Image>().color = col;
+			}
 			else
+			{
+				col = this.transform.GetChild(i).GetComponent<Text>().color;
+				col.a = 1f;
 				this.transform.GetChild(i).GetComponent<Text>().color = col;
-		}
+			}
+		}			
 		this.GetComponent<Image>().sprite = null;
 		this.transform.SetParent(GameObject.Find("Canvas/Field_op").transform);
 		this.transform.SetSiblingIndex(siblingNum);

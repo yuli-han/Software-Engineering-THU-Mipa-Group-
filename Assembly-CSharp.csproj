@@ -58,6 +58,8 @@
      <Compile Include="Assets\MoveInterface.cs" />
      <Compile Include="Assets\NetMessage.cs" />
      <Compile Include="Assets\Netlink.cs" />
+     <Compile Include="Assets\TestScene\But1.cs" />
+     <Compile Include="Assets\TestScene\But2.cs" />
      <Compile Include="Assets\Trigger.cs" />
      <Compile Include="Assets\TriggerExecSpace.cs" />
      <Compile Include="Assets\play\Scripts\CardFlipper.cs" />
@@ -78,6 +80,7 @@
      <None Include="Assets\tempScript\IF_haveTarget.txt" />
      <None Include="Assets\tempScript\OnTurnEnd_OR_TurnStartEvent.txt" />
      <None Include="Assets\tempScript\IsInRange.txt" />
+     <None Include="Assets\example_NetMessageSend.txt" />
      <None Include="Assets\tempScript\AutoTriggering.txt" />
      <None Include="Assets\tempScript\OnPlaySpellCard_MarkTargets.txt" />
      <None Include="Assets\tempScript\Mark_Targets.txt" />

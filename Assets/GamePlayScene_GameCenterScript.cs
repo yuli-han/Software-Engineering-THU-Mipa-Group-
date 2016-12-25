@@ -38,9 +38,9 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         int[] cardSet = Common_NowCardSet.CardSet;
 	
 	    //此处为测试用的简单卡组
-        Debug.Log("Warning: You are using TestCardSet!");
+        /*Debug.Log("Warning: You are using TestCardSet!");
 	    length=9;
-	    cardSet=new int[9]{1,2,3,4,5,6,7,1,5};
+	    cardSet=new int[9]{1,2,3,4,5,6,7,1,5};*/
 
 	    CardCollection=new List<GameObject>();
         //生成的卡片按顺序铺在场上
@@ -260,7 +260,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				GameObject user=GetCard(nextMSG.addint1);
 				int point=nextMSG.addint2;
 				//暂缺
-				user.GetComponent<Draggerable>().summonUnit(point);
+				user.GetComponent<Draggerable>().SummonUnit(point);
 			}
 			if(nextMSG.infoType==NetMessage.SpellCard)
 			{

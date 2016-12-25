@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 
 //新加的script，尽当卡片位置处于3（敌方场上）才触发，
-public class Attack_card : MonoBehaviour,IDropHandler{
+public class Attack_card : MonoBehaviour,IDropHandler,IPointerDownHandler{
 
 	public void OnDrop(PointerEventData eventData){
 		if(eventData.pointerDrag ==null)
@@ -38,6 +38,30 @@ public class Attack_card : MonoBehaviour,IDropHandler{
 						Netlink.SendMessage(NetMessage.SpellCard,newInput);
 					}
 				}
+		}
+	}
+	
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		if(this.GetComponent<Common_CardInfo>().cardInfo.position == 4)
+			return;
+		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
+		{
+			if(this.GetComponent<Draggerable>()!=null)
+				if(this.GetComponent<Draggerable>().bigCard!=null)
+					Destroy(this.GetComponent<Draggerable>().bigCard);
+			Debug.Log("我点了 "+this.GetComponent<Common_CardInfo>().cardInfo.name);
+			GameObject obj = GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend;
+			if(Trigger.Trigger.IsInRange(obj,this.gameObject,obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget))
+			{
+				//加入造成伤害的动画
+				Trigger.TriggerInput newInput = new Trigger.TriggerInput(obj,this.gameObject);
+				obj.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
+				Debug.Log("已经触发战吼");
+				GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend = false;
+				Netlink.SendMessage(NetMessage.TriggerExec,newInput);
+			}
+						
 		}
 	}
 		

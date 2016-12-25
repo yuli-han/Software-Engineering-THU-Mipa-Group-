@@ -35,7 +35,7 @@ public class Common_CardInfo : MonoBehaviour {
 		public static readonly int noaimBattleUnit=3;//非指向战吼随从
 		public static readonly int aimSpell=4;//指向法术
 		public static readonly int noaimSpell=5;//非指向法术
-
+	
 
     }
 
@@ -50,6 +50,7 @@ public class Common_CardInfo : MonoBehaviour {
 	// Update is called once per frame
     void Update()
     {
+		if(this.transform.FindChild("Card Name")==null)return;
         this.transform.FindChild("Card Name").GetComponent<Text>().text = cardInfo.name;
         this.transform.Find("Description").GetComponent<Text>().text = cardInfo.description;
         this.transform.Find("Cost").GetComponent<Text>().text = cardInfo.cost.ToString();
@@ -64,9 +65,22 @@ public class Common_CardInfo : MonoBehaviour {
             this.transform.Find("Life").GetComponent<Text>().text = "";
         }
 
-
-
-        if (this.cardInfo.position == 2 || this.cardInfo.position == 3)
+		if (this.cardInfo.position == 2 || this.cardInfo.position == 3)
+		{
+			if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
+			{
+				GameObject user=GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend;
+				if(Trigger.Trigger.IsInRange(user,this.gameObject,user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget))
+				{
+					this.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+				}
+				else
+				{
+					this.GetComponent<Image>().color = new Color(0.7f, 0.7f, 0.7f, 1.0f);
+				}
+				
+			}
+		else
             if (this.cardInfo.attack)
             {
                 this.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -75,7 +89,7 @@ public class Common_CardInfo : MonoBehaviour {
             {
                 this.GetComponent<Image>().color = new Color(0.7f, 0.7f, 0.7f, 1.0f);
             }
-
+		}
 
 
         if (this.cardInfo.position == 1)
