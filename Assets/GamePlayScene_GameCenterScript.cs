@@ -182,9 +182,9 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			if(maxcost<10)maxcost++;
 			nowcost=maxcost;
             //复原英雄技能（暂空）
-            if (GameObject.Find("Hero").GetComponent<fireBall>().ifUse)
+            if (GameObject.Find("skill1").GetComponent<fireBall>().ifUse)
             {
-                GameObject.Find("Hero").GetComponent<fireBall>().ifUse = false;
+                GameObject.Find("skill1").GetComponent<fireBall>().ifUse = false;
                 GameObject.Find("skill1").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToReturn);
             }
 			//复原所有随从是否攻击
@@ -203,9 +203,9 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			if(maxcost_op<10)maxcost_op++;
 			nowcost_op=maxcost_op;
             //复原英雄技能
-            if (GameObject.Find("Hero_op").GetComponent<fireBall>().ifUse)
+            if (GameObject.Find("skill2").GetComponent<fireBall>().ifUse)
             {
-                GameObject.Find("Hero_op").GetComponent<fireBall>().ifUse = false;
+                GameObject.Find("skill2").GetComponent<fireBall>().ifUse = false;
                 GameObject.Find("skill2").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToReturn);
             }
 
