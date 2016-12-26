@@ -176,9 +176,9 @@ public static List<GameObject> MarkTarget(GameObject user,TriggerTarget range)
 		if(IsInRange(user,Panal2.transform.GetChild(i).gameObject,range))
 			output.Add(Panal2.transform.GetChild(i).gameObject);
 	}
-    if(IsInRange(user,GameObject.Find("Hero"),range)
+    if(IsInRange(user,GameObject.Find("Hero"),range))
         output.Add(GameObject.Find("Hero"));
-    if(IsInRange(user,GameObject.Find("Hero_op"),range)
+    if(IsInRange(user,GameObject.Find("Hero_op"),range))
         output.Add(GameObject.Find("Hero_op"));
 
 	return output;

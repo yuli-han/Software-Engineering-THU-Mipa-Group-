@@ -311,6 +311,10 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			CardCollection[num].GetComponent<Common_CardInfo>().cardInfo.position=1;
 			CardCollection.RemoveAt(num);
 		}
+		else
+		{
+			GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
+		}
 
 	}
 	public void DrawCard_op()
@@ -322,6 +326,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			CardCollection_op[num].GetComponent<Common_CardInfo>().cardInfo.position=4;
 			CardCollection_op.RemoveAt(num);
 		}
+		else
+			GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
 
 	}
 
