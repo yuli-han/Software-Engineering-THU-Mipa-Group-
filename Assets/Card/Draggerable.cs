@@ -132,13 +132,13 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				Debug.Log("原来我在" + ini + "上面");
 				Debug.Log("现在我在" + this.GetComponent<Common_CardInfo>().cardInfo.position + "上面");
 				Destroy(placeholder);
-				NetMessage outMSG=new NetMessage();
-				outMSG.infoType=NetMessage.Summon;
-				outMSG.addint1=this.GetComponent<Common_CardInfo>().cardInfo.itemId;
-				outMSG.addint2=this.transform.GetSiblingIndex();
-				Netlink.SendMessage(outMSG);
+					
 				if(ini == 1 && this.GetComponent<Common_CardInfo>().cardInfo.position == 2){
-					//Debug.Log("我减了"+ this.GetComponent<Common_CardInfo>().cardInfo.cost.ToString());
+					NetMessage outMSG=new NetMessage();
+					outMSG.infoType=NetMessage.Summon;
+					outMSG.addint1=this.GetComponent<Common_CardInfo>().cardInfo.itemId;
+					outMSG.addint2=this.transform.GetSiblingIndex();
+					Netlink.SendMessage(outMSG);
 					GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=this.GetComponent<Common_CardInfo>().cardInfo.cost;
 					if(this.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.aimBattleUnit)
 					{
