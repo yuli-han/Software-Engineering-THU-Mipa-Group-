@@ -62,6 +62,11 @@ public class Common_CardInfo : MonoBehaviour {
             }
             return;
         }
+        //自动更新position以减少莫名其妙的错误
+        //然而下面的代码是错的......捂脸。为什么！
+        //if (this.transform.parent!= null)
+        //    this.cardInfo.position = this.transform.parent.GetComponent<canvas_position>().position;
+
         this.transform.FindChild("Card Name").GetComponent<Text>().text = cardInfo.name;
         this.transform.Find("Description").GetComponent<Text>().text = cardInfo.description;
         this.transform.Find("Cost").GetComponent<Text>().text = cardInfo.cost.ToString();

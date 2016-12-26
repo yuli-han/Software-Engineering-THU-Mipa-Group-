@@ -10,7 +10,7 @@ using System.Text;
 //Netlink用于直接地传输信息：
 //最好的做法是任何事件发生时向远端传输一个等价事件，然后远端取下事件后作为等价事件拿出。
 
-public class Netlink : MonoBehaviour
+public class Netlink
 {
 	private static TcpListener listener;
     private static TcpClient client;
@@ -42,7 +42,7 @@ public class Netlink : MonoBehaviour
             byte[] data = Encoding.ASCII.GetBytes(next.ToString() + "\r\n");
             netStream.Write(data, 0, data.Length);
         }
-        Debug.Log("OK RandomSeed");
+        //Debug.Log("OK RandomSeed");
         //交换双方卡组
         //writer.WriteLine(Common_NowCardSet.Length.ToString());
         {
@@ -58,14 +58,14 @@ public class Netlink : MonoBehaviour
                 netStream.Write(data, 0, data.Length);
             }
         }
-        Debug.Log("OK WriteInfo");
+        //Debug.Log("OK WriteInfo");
         Common_NowCardSet.Length_op = int.Parse(reader.ReadLine());
         Common_NowCardSet.CardSet_op = new int[Common_NowCardSet.Length_op];
         for (int i = 0; i < Common_NowCardSet.Length_op; i++)
         {
             Common_NowCardSet.CardSet_op[i] = int.Parse(reader.ReadLine());
         }
-        Debug.Log("OK ReadInfo");
+        //Debug.Log("OK ReadInfo");
         //然后应该检测是否成功地连接到了对方
         return 0;
     }
@@ -75,26 +75,26 @@ public class Netlink : MonoBehaviour
 		IPEndPoint remotePoint=new IPEndPoint(IPAddress.Parse(address),port);
 		client=new TcpClient();
 		client.Connect(remotePoint);
-        Debug.Log("Connect");
+        //Debug.Log("Connect");
         netStream = client.GetStream();
         reader = new StreamReader(netStream);
         //writer = new StreamWriter(netStream);
-        Debug.Log("GetStream");
+        //Debug.Log("GetStream");
         id = 1;
         //交换随机数种子
         int nextRan = int.Parse(reader.ReadLine());
         Common_Random.init(nextRan);
-        Debug.Log("ReadLine!"+nextRan);
+        //Debug.Log("ReadLine!"+nextRan);
         //交换双方卡组
         //writer.WriteLine(Common_NowCardSet.Length.ToString());
 
         Common_NowCardSet.Length_op = int.Parse(reader.ReadLine());
-        Debug.Log("length_op=" + Common_NowCardSet.Length_op);
+        //Debug.Log("length_op=" + Common_NowCardSet.Length_op);
         Common_NowCardSet.CardSet_op = new int[Common_NowCardSet.Length_op];
         for (int i = 0; i < Common_NowCardSet.Length_op; i++)
         {
             Common_NowCardSet.CardSet_op[i] = int.Parse(reader.ReadLine());
-            Debug.Log("CardSet_op[i]=" + Common_NowCardSet.CardSet_op[i]);
+            //Debug.Log("CardSet_op[i]=" + Common_NowCardSet.CardSet_op[i]);
         }
         {
             byte[] data = Encoding.ASCII.GetBytes(Common_NowCardSet.Length.ToString() + "\r\n");
