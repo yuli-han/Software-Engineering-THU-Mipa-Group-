@@ -146,7 +146,11 @@ public class CardMove : MonoBehaviour {
 	IEnumerator CardAttackMove(GameObject start, GameObject end)
 	{
 		float time = 0f;//Debug.Log(start.ToString()+" 给我动起来 "+ end.ToString());
-		Vector3 beginPosition = start.GetComponent<Draggerable>().placeholder.transform.position;
+		Vector3 beginPosition;
+		if(start.GetComponent<Draggerable>().placeholder != null)
+			beginPosition = start.GetComponent<Draggerable>().placeholder.transform.position;
+		else
+			beginPosition = start.transform.position;
 		while(time<2f)//移动攻击的动画
 		{
 			Vector3 location = beginPosition - (1f-attackPath.Evaluate(time/2))*(beginPosition - end.transform.position)*0.8f;
