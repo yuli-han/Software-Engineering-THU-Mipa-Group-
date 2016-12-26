@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GamePlayScene_TurnEndButton :MonoBehaviour
 {
-	private bool ended=false;
+	[SerializeField]private bool ended=false;
 
 
 	void OnMouseDown()

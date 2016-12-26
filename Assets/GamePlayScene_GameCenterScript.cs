@@ -91,18 +91,40 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
         //提示：nowturn等于1意味着下一位将等于0所以为先手；反之为后手
         nowturn = System.Math.Abs(Common_Random.random(0, 1)-Netlink.id);
-        if (nowturn == 0)
+        StartCoroutine(startDraw());
+        TurnChange();
+	}
+
+    IEnumerator startDraw()
+    {
+         if (nowturn == 0)
         {
-            for (int i = 0; i < 3; i++) DrawCard_op();
-            for (int i = 0; i < 4; i++) DrawCard();
+            for (int i = 0; i < 3; i++)
+            {
+                DrawCard_op();
+                yield return new WaitForSeconds(0.5f);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                DrawCard();
+                yield return new WaitForSeconds(0.5f);
+            }
         }
         else
         {
-            for (int i = 0; i < 3; i++) DrawCard();
-            for (int i = 0; i < 4; i++) DrawCard_op();
+            for (int i = 0; i < 3; i++)
+            {
+                DrawCard();
+                yield return new WaitForSeconds(0.5f);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                DrawCard_op();
+                yield return new WaitForSeconds(0.5f);
+            }
         }
-        TurnChange();
-	}
+         yield return 0;
+    }
 
     void setCardSet(int id)
     {
