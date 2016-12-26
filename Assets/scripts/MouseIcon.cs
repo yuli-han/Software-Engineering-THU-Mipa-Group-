@@ -9,7 +9,7 @@ public class MouseIcon : MonoBehaviour {
 	void OnMouseDown()   
 	{  
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-		Debug.Log("鼠标已按下");
+		//Debug.Log("鼠标已按下");
 	}  
 	void OnMouseUp()
 	{

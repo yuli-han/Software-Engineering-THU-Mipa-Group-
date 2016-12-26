@@ -4,18 +4,22 @@ using System.Collections;
 
 public class GamePlayScene_TurnEndButton :MonoBehaviour
 {
-	private bool ended=false;
+	[SerializeField]private bool ended=false;
 
 
 	void OnMouseDown()
 	{
+		Debug.Log("OnMouseDown");
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 			return;
+		Debug.Log("suspend");
 		if(ended)return;
+		Debug.Log("ended");
         StartCoroutine(ButtonInside());
         Netlink.SendMessage(NetMessage.TurnChange, new Trigger.TriggerInput(null, null));
+		Debug.Log("Netlink");
 		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().TurnChange();
-
+		Debug.Log("TurnChange");
 
 	}
 

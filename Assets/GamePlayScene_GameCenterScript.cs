@@ -145,6 +145,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	public void TurnChange()
 	{
 		nowturn=1-nowturn;
+		//Debug.Log("现在是" + nowturn + "的回合");
 		if(nowturn==0)
 		{
 			//回合更新3部曲：
@@ -272,7 +273,6 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			int num=Common_Random.random(0,CardCollection.Count-1);
 			//Debug.Log("给我抽牌！！！");
 			CardCollection[num].GetComponent<CardMove>().flyAndFlip();
-			//CardCollection[num].transform.SetParent(GameObject.Find("Canvas/Hand").transform);
 			CardCollection[num].GetComponent<Common_CardInfo>().cardInfo.position=1;
 			CardCollection.RemoveAt(num);
 		}
@@ -284,7 +284,6 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		{
 			int num=Common_Random.random(0,CardCollection_op.Count-1);
 			CardCollection_op[num].GetComponent<CardMove>().flyAndFlip(1);
-			//CardCollection_op[num].transform.SetParent(GameObject.Find("Canvas/Hand_op").transform);
 			CardCollection_op[num].GetComponent<Common_CardInfo>().cardInfo.position=4;
 			CardCollection_op.RemoveAt(num);
 		}
