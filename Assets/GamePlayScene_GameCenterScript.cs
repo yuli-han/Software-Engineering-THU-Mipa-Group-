@@ -79,8 +79,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         }
 
         //初始化第三步：初始化各个控件的信息
-	Common_Random.init();//随机数种子理论上应该从网络获取以同步。
-
+	
+        
         //初始化第四步：设置状态为初始状态。
 		nowturn=0;
 		nowcost=0;
@@ -183,7 +183,11 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			if(maxcost<10)maxcost++;
 			nowcost=maxcost;
             //复原英雄技能（暂空）
-
+            if (GameObject.Find("Hero").GetComponent<fireBall>().ifUse)
+            {
+                GameObject.Find("Hero").GetComponent<fireBall>().ifUse = false;
+                GameObject.Find("skill1").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToReturn);
+            }
 			//复原所有随从是否攻击
 			GameObject myPanal = GameObject.Find("Canvas/Field");
 			for(int i=0; i<myPanal.transform.childCount; i++)
@@ -200,6 +204,11 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			if(maxcost_op<10)maxcost_op++;
 			nowcost_op=maxcost_op;
             //复原英雄技能
+            if (GameObject.Find("Hero_op").GetComponent<fireBall>().ifUse)
+            {
+                GameObject.Find("Hero_op").GetComponent<fireBall>().ifUse = false;
+                GameObject.Find("skill2").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToReturn);
+            }
 
 			//复原所有随从是否攻击
 			GameObject myPanal = GameObject.Find("Canvas/Field_op");
