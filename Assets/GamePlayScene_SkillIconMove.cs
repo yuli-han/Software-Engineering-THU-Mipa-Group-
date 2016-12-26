@@ -39,14 +39,14 @@ public class GamePlayScene_SkillIconMove : MonoBehaviour {
         else if (MoveType == ToReturn)
         {
             lifetime = lifetime + Time.deltaTime;
-            if (lifetime >= 2f)
+            if (lifetime >= 0.6f)
             {
                 transform.position = lastPos;
-                transform.localEulerAngles = lastAngle + new Vector3(0, 0, 180f);
+                transform.localEulerAngles = lastAngle + new Vector3(180f,0,0);
                 MoveType = 0;
                 return;
             }
-            transform.localEulerAngles = lastAngle + new Vector3(0, 0, 180f * lifetime / 2.0f);
+            transform.localEulerAngles = lastAngle + new Vector3(180f * lifetime / 0.6f,0,0);
         }
 	}
 }
