@@ -305,7 +305,7 @@ public class CardMove : MonoBehaviour {
 				if(input.CardUser.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.Hero)
 					Ball.transform.position = new Vector3(680f,533f,0f);
 				else
-					Ball.transform.position = new Vector3(512f,500f,0f);
+					Ball.transform.position = new Vector3(512f,533f,0f);
 			
 			}
 			else{

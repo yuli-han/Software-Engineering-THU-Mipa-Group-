@@ -387,7 +387,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
 			    GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=user.GetComponent<Common_CardInfo>().cardInfo.cost;
                 nowcost_op -= user.GetComponent<Common_CardInfo>().cardInfo.cost;
-                user.GetComponent<Common_CardInfo>().cardInfo.ifdelete = true;
+                //user.GetComponent<Common_CardInfo>().cardInfo.ifdelete = true;
 			}
 			if(nextMSG.infoType==NetMessage.TriggerExec)
 			{//注：TriggerExec特指发动随从效果；因为法术效果直接作为SpellCard的效果
