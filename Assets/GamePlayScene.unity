@@ -646,7 +646,7 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
   m_PrefabInternal: {fileID: 732694067}
---- !u!65 &791665574
+--- !u!65 &791665573
 BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -656,8 +656,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15.24, y: 20.32, z: 5.4793916}
-  m_Center: {x: 0.000036478043, y: 0.00017118454, z: -4.8876953}
+  m_Size: {x: 15.24, y: 20.32, z: 5.3110147}
+  m_Center: {x: 0.000036478043, y: 0.00017118454, z: -4.9765625}
+--- !u!114 &791665574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 791665569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963440bacc7969348b083ceffbd5860f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: af1873910cc07bf44951732cc3edd63e, type: 3}
+  DefaultCursor: {fileID: 2800000, guid: 8402e683237ab7846a623d70c0b75e88, type: 3}
 --- !u!1 &858056609
 GameObject:
   m_ObjectHideFlags: 0

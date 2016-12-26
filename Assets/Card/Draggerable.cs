@@ -129,7 +129,14 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				GetComponent<CanvasGroup>().blocksRaycasts = true;
 				
 				this.GetComponent<Common_CardInfo>().cardInfo.position = this.transform.parent.GetComponent<canvas_position>().position;
+				Debug.Log("原来我在" + ini + "上面");
+				Debug.Log("现在我在" + this.GetComponent<Common_CardInfo>().cardInfo.position + "上面");
 				Destroy(placeholder);
+				NetMessage outMSG=new NetMessage();
+				outMSG.infoType=NetMessage.Summon;
+				outMSG.addint1=this.GetComponent<Common_CardInfo>().cardInfo.itemId;
+				outMSG.addint2=this.transform.GetSiblingIndex();
+				Netlink.SendMessage(outMSG);
 				if(ini == 1 && this.GetComponent<Common_CardInfo>().cardInfo.position == 2){
 					//Debug.Log("我减了"+ this.GetComponent<Common_CardInfo>().cardInfo.cost.ToString());
 					GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=this.GetComponent<Common_CardInfo>().cardInfo.cost;
@@ -149,11 +156,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 							this.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
 							Netlink.SendMessage(NetMessage.TriggerExec,newInput);
 						}
-					NetMessage outMSG=new NetMessage();
-					outMSG.infoType=NetMessage.Summon;
-					outMSG.addint1=this.GetComponent<Common_CardInfo>().cardInfo.itemId;
-					outMSG.addint2=this.transform.GetSiblingIndex();
-					Netlink.SendMessage(outMSG);
+					
 				}
 				
 			}
