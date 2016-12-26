@@ -403,6 +403,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			}
             while (!moveEnded)
                 yield return new WaitForFixedUpdate();
+            yield return new WaitForSeconds(0.1f);
 		}
 	}
 }
