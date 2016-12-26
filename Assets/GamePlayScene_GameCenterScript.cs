@@ -59,6 +59,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget.target=Trigger.TriggerTarget.Anyone;
 		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult=new TriggerExecSpace.DealDamage(1);
 		GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.thisMove=CardMove.spellDamage;
+        //GameObject.Find("Hero").name = "Card"+GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.itemId.ToString();
 
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.itemId = ++Common_DataBase.nowItemId;
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.position = 3;
@@ -70,6 +71,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisTarget.target=Trigger.TriggerTarget.Anyone;
 		GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult=new TriggerExecSpace.DealDamage(1);
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.thisMove = CardMove.spellDamage;
+        //GameObject.Find("Hero_op").name = "Card"+GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.itemId.ToString();
 
 
         //初始化第三步：初始化各个控件的信息
@@ -77,15 +79,29 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 
         //初始化第四步：设置状态为初始状态。
 		nowturn=0;
-		nowcost=10;
-		maxcost=10;
+		nowcost=0;
+		maxcost=0;
 		nowcost_op=0;
 		maxcost_op=0;
 		thisplayer=0;
 		ifclick = false;
 		ifsuspend = false;
 		suspend = null;
-        //初始化第五步：启动Trigger_GameStart，游戏开始。
+        //初始化第五步：决定先后手并抽牌，游戏开始。
+
+        //提示：nowturn等于1意味着下一位将等于0所以为先手；反之为后手
+        nowturn = System.Math.Abs(Common_Random.random(0, 1)-Netlink.id);
+        if (nowturn == 0)
+        {
+            for (int i = 0; i < 3; i++) DrawCard_op();
+            for (int i = 0; i < 4; i++) DrawCard();
+        }
+        else
+        {
+            for (int i = 0; i < 3; i++) DrawCard();
+            for (int i = 0; i < 4; i++) DrawCard_op();
+        }
+        TurnChange();
 	}
 
     void setCardSet(int id)
@@ -119,6 +135,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
             {
                 CardCollection_op.Add(Common_DataBase.GetCard(cardSet_op[i]));
             }
+            
+            //对于敌方回合，接下来应当等待敌方回复
 
         }
     }
@@ -137,6 +155,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			//复原法力水晶
 			if(maxcost<10)maxcost++;
 			nowcost=maxcost;
+            //复原英雄技能（暂空）
+
 			//复原所有随从是否攻击
 			GameObject myPanal = GameObject.Find("Canvas/Field");
 			for(int i=0; i<myPanal.transform.childCount; i++)
@@ -152,11 +172,15 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			//复原法力水晶
 			if(maxcost_op<10)maxcost_op++;
 			nowcost_op=maxcost_op;
+            //复原英雄技能
+
 			//复原所有随从是否攻击
 			GameObject myPanal = GameObject.Find("Canvas/Field_op");
 			for(int i=0; i<myPanal.transform.childCount; i++)
 				myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.attack=true;
-
+            
+            //EnemyTurn();
+            StartCoroutine(EnemyTurn());
 		}
 	}
 
@@ -246,7 +270,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		if(CardCollection.Count!=0)
 		{
 			int num=Common_Random.random(0,CardCollection.Count-1);
-			Debug.Log("给我抽牌！！！");
+			//Debug.Log("给我抽牌！！！");
 			CardCollection[num].GetComponent<CardMove>().flyAndFlip();
 			//CardCollection[num].transform.SetParent(GameObject.Find("Canvas/Hand").transform);
 			CardCollection[num].GetComponent<Common_CardInfo>().cardInfo.position=1;
@@ -270,17 +294,27 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	//说明：根据itemid获得对应的卡片，从全局
 	public GameObject GetCard(int itemid)
 	{
+        //先检测是不是英雄，再检测随从
+        GameObject tempHero = GameObject.Find("Hero");
+        if (tempHero.GetComponent<Common_CardInfo>().cardInfo.itemId == itemid) return tempHero;
+        tempHero = GameObject.Find("Hero_op");
+        if (tempHero.GetComponent<Common_CardInfo>().cardInfo.itemId == itemid) return tempHero;
+
 		return GameObject.Find("Card"+itemid);
 	}
 
 	//在对手回合时，无限读取对手操作直到对手发送结束（或者认输）的指令
 	//只要这个过程能正确执行，网络的问题就解决了一半
-	public void EnemyTurn()
+    IEnumerator EnemyTurn() //是不是应该使用协程？否则没法正常检查对手操作
+	//void EnemyTurn()
 	{
 		while(true)
 		{
+            yield return new WaitForSeconds(3f);//没法实现异步，只能暂时这样。如果能够在各种动画后面加入结束动画之类的标记....就可以改用WaitFor方法了
+
 			NetMessage nextMSG=Netlink.RecvMessage();
             if (nextMSG == null) break;//为空代表显然我们没有联网，而是单机测试
+            Debug.Log("New Message:" + nextMSG.infoType + " " + nextMSG.addint1 + " " + nextMSG.addint2);
 			if(nextMSG.infoType==NetMessage.Attack)
 			{
 				GameObject user=GetCard(nextMSG.addint1);
@@ -298,6 +332,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				int point=nextMSG.addint2;
 				//暂缺
 				user.GetComponent<Draggerable>().SummonUnit(point);
+                user.GetComponent<Common_CardInfo>().cardInfo.attack = false;
 			}
 			if(nextMSG.infoType==NetMessage.SpellCard)
 			{
@@ -322,6 +357,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				this.TurnChange();
 				break;
 			}
+
 		}
 	}
 }

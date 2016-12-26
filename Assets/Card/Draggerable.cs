@@ -131,7 +131,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				this.GetComponent<Common_CardInfo>().cardInfo.position = this.transform.parent.GetComponent<canvas_position>().position;
 				Destroy(placeholder);
 				if(ini == 1 && this.GetComponent<Common_CardInfo>().cardInfo.position == 2){
-					Debug.Log("我减了"+ this.GetComponent<Common_CardInfo>().cardInfo.cost.ToString());
+					//Debug.Log("我减了"+ this.GetComponent<Common_CardInfo>().cardInfo.cost.ToString());
 					GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=this.GetComponent<Common_CardInfo>().cardInfo.cost;
 					if(this.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.aimBattleUnit)
 					{

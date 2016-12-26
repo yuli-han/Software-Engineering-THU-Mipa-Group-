@@ -13,10 +13,12 @@ public class Common_NowCardSet {
         StreamReader sr = new StreamReader(FileName, System.Text.Encoding.Default);
         string line;
         Length = 0;
-        while ((line = sr.ReadLine()) != null)
+        line = sr.ReadLine();
+        Length=int.Parse(line);
+        for(int i=0;i<Length;i++)
         {
             CardSet[Length] = int.Parse(line);
-            Length++;
+            
         }
 
     }
@@ -25,9 +27,10 @@ public class Common_NowCardSet {
         FileStream fs = new FileStream(FileName, FileMode.Create);
         StreamWriter sw = new StreamWriter(fs);
         //开始写入
+        sw.WriteLine(Length.ToString());
         for (int i = 0; i < Length; i++)
         {
-            sw.Write(CardSet[i]+'\n');
+            sw.WriteLine(CardSet[i].ToString());
         }
         //清空缓冲区
         sw.Flush();
