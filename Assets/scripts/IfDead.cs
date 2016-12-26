@@ -14,6 +14,7 @@ public class IfDead : MonoBehaviour {
 		GameObject myPanal = GameObject.Find("Canvas/Field");
 		GameObject opPanal = GameObject.Find("Canvas/Field_op");
 		GameObject handPanal = GameObject.Find("Canvas/Hand");
+		GameObject opHandPanal = GameObject.Find("Canvas/Hand_op");
 		for(int i=0; i<myPanal.transform.childCount; i++){
 			if(myPanal.transform.GetChild(i).GetComponent<Common_CardInfo>()== null)
 				continue;
@@ -40,6 +41,14 @@ public class IfDead : MonoBehaviour {
 			if(handPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell){
 				if(handPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.ifdelete)
 					Destroy(handPanal.transform.GetChild(i).gameObject);
+			}
+		}
+		for(int i=0; i<opHandPanal.transform.childCount; i++){
+			if(opHandPanal.transform.GetChild(i).GetComponent<Common_CardInfo>()== null)
+				continue;
+			if(opHandPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.CardType >= Common_CardInfo.BaseInfo.aimSpell){
+				if(opHandPanal.transform.GetChild(i).GetComponent<Common_CardInfo>().cardInfo.ifdelete)
+					Destroy(opHandPanal.transform.GetChild(i).gameObject);
 			}
 		}
 	}
