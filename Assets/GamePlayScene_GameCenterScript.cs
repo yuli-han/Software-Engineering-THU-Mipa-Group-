@@ -182,9 +182,9 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			if(maxcost<10)maxcost++;
 			nowcost=maxcost;
             //复原英雄技能（暂空）
-            if (GameObject.Find("Hero").GetComponent<fireBall>().ifUse)
+            if (GameObject.Find("skill1").GetComponent<fireBall>().ifUse)
             {
-                GameObject.Find("Hero").GetComponent<fireBall>().ifUse = false;
+                GameObject.Find("skill1").GetComponent<fireBall>().ifUse = false;
                 GameObject.Find("skill1").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToReturn);
             }
 			//复原所有随从是否攻击
@@ -203,9 +203,9 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			if(maxcost_op<10)maxcost_op++;
 			nowcost_op=maxcost_op;
             //复原英雄技能
-            if (GameObject.Find("Hero_op").GetComponent<fireBall>().ifUse)
+            if (GameObject.Find("skill2").GetComponent<fireBall>().ifUse)
             {
-                GameObject.Find("Hero_op").GetComponent<fireBall>().ifUse = false;
+                GameObject.Find("skill2").GetComponent<fireBall>().ifUse = false;
                 GameObject.Find("skill2").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToReturn);
             }
 
@@ -386,8 +386,12 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				GameObject target=GetCard(nextMSG.addint2);
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(user,target);
 				user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
-                if(user.GetComponent<Common_CardInfo>().cardInfo.CardType==Common_CardInfo.BaseInfo.Hero)
-                    nowcost_op -= user.GetComponent<Common_CardInfo>().cardInfo.cost;
+                if (user.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.Hero)
+                {
+                    GameObject.Find("skill2").GetComponent<fireBall>().ifUse = true;
+                    GameObject.Find("skill2").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToUse);
+                    nowcost_op -= GameObject.Find("skill2").GetComponent<fireBall>().common_cost;
+                }
 			}
 			if(nextMSG.infoType==NetMessage.TurnChange)
 			{
