@@ -354,6 +354,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			}
 			if(nextMSG.infoType==NetMessage.Summon)
 			{
+                Debug.Log("Hand" + GameObject.Find("Hand_op").transform.childCount);
 				GameObject user=GetCard(nextMSG.addint1);
 				int point=nextMSG.addint2;
 				//暂缺
@@ -368,8 +369,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(user,target);
 				user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
-			GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=user.GetComponent<Common_CardInfo>().cardInfo.cost;
-
+			    GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=user.GetComponent<Common_CardInfo>().cardInfo.cost;
+                nowcost_op -= user.GetComponent<Common_CardInfo>().cardInfo.cost;
 			}
 			if(nextMSG.infoType==NetMessage.TriggerExec)
 			{//注：TriggerExec特指发动随从效果；因为法术效果直接作为SpellCard的效果
@@ -377,7 +378,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				GameObject target=GetCard(nextMSG.addint2);
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(user,target);
 				user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
-                nowcost_op -= user.GetComponent<Common_CardInfo>().cardInfo.cost;
+                if(user.GetComponent<Common_CardInfo>().cardInfo.CardType==Common_CardInfo.BaseInfo.Hero)
+                    nowcost_op -= user.GetComponent<Common_CardInfo>().cardInfo.cost;
 			}
 			if(nextMSG.infoType==NetMessage.TurnChange)
 			{
