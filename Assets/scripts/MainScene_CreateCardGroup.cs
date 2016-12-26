@@ -68,6 +68,9 @@ public class MainScene_CreateCardGroup : MonoBehaviour {
 		sw.Close ();
 
 		FileStream newfs = new FileStream (FileName, FileMode.Create);
+		byte[] mipa=new byte[1];
+		mipa=System.Text.Encoding.ASCII.GetBytes("0");
+		newfs.Write(mipa,0,1);
 		newfs.Close ();
 
 
