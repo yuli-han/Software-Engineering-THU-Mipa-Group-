@@ -136,6 +136,7 @@ public class CardMove : MonoBehaviour {
 			this.transform.SetParent(GameObject.Find("Canvas/Hand").transform);
 		else
 			this.transform.SetParent(GameObject.Find("Canvas/Hand_op").transform);
+		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
 	}
 	
 	public void cardAttack(GameObject start, GameObject end)
@@ -210,7 +211,7 @@ public class CardMove : MonoBehaviour {
 			yield return new WaitForFixedUpdate();
 		}
 		OnAttackEvent(start,end);
-	
+		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
 	}
 	public void OnAttackEvent(GameObject user,GameObject target)
 	{
@@ -287,6 +288,7 @@ public class CardMove : MonoBehaviour {
 			yield return new WaitForFixedUpdate();
 		}
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
+		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
 	}
 	IEnumerator SpellDamage(Trigger.TriggerInput input, int damage)
 	{
@@ -360,5 +362,6 @@ public class CardMove : MonoBehaviour {
 		}
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.ifdelete=true;
+		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
 	}	
 }

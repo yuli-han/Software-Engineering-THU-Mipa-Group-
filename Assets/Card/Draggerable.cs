@@ -269,5 +269,6 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		this.transform.SetParent(GameObject.Find("Canvas/Field_op").transform);
 		this.transform.SetSiblingIndex(siblingNum);
 		this.GetComponent<Common_CardInfo>().cardInfo.position = 3;
+		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
 	}
 }
