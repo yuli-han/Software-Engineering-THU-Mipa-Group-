@@ -24,7 +24,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	
 	public AnimationCurve scaleCurve;
     public float duration = 0.5f;
-	
+
+    public bool moveEnded = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -342,10 +343,11 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
     IEnumerator EnemyTurn() //是不是应该使用协程？否则没法正常检查对手操作
 	//void EnemyTurn()
 	{
+        yield return new WaitForSeconds(3f);
 		while(true)
 		{
-            yield return new WaitForSeconds(3f);//没法实现异步，只能暂时这样。如果能够在各种动画后面加入结束动画之类的标记....就可以改用WaitFor方法了
-
+            //没法实现异步，只能暂时这样。如果能够在各种动画后面加入结束动画之类的标记....就可以改用WaitFor方法了
+            moveEnded = false;
 			NetMessage nextMSG=Netlink.RecvMessage();
             if (nextMSG == null) break;//为空代表显然我们没有联网，而是单机测试
             Debug.Log("New Message:" + nextMSG.infoType + " " + nextMSG.addint1 + " " + nextMSG.addint2);
@@ -399,7 +401,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				this.TurnChange();
 				break;
 			}
-
+            while (!moveEnded)
+                yield return new WaitForFixedUpdate();
 		}
 	}
 }
