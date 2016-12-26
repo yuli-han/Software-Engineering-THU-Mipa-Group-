@@ -319,7 +319,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	//说明：根据itemid获得对应的卡片，从全局
 	public GameObject GetCard(int itemid)
 	{
-        Debug.Log("GetCard:" + itemid);
+        //Debug.Log("GetCard:" + itemid);
         //先检测是不是英雄，再检测随从
         GameObject tempHero = GameObject.Find("Hero");
         if (tempHero.GetComponent<Common_CardInfo>().cardInfo.itemId == itemid) return tempHero;
@@ -359,6 +359,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				//暂缺
 				user.GetComponent<Draggerable>().SummonUnit(point);
                 user.GetComponent<Common_CardInfo>().cardInfo.attack = false;
+				nowcost_op-=user.GetComponent<Common_CardInfo>().cardInfo.cost;
 			}
 			if(nextMSG.infoType==NetMessage.SpellCard)
 			{

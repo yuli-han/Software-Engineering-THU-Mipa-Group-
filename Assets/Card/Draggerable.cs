@@ -268,5 +268,6 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		this.GetComponent<Image>().sprite = null;
 		this.transform.SetParent(GameObject.Find("Canvas/Field_op").transform);
 		this.transform.SetSiblingIndex(siblingNum);
+		this.GetComponent<Common_CardInfo>().cardInfo.position = 3;
 	}
 }
