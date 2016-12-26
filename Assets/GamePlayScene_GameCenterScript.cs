@@ -102,12 +102,12 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
             for (int i = 0; i < 3; i++)
             {
                 DrawCard_op();
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
             }
             for (int i = 0; i < 4; i++)
             {
                 DrawCard();
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
             }
         }
         else
@@ -115,12 +115,12 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
             for (int i = 0; i < 3; i++)
             {
                 DrawCard();
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
             }
             for (int i = 0; i < 4; i++)
             {
                 DrawCard_op();
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
             }
         }
          yield return 0;
