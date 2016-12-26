@@ -295,24 +295,27 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		
 		Destroy(HintTextStart);
 	}
-	
-	public void DrawCard(int user=0)
-	{
-	if(user==1)
-	{
-		DrawCard_op();
-		return;
-	}
-		if(CardCollection.Count!=0)
-		{
-			int num=Common_Random.random(0,CardCollection.Count-1);
-			//Debug.Log("给我抽牌！！！");
-			CardCollection[num].GetComponent<CardMove>().flyAndFlip();
-			CardCollection[num].GetComponent<Common_CardInfo>().cardInfo.position=1;
-			CardCollection.RemoveAt(num);
-		}
 
-	}
+    public void DrawCard(int user = 0)
+    {
+        if (user == 1)
+        {
+            DrawCard_op();
+            return;
+        }
+        if (CardCollection.Count != 0)
+        {
+            int num = Common_Random.random(0, CardCollection.Count - 1);
+            //Debug.Log("给我抽牌！！！");
+            CardCollection[num].GetComponent<CardMove>().flyAndFlip();
+            CardCollection[num].GetComponent<Common_CardInfo>().cardInfo.position = 1;
+            CardCollection.RemoveAt(num);
+        }
+        else
+        {
+            GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded = true;
+        }
+    }
 	public void DrawCard_op()
 	{
 		if(CardCollection_op.Count!=0)
@@ -322,7 +325,10 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 			CardCollection_op[num].GetComponent<Common_CardInfo>().cardInfo.position=4;
 			CardCollection_op.RemoveAt(num);
 		}
-
+        else
+        {
+            GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded = true;
+        }
 	}
 
 	//说明：根据itemid获得对应的卡片，从全局
