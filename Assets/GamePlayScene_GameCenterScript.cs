@@ -315,6 +315,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 	//说明：根据itemid获得对应的卡片，从全局
 	public GameObject GetCard(int itemid)
 	{
+        Debug.Log("GetCard:" + itemid);
         //先检测是不是英雄，再检测随从
         GameObject tempHero = GameObject.Find("Hero");
         if (tempHero.GetComponent<Common_CardInfo>().cardInfo.itemId == itemid) return tempHero;
@@ -371,7 +372,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				GameObject target=GetCard(nextMSG.addint2);
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(user,target);
 				user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
-
+                nowcost_op -= user.GetComponent<Common_CardInfo>().cardInfo.cost;
 			}
 			if(nextMSG.infoType==NetMessage.TurnChange)
 			{
