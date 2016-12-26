@@ -92,6 +92,7 @@
      <Compile Include="Assets\scripts\MainScene_JoinGame.cs" />
      <Compile Include="Assets\scripts\MainScene_LastPage.cs" />
      <Compile Include="Assets\scripts\MainScene_NextPage.cs" />
+     <Compile Include="Assets\scripts\MouseIcon.cs" />
      <Compile Include="Assets\scripts\Release_Magic.cs" />
      <Compile Include="Assets\scripts\canvas_position.cs" />
      <Compile Include="Assets\scripts\click.cs" />
