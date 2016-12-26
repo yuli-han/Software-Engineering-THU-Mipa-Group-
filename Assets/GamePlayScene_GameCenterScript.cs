@@ -386,8 +386,12 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				GameObject target=GetCard(nextMSG.addint2);
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(user,target);
 				user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
-                if(user.GetComponent<Common_CardInfo>().cardInfo.CardType==Common_CardInfo.BaseInfo.Hero)
-                    nowcost_op -= user.GetComponent<Common_CardInfo>().cardInfo.cost;
+                if (user.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.Hero)
+                {
+                    GameObject.Find("skill2").GetComponent<fireBall>().ifUse = true;
+                    GameObject.Find("skill2").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToUse);
+                    nowcost_op -= GameObject.Find("skill2").GetComponent<fireBall>().common_cost;
+                }
 			}
 			if(nextMSG.infoType==NetMessage.TurnChange)
 			{
