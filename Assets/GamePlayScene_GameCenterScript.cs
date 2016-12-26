@@ -72,7 +72,11 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult=new TriggerExecSpace.DealDamage(1);
         GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.thisMove = CardMove.spellDamage;
         //GameObject.Find("Hero_op").name = "Card"+GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.itemId.ToString();
-
+        if (Netlink.id == 1)
+        {
+            GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.itemId++;
+            GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.itemId--;
+        }
 
         //初始化第三步：初始化各个控件的信息
 	Common_Random.init();//随机数种子理论上应该从网络获取以同步。
