@@ -295,7 +295,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		
 		Destroy(HintTextStart);
 	}
-
+	
     public void DrawCard(int user = 0)
     {
         if (user == 1)
