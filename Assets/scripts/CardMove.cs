@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class CardMove : MonoBehaviour {
 	
@@ -17,13 +18,11 @@ public class CardMove : MonoBehaviour {
 	
 	public void flyAndFlip(int id =0)
 	{
-		//StopCoroutine(moveAndFlip(id));
         StartCoroutine(moveAndFlip(id));
 	}
 	
 	IEnumerator moveAndFlip(int id)
 	{
-		//Debug.Log("Íæ¼Ò"+id.ToString());
 		Vector3 handPosition;
 		int count;
 		if(id == 0)
