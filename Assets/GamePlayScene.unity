@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692534, g: 0.49678725, b: 0.5750856, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -610,6 +610,10 @@ Prefab:
     - target: {fileID: 100006, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
       propertyPath: m_Name
       value: Box_FBX
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
+      propertyPath: m_Name
+      value: skill2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
