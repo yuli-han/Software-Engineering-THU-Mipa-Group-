@@ -225,20 +225,20 @@ public class CardMove : MonoBehaviour {
 	
 	public void Move(Trigger.TriggerInput input,int type, int extra = 0)
 	{
-		Debug.Log("BeforeMove");
+		//Debug.Log("BeforeMove");
 		switch(type)
 		{
 			case 0:
-				Debug.Log("reallyMove?");
+				//Debug.Log("reallyMove?");
 				input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);//¿Õ¶¯»­
 				break;
 			case 1:
 				StartCoroutine(battleMove(input,extra));
 				break;
 			case 2:
-                Debug.Log("BeforeSpell");
+                //Debug.Log("BeforeSpell");
 				StartCoroutine(SpellDamage(input,extra));
-                Debug.Log("afterSpell");
+                //Debug.Log("afterSpell");
 				break;
 		}
 	}
