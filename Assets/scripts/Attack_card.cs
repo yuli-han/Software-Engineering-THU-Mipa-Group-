@@ -62,6 +62,8 @@ public class Attack_card : MonoBehaviour,IDropHandler,IPointerDownHandler{
 				{
 					GameObject.Find("Box_FBX/skill1").GetComponent<fireBall>().ifUse = true;
 					GameObject.Find("Box_FBX/skill1").GetComponent<GamePlayScene_SkillIconMove>().StartMove(GamePlayScene_SkillIconMove.ToUse);
+					GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost-=GameObject.Find("skill1").GetComponent<fireBall>()
+					.common_cost;
 				}
 				GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend = false;
 				Netlink.SendMessage(NetMessage.TriggerExec,newInput);
