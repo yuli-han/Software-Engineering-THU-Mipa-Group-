@@ -296,9 +296,14 @@ public class CardMove : MonoBehaviour {
 			Ball = GameObject.Find("Box_FBX/skill1").GetComponent<fireBall>().ball;
 		else
 		{
-			Ball = Instantiate(Image_ball);
+			if(GameObject.Find("Box_FBX/skill2").GetComponent<fireBall>().ball != null)
+				Ball = GameObject.Find("Box_FBX/skill2").GetComponent<fireBall>().ball;
+			else{
+				Ball = Instantiate(Image_ball);
 			Ball.transform.SetParent(GameObject.Find("Canvas").transform);
 			Ball.transform.position = new Vector3(512f,150f,0f);
+			}
+			
 		}
 		
 			

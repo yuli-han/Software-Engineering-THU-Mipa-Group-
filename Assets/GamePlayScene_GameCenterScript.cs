@@ -79,9 +79,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         }
 
         //初始化第三步：初始化各个控件的信息
-	
-        
-        //初始化第四步：设置状态为初始状态。
+
+       //初始化第四步：设置状态为初始状态。
 		nowturn=0;
 		nowcost=0;
 		maxcost=0;
