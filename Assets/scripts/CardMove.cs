@@ -14,6 +14,7 @@ public class CardMove : MonoBehaviour {
 	public GameObject cardBack;
 	public GameObject textBlood;
 	public GameObject Image_ball;
+	GameObject placeholder_2;
 	float duration = 0.5f;
 	
 	public void flyAndFlip(int id =0)
@@ -141,6 +142,18 @@ public class CardMove : MonoBehaviour {
 	
 	public void cardAttack(GameObject start, GameObject end)
 	{
+		if(end.GetComponent<Draggerable>()!=null)
+		{
+			end.GetComponent<CardMove>().placeholder_2 = new GameObject();
+			end.GetComponent<CardMove>().placeholder_2.transform.SetParent( end.transform.parent );
+			LayoutElement le = end.GetComponent<CardMove>().placeholder_2.AddComponent<LayoutElement>();
+			le.preferredWidth = end.GetComponent<LayoutElement>().preferredWidth;
+			le.preferredHeight = end.GetComponent<LayoutElement>().preferredHeight;
+			le.flexibleWidth = 0;
+			le.flexibleHeight = 0;
+			end.GetComponent<CardMove>().placeholder_2.transform.SetSiblingIndex(end.transform.GetSiblingIndex());
+			end.GetComponent<LayoutElement>().ignoreLayout = true;
+		}
 		StartCoroutine(CardAttackMove(start,end));
 	}
 		
@@ -152,13 +165,28 @@ public class CardMove : MonoBehaviour {
 			beginPosition = start.GetComponent<Draggerable>().placeholder.transform.position;
 		else
 			beginPosition = start.transform.position;
-
+		GameObject placeholder = this.GetComponent<Draggerable>().placeholder;
+		this.GetComponent<LayoutElement>().ignoreLayout = true;
+		
 		while(time<2f)//ÒÆ¶¯¹¥»÷µÄ¶¯»­
 		{
+			//placeholder = this.GetComponent<Draggerable>().placeholder;
+			if(placeholder == null){
+				//Debug.Log("mipa");
+				placeholder = new GameObject();
+				placeholder.transform.SetParent( this.transform.parent );
+				LayoutElement le = placeholder.AddComponent<LayoutElement>();
+				le.preferredWidth = this.GetComponent<LayoutElement>().preferredWidth;
+				le.preferredHeight = this.GetComponent<LayoutElement>().preferredHeight;
+				le.flexibleWidth = 0;
+				le.flexibleHeight = 0;
+		
+				placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
+			}
 			Vector3 location = beginPosition - (1f-attackPath.Evaluate(time/2))*(beginPosition - end.transform.position)*0.8f;
 			time += Time.deltaTime / duration;
 			this.transform.position = location;
-			Debug.Log("¹¥»÷" + this.transform.position);
+			//Debug.Log("¹¥»÷" + this.transform.position);
 			yield return new WaitForFixedUpdate();
 		}
 		Vector3 delta = new Vector3(10f,0f,0f);
@@ -172,7 +200,6 @@ public class CardMove : MonoBehaviour {
 		reduceBlood2.transform.position = end.transform.position;
 		reduceBlood.GetComponent<Text>().text = "-"+end.GetComponent<Common_CardInfo>().cardInfo.atk.ToString();
 		reduceBlood2.GetComponent<Text>().text = "-"+start.GetComponent<Common_CardInfo>().cardInfo.atk.ToString();
-		
 		while(time<2.6f)//å·¦å³æŠ–åŠ¨çš„åŠ¨ç”»åŠ æŽ‰è¡€
 		{
 			Vector3 location = beginPosition - waggle.Evaluate((time-2f)/0.6f)*delta;
@@ -190,7 +217,6 @@ public class CardMove : MonoBehaviour {
 		}
 		Destroy(reduceBlood);
 		Destroy(reduceBlood2);
-		
 		while(time<3.6f)//Ðý×ªËÀÍöµÄ¶¯»­
 		{
 			float scale = deathCurve.Evaluate((time-2.6f)/0.6f);
@@ -210,6 +236,16 @@ public class CardMove : MonoBehaviour {
 				end.transform.localEulerAngles = rotation;
 			}
 			yield return new WaitForFixedUpdate();
+		}
+		this.GetComponent<LayoutElement>().ignoreLayout = false;
+		
+		if(placeholder != null)
+			Destroy(placeholder);
+		if(end.GetComponent<CardMove>().placeholder_2 != null)
+		{
+			Debug.Log("mipa");
+			end.GetComponent<LayoutElement>().ignoreLayout = false;
+			Destroy(end.GetComponent<CardMove>().placeholder_2);
 		}
 		OnAttackEvent(start,end);
 		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
@@ -251,6 +287,18 @@ public class CardMove : MonoBehaviour {
 		
 	IEnumerator battleMove(Trigger.TriggerInput input, int damage)
 	{
+		if(input.CardTarget.GetComponent<Draggerable>()!=null)
+		{
+			input.CardTarget.GetComponent<CardMove>().placeholder_2 = new GameObject();
+			input.CardTarget.GetComponent<CardMove>().placeholder_2.transform.SetParent( input.CardTarget.transform.parent );
+			LayoutElement le = input.CardTarget.GetComponent<CardMove>().placeholder_2.AddComponent<LayoutElement>();
+			le.preferredWidth = input.CardTarget.GetComponent<LayoutElement>().preferredWidth;
+			le.preferredHeight = input.CardTarget.GetComponent<LayoutElement>().preferredHeight;
+			le.flexibleWidth = 0;
+			le.flexibleHeight = 0;
+			input.CardTarget.GetComponent<CardMove>().placeholder_2.transform.SetSiblingIndex(input.CardTarget.transform.GetSiblingIndex());
+			input.CardTarget.GetComponent<LayoutElement>().ignoreLayout = true;
+		}
 		Vector3 delta = new Vector3(10f,0f,0f);
 		Vector3 beginPosition = input.CardTarget.transform.position;
 		float time = 0f;
@@ -288,11 +336,30 @@ public class CardMove : MonoBehaviour {
 		
 			yield return new WaitForFixedUpdate();
 		}
+		if(input.CardTarget.GetComponent<CardMove>().placeholder_2 != null)
+		{
+			Debug.Log("mipa");
+			input.CardTarget.GetComponent<LayoutElement>().ignoreLayout = false;
+			Destroy(input.CardTarget.GetComponent<CardMove>().placeholder_2);
+		}
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
 		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
 	}
 	IEnumerator SpellDamage(Trigger.TriggerInput input, int damage)
 	{
+		if(input.CardTarget.GetComponent<Draggerable>()!=null)
+		{
+			input.CardTarget.GetComponent<CardMove>().placeholder_2 = new GameObject();
+			input.CardTarget.GetComponent<CardMove>().placeholder_2.transform.SetParent( input.CardTarget.transform.parent );
+			LayoutElement le = input.CardTarget.GetComponent<CardMove>().placeholder_2.AddComponent<LayoutElement>();
+			le.preferredWidth = input.CardTarget.GetComponent<LayoutElement>().preferredWidth;
+			le.preferredHeight = input.CardTarget.GetComponent<LayoutElement>().preferredHeight;
+			le.flexibleWidth = 0;
+			le.flexibleHeight = 0;
+			input.CardTarget.GetComponent<CardMove>().placeholder_2.transform.SetSiblingIndex(input.CardTarget.transform.GetSiblingIndex());
+			input.CardTarget.GetComponent<LayoutElement>().ignoreLayout = true;
+		}
+		
 		float time = 0f;
 		GameObject Ball;
 		if(GameObject.Find("Box_FBX/skill1").GetComponent<fireBall>().ball != null)
@@ -360,6 +427,13 @@ public class CardMove : MonoBehaviour {
 			localScale.y = 1f-scale;
 			input.CardTarget.transform.localScale = localScale;
 			yield return new WaitForFixedUpdate();
+		}
+		
+		if(input.CardTarget.GetComponent<CardMove>().placeholder_2 != null)
+		{
+			Debug.Log("mipa");
+			input.CardTarget.GetComponent<LayoutElement>().ignoreLayout = false;
+			Destroy(input.CardTarget.GetComponent<CardMove>().placeholder_2);
 		}
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.ifdelete=true;

@@ -80,8 +80,8 @@ GameObject:
   - 225: {fileID: 225000010134047476}
   - 114: {fileID: 114000013304746582}
   - 114: {fileID: 114000011798567566}
-  - 114: {fileID: 114000013517081366}
-  - 114: {fileID: 114000013430574658}
+  - 114: {fileID: 114000013950276394}
+  - 114: {fileID: 114000013478210736}
   m_Layer: 5
   m_Name: Card 2
   m_TagString: Untagged
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 1849938685, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114000013430574658
+--- !u!114 &114000013478210736
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -558,17 +558,6 @@ MonoBehaviour:
   cardBack: {fileID: 1000010917184700, guid: 825d463b4330dc04f8003ac8c0acb467, type: 2}
   textBlood: {fileID: 1000011149753314, guid: ca7182582c60cc245abe3ede96400289, type: 2}
   Image_ball: {fileID: 1000014026203486, guid: 88c86eeefa1cef646a326405252c5d76, type: 2}
---- !u!114 &114000013517081366
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013222896662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13f4d3f680d15247b74d65a6d032d22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000013663419986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,6 +632,17 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &114000013950276394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013222896662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13f4d3f680d15247b74d65a6d032d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222000010081257058
 CanvasRenderer:
   m_ObjectHideFlags: 1

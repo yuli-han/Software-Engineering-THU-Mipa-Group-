@@ -24,6 +24,7 @@ public class Attack_card : MonoBehaviour,IDropHandler,IPointerDownHandler{
 				d.GetComponent<CardMove>().cardAttack(d,this.gameObject);
 				d.GetComponent<Common_CardInfo>().cardInfo.attack = false;
 				Trigger.TriggerInput input = new Trigger.TriggerInput(d,this.gameObject);
+				Debug.Log("卡片攻击");
 				Netlink.SendMessage(NetMessage.Attack,input);
 			}
 			else
