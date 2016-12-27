@@ -123,6 +123,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 		{
 			if(placeholder!=null)
 			{	
+				Debug.Log("卡片弹回");
 				int ini = this.GetComponent<Common_CardInfo>().cardInfo.position;
 				this.transform.SetParent(parentToReturnTo);
 				this.transform.SetSiblingIndex( placeholder.transform.GetSiblingIndex() );
@@ -162,8 +163,6 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 			}
 			GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifclick = false;
 		}
-		
-		//ifclick = false;
 	}
 	
 	
