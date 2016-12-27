@@ -247,7 +247,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 512, y: -477}
+  m_AnchoredPosition: {x: 512, y: -488.85004}
   m_SizeDelta: {x: 1024, y: 154.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &502595380
@@ -521,17 +521,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fd91904cd80334ab346f028d5482f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card: {fileID: 1000010860105492, guid: 5b8a6cb653a8744459312783f0ad75fc, type: 2}
-  BigCard: {fileID: 1000013309772710, guid: 349bbb43c92811340abb820f5fb9714c, type: 2}
+  Card: {fileID: 1000013222896662, guid: a5cd48aca8291974c99310a6c6323f24, type: 2}
+  BigCard: {fileID: 1000011043080196, guid: af45bb567e3aa7741b4c24b58834d513, type: 2}
   picture:
   - {fileID: 21300000, guid: 8f2c96bda8d30264fab7f455065d87db, type: 3}
-  - {fileID: 21300000, guid: 411a15d232686334bbe9f43816563c4f, type: 3}
-  - {fileID: 21300000, guid: 0abede4f1ee84c94cb50e140b959e6f5, type: 3}
-  - {fileID: 21300000, guid: 4b252a694bca1144abdf71585b4ea210, type: 3}
-  - {fileID: 21300000, guid: 5cb1a3011edb0f1499b6a07d71a4be7f, type: 3}
-  - {fileID: 21300000, guid: ccd171121a1fa1c40881246e47c27582, type: 3}
-  - {fileID: 21300000, guid: c0483021219de214bb1cff32c54422ef, type: 3}
-  - {fileID: 21300000, guid: 7fef546f9e7660d4d86cd8556a5a9b35, type: 3}
+  - {fileID: 21300000, guid: 352b2a69eca0d814aa661d3141ab3cba, type: 3}
+  - {fileID: 21300000, guid: a3dd678f9b216b14da7a72f12f2ec0fe, type: 3}
+  - {fileID: 21300000, guid: e4384c8893e5abc4e95cc04709bba26d, type: 3}
+  - {fileID: 21300000, guid: 7c1709bc2bfe9c945b9ad54c86993b99, type: 3}
+  - {fileID: 21300000, guid: 05083e726f4d39245825b7914e53e1a9, type: 3}
+  - {fileID: 21300000, guid: 07558721f2b3fa245afa5999a247ff73, type: 3}
+  - {fileID: 21300000, guid: 64b580ee29b604741a9160cd661471fe, type: 3}
+  frame:
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: dc4e5dd79e778ea4fa542e76b20e567e, type: 3}
+  - {fileID: 21300000, guid: dc4e5dd79e778ea4fa542e76b20e567e, type: 3}
 --- !u!1001 &732694067
 Prefab:
   m_ObjectHideFlags: 0
@@ -1340,6 +1349,17 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 100008, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
   m_PrefabInternal: {fileID: 732694067}
+--- !u!114 &1164282843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1164282839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9351ba269730e4b819dd68ea9ea38d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1164282844
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1498,7 +1518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 100.74
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -1519,7 +1539,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -2203,10 +2223,22 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   duration: 0.5
+  moveEnded: 0
 --- !u!1 &2004550487 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100010, guid: 1468589bf7e7b0b4285670054ae09ec6, type: 3}
   m_PrefabInternal: {fileID: 732694067}
+--- !u!114 &2004550491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2004550487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5080c28c16fff4f419178dc4056fa469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &2004550492
 BoxCollider:
   m_ObjectHideFlags: 0
