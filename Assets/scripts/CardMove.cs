@@ -152,14 +152,13 @@ public class CardMove : MonoBehaviour {
 			beginPosition = start.GetComponent<Draggerable>().placeholder.transform.position;
 		else
 			beginPosition = start.transform.position;
-
 		while(time<2f)//ÒÆ¶¯¹¥»÷µÄ¶¯»­
 		{
 			Vector3 location = beginPosition - (1f-attackPath.Evaluate(time/2))*(beginPosition - end.transform.position)*0.8f;
 			time += Time.deltaTime / duration;
 			this.transform.position = location;
 			Debug.Log("¹¥»÷" + this.transform.position);
-			yield return new WaitForFixedUpdate();
+            yield return new WaitForFixedUpdate();
 		}
 		Vector3 delta = new Vector3(10f,0f,0f);
 		Vector3 endPosition = end.transform.position;
