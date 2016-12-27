@@ -377,6 +377,7 @@ MonoBehaviour:
   id: 0
   Image_ball: {fileID: 1000014026203486, guid: 88c86eeefa1cef646a326405252c5d76, type: 2}
   ball: {fileID: 0}
+  tag: {fileID: 1000011933020254, guid: e4905aca8affe4741a69d187646b12e8, type: 2}
 --- !u!114 &566376275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2124,6 +2125,7 @@ MonoBehaviour:
   id: 1
   Image_ball: {fileID: 1000014026203486, guid: 88c86eeefa1cef646a326405252c5d76, type: 2}
   ball: {fileID: 0}
+  tag: {fileID: 1000011933020254, guid: e4905aca8affe4741a69d187646b12e8, type: 2}
 --- !u!114 &1903190247
 MonoBehaviour:
   m_ObjectHideFlags: 0

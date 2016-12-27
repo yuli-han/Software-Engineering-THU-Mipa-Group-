@@ -8,6 +8,9 @@ public class fireBall : MonoBehaviour {
 	public int id;
 	public GameObject Image_ball;
 	public GameObject ball;
+	public GameObject tag;
+	private GameObject skillTag;
+	
 	// Use this for initialization
 	void Start () {
 		ifUse = false;
@@ -46,5 +49,18 @@ public class fireBall : MonoBehaviour {
 		ball.transform.position = new Vector3(680f,133f,0f);
 		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend = true;
 		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().suspend = GameObject.Find("Hero");		
+	}
+	
+	public void OnMouseEnter()
+	{
+		skillTag = Instantiate(tag);
+		skillTag.transform.SetParent(GameObject.Find("Canvas").transform);
+		skillTag.transform.position = new Vector3(512f,400f,0f);
+	}
+	
+	public void OnMouseExit()
+	{
+		if(skillTag != null)
+			Destroy(skillTag);
 	}
 }
