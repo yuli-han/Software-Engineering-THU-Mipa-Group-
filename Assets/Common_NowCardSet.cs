@@ -15,9 +15,13 @@ public class Common_NowCardSet {
         Length = 0;
         line = sr.ReadLine();
         Length=int.Parse(line);
+		CardSet=new int[Length];
+		Debug.Log(""+Length);
         for(int i=0;i<Length;i++)
         {
-            CardSet[Length] = int.Parse(line);
+			line=sr.ReadLine();
+			Debug.Log(""+line);
+            CardSet[i] = int.Parse(line);
             
         }
 
@@ -30,7 +34,7 @@ public class Common_NowCardSet {
         sw.WriteLine(Length.ToString());
         for (int i = 0; i < Length; i++)
         {
-            sw.WriteLine(CardSet[i].ToString());
+            sw.Write(CardSet[i].ToString()+"\r\n");
         }
         //Çå¿Õ»º³åÇø
         sw.Flush();

@@ -385,7 +385,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 				
 				Trigger.TriggerInput newInput = new Trigger.TriggerInput(user,target);
 				user.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.exec(newInput);
-			    nowcost_op -= user.GetComponent<Common_CardInfo>().cardInfo.cost;
+                nowcost_op -= user.GetComponent<Common_CardInfo>().cardInfo.cost;
                 //user.GetComponent<Common_CardInfo>().cardInfo.ifdelete = true;
 			}
 			if(nextMSG.infoType==NetMessage.TriggerExec)
