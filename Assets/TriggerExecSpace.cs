@@ -48,7 +48,7 @@ namespace TriggerExecSpace
 		}
 		public override void exec(Trigger.TriggerInput input)
 		{
-			
+            input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp += thisHeal;
 			if(input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp>input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.maxhp)
 			input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.hp=input.CardTarget.GetComponent<Common_CardInfo>().cardInfo.maxhp;
 		}
