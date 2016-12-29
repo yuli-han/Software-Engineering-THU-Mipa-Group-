@@ -80,6 +80,7 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
         }
 
         //初始化第三步：初始化各个控件的信息
+        if (!Common_Random.inited) Common_Random.init();//单独执行该scene时用来初始化随机数种子；联网时不会执行
 
        //初始化第四步：设置状态为初始状态。
 		nowturn=0;
