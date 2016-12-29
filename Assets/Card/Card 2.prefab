@@ -576,6 +576,9 @@ MonoBehaviour:
   cardBack: {fileID: 1000010917184700, guid: 825d463b4330dc04f8003ac8c0acb467, type: 2}
   textBlood: {fileID: 1000011149753314, guid: ca7182582c60cc245abe3ede96400289, type: 2}
   Image_ball: {fileID: 1000014026203486, guid: 88c86eeefa1cef646a326405252c5d76, type: 2}
+  Heal_ball: {fileID: 1000010466382022, guid: 3f3e580825287aa40921e0d56e27d4ea, type: 2}
+  Damage_ball: {fileID: 1000011565817000, guid: d06489c767a4ee84297b4f098a4adc66,
+    type: 2}
 --- !u!114 &114000013663419986
 MonoBehaviour:
   m_ObjectHideFlags: 1
