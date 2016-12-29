@@ -97,6 +97,7 @@ GameObject:
   - 222: {fileID: 222000014036655118}
   - 114: {fileID: 114000011697247266}
   - 114: {fileID: 114000014039982454}
+  - 114: {fileID: 114000010083443984}
   m_Layer: 5
   m_Name: Card Name
   m_TagString: Untagged
@@ -143,7 +144,7 @@ GameObject:
   m_IsActive: 1
 --- !u!114 &114000010083443984
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012766470870}
