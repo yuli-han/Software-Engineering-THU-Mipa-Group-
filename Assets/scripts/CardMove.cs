@@ -11,6 +11,7 @@ public class CardMove : MonoBehaviour {
 	public AnimationCurve waggle;
 	public AnimationCurve deathCurve;
 	public Sprite __cardBack;
+	public Sprite __cardFront;
 	public GameObject cardBack;
 	public GameObject textBlood;
 	public GameObject Image_ball;
@@ -438,5 +439,10 @@ public class CardMove : MonoBehaviour {
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
 		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.ifdelete=true;
 		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
-	}	
+	}
+
+	IEnumerator Heal(Trigger.TriggerInput input, int heal)
+	{
+		yield return new WaitForFixedUpdate();
+	}
 }
