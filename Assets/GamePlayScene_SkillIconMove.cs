@@ -28,12 +28,12 @@ public class GamePlayScene_SkillIconMove : MonoBehaviour {
             lifetime = lifetime + Time.deltaTime;
             if (lifetime >= 0.6f)
             {
-                transform.position = lastPos;
+                transform.position = lastPos+new Vector3(0,0.6f,0);
                 transform.localEulerAngles = lastAngle + new Vector3(180f, 0, 0);
                 MoveType = 0;
                 return;
             }
-            transform.position = lastPos + new Vector3(0, 6f*lifetime-10f*lifetime*lifetime, 0);
+            transform.position = lastPos + new Vector3(0, 7f*lifetime-10f*lifetime*lifetime, 0);
             transform.localEulerAngles = lastAngle + new Vector3(1.5f * 360f * lifetime / 0.6f,0,0);
         }
         else if (MoveType == ToReturn)
@@ -41,11 +41,12 @@ public class GamePlayScene_SkillIconMove : MonoBehaviour {
             lifetime = lifetime + Time.deltaTime;
             if (lifetime >= 0.6f)
             {
-                transform.position = lastPos;
+                transform.position = lastPos-new Vector3(0,0.6f,0);
                 transform.localEulerAngles = lastAngle + new Vector3(180f,0,0);
                 MoveType = 0;
                 return;
             }
+            transform.position = lastPos + new Vector3(0, -1f*lifetime, 0);
             transform.localEulerAngles = lastAngle + new Vector3(180f * lifetime / 0.6f,0,0);
         }
 	}

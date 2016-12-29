@@ -51,6 +51,7 @@
      <Compile Include="Assets\Card\DropZone_all.cs" />
      <Compile Include="Assets\Card\DropZone_selected.cs" />
      <Compile Include="Assets\Card\scrollBar.cs" />
+     <Compile Include="Assets\CardSet_DataBase.cs" />
      <Compile Include="Assets\Common_CardInfo.cs" />
      <Compile Include="Assets\Common_DataBase.cs" />
      <Compile Include="Assets\Common_NowCardSet.cs" />
@@ -79,6 +80,7 @@
      <Compile Include="Assets\scripts\Attack_card.cs" />
      <Compile Include="Assets\scripts\CardAmplify.cs" />
      <Compile Include="Assets\scripts\CardMove.cs" />
+     <Compile Include="Assets\scripts\CardSetScene_CardFactory.cs" />
      <Compile Include="Assets\scripts\Draw_frame.cs" />
      <Compile Include="Assets\scripts\GamePlayScene_CardFactory.cs" />
      <Compile Include="Assets\scripts\IfDead.cs" />
