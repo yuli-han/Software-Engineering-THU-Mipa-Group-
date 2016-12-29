@@ -61,7 +61,7 @@ public class Draggerable_edit : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 		}			
 		else
 		{		
-			placeholder = Common_DataBase.GetCard(GetComponent<Common_CardInfo>().cardInfo.id,
+			placeholder = CardSet_DataBase.GetCard(GetComponent<Common_CardInfo>().cardInfo.id,
 			GetComponent<Common_CardInfo>().cardInfo.copyType);
 		}
 		placeholder.transform.SetParent( this.transform.parent );
@@ -144,7 +144,7 @@ public class Draggerable_edit : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 					Debug.Log("ALL");
 					if(placeholder.GetComponent<Common_CardInfo>().cardInfo.copyType == 0)
 					{
-						GameObject CopyCard = Common_DataBase.GetCard(placeholder.GetComponent<Common_CardInfo>().cardInfo.id,
+						GameObject CopyCard = CardSet_DataBase.GetCard(placeholder.GetComponent<Common_CardInfo>().cardInfo.id,
 						placeholder.GetComponent<Common_CardInfo>().cardInfo.copyType);	
 						CopyCard.transform.SetParent( placeholder.transform.parent );
 						LayoutElement le = placeholder.AddComponent<LayoutElement>();
@@ -204,7 +204,7 @@ public class Draggerable_edit : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 		Vector3 localposition = this.transform.position;
 		int bigId = GetComponent<Common_CardInfo>().cardInfo.id;
 		int bigType = GetComponent<Common_CardInfo>().cardInfo.copyType;		
-		bigCard=Common_DataBase.GetCard(bigId,bigType,true);
+		bigCard=CardSet_DataBase.GetCard(bigId,bigType,true);
 		bigCard.transform.SetParent(GameObject.Find("Canvas").transform);
 		if(localposition.y>400){
 			BigCardPosition.y = localposition.y - 250f;
@@ -235,7 +235,7 @@ public class Draggerable_edit : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 		// }			
 		// else
 		// {		
-			// placeholder = Common_DataBase.GetCard(GetComponent<Common_CardInfo>().cardInfo.id,
+			// placeholder = CardSet_DataBase.GetCard(GetComponent<Common_CardInfo>().cardInfo.id,
 			// GetComponent<Common_CardInfo>().cardInfo.copyType);
 		// }
 		// placeholder.transform.SetParent( this.transform.parent );
