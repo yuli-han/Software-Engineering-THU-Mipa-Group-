@@ -14,6 +14,7 @@ public class GamePlayScene_CardFactory :MonoBehaviour{
 		GameObject NewCard = Instantiate(Card);
 		
 		NewCard.GetComponent<Image>().sprite = picture[pictureIndex];
+		NewCard.GetComponent<CardMove>().__cardFront = picture[pictureIndex];
 		NewCard.transform.Find("frame").GetComponent<Image>().sprite = frame[pictureIndex];
 		return(NewCard);
 	}

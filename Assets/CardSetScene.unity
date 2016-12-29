@@ -756,7 +756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d6dab5077c0a645a32fbf94571e13f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
 --- !u!114 &587434408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,15 +1108,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2fd91904cd80334ab346f028d5482f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Card: {fileID: 1000012399812986, guid: df40189b7422d07498a9a70d3285721b, type: 2}
-  BigCard: {fileID: 1000010960565030, guid: 4948a2cc3c245d841b6a1eb94f928822, type: 2}
+  Card: {fileID: 1000014223016868, guid: f57fc38c8da57634a83a51b69192ef25, type: 2}
+  BigCard: {fileID: 1000011299470794, guid: 3f73ec3f3d7d6c3468e6875a4b3b20e0, type: 2}
   picture:
   - {fileID: 0}
-  - {fileID: 21300000, guid: 411a15d232686334bbe9f43816563c4f, type: 3}
-  - {fileID: 21300000, guid: 0abede4f1ee84c94cb50e140b959e6f5, type: 3}
-  - {fileID: 21300000, guid: 4b252a694bca1144abdf71585b4ea210, type: 3}
-  - {fileID: 21300000, guid: 5cb1a3011edb0f1499b6a07d71a4be7f, type: 3}
-  - {fileID: 21300000, guid: ccd171121a1fa1c40881246e47c27582, type: 3}
+  - {fileID: 21300000, guid: 0ef880a46e2ceed4fb95610ba9e649e8, type: 3}
+  - {fileID: 21300000, guid: 6192561f83332134195fed11586746a7, type: 3}
+  - {fileID: 21300000, guid: e4fca7fe8864f6a4db35214b62ad91d2, type: 3}
+  - {fileID: 21300000, guid: c386cf5c480836549aab656dbec93946, type: 3}
+  - {fileID: 21300000, guid: 23c07c1f241bc2948b657271639e8968, type: 3}
+  - {fileID: 21300000, guid: 5f178bad7120ba249beb40e38f53cf45, type: 3}
+  - {fileID: 21300000, guid: 90222b2d88cb9704f9a4b79d9490e88e, type: 3}
+  frame:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: dc4e5dd79e778ea4fa542e76b20e567e, type: 3}
+  - {fileID: 21300000, guid: dc4e5dd79e778ea4fa542e76b20e567e, type: 3}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
+  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
 --- !u!4 &1552766007
 Transform:
   m_ObjectHideFlags: 0

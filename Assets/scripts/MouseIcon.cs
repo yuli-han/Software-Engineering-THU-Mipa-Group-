@@ -4,6 +4,7 @@ using System.Collections;
 public class MouseIcon : MonoBehaviour {
 	public Texture2D cursorTexture; 
 	public Texture2D DefaultCursor;
+	
 	private CursorMode cursorMode = CursorMode.Auto;  
 	private Vector2 hotSpot = Vector2.zero;  
 	void OnMouseDown()   
@@ -15,4 +16,5 @@ public class MouseIcon : MonoBehaviour {
 	{
 		Cursor.SetCursor(DefaultCursor, hotSpot, cursorMode);
 	}
+	
 }

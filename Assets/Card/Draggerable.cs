@@ -12,6 +12,10 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	public GameObject bigCard;
 	
 	public GameObject placeholder = null;
+	public Texture2D dragTexture;
+	public Texture2D DefaultCursor;
+	private CursorMode cursorMode = CursorMode.Auto;  
+	private Vector2 hotSpot = Vector2.zero;  
 	
 	GameObject attackTarget = null;
 	
@@ -78,6 +82,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	
 	public void OnDrag(PointerEventData eventData){
 		
+		Cursor.SetCursor(dragTexture, hotSpot, cursorMode);
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 			return;
 		if(this.GetComponent<Common_CardInfo>().cardInfo.cost > GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().nowcost)
@@ -114,6 +119,8 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	}
 	
 	public void OnEndDrag(PointerEventData eventData){
+		
+		Cursor.SetCursor(DefaultCursor, hotSpot, cursorMode);
 		
 		if(GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().ifsuspend)
 		{
@@ -264,7 +271,7 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				this.transform.GetChild(i).GetComponent<Text>().color = col;
 			}
 		}			
-		this.GetComponent<Image>().sprite = null;
+		this.GetComponent<Image>().sprite = this.GetComponent<CardMove>().__cardFront;
 		this.transform.SetParent(GameObject.Find("Canvas/Field_op").transform);
 		this.transform.SetSiblingIndex(siblingNum);
 		this.GetComponent<Common_CardInfo>().cardInfo.position = 3;
