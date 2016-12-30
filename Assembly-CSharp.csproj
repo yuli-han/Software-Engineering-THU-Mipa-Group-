@@ -83,6 +83,7 @@
      <Compile Include="Assets\scripts\CardSetScene_CardFactory.cs" />
      <Compile Include="Assets\scripts\Draw_frame.cs" />
      <Compile Include="Assets\scripts\GamePlayScene_CardFactory.cs" />
+     <Compile Include="Assets\scripts\GamePlayScene_CardFactoryAutoUpdate.cs" />
      <Compile Include="Assets\scripts\IfDead.cs" />
      <Compile Include="Assets\scripts\MainScene_CardGroup1.cs" />
      <Compile Include="Assets\scripts\MainScene_CardGroup2.cs" />
