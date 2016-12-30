@@ -33,6 +33,8 @@ public class GamePlayScene_GameCenterScript : MonoBehaviour {
 		
 		//初始化第一步：根据已有的数据来编造卡组
 	
+	Common_DataBase.nowItemId=0;//先手清理最大itemid防止同步错误！捂脸
+
 	    //此处为测试用的简单卡组
         /*Debug.Log("Warning: You are using TestCardSet!");
 	    length=9;
