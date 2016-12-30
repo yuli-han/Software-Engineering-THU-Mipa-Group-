@@ -16,6 +16,7 @@ public class NetMessage
 	public static readonly int SpellCard=4;
 	public static readonly int TurnChange=5;
 	public static readonly int TriggerExec=6;
+    public static readonly int GameEnd = 7;
 
 	public static NetMessage toMSG(int input,Trigger.TriggerInput inputTrigger)
 	{

@@ -51,5 +51,11 @@ public class IfDead : MonoBehaviour {
 					Destroy(opHandPanal.transform.GetChild(i).gameObject);
 			}
 		}
+
+        if ((GameObject.Find("Hero").GetComponent<Common_CardInfo>().cardInfo.hp <= 0) ||
+            (GameObject.Find("Hero_op").GetComponent<Common_CardInfo>().cardInfo.hp <= 0))
+        {
+            GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().makeGameEnd();
+        }
 	}
 }

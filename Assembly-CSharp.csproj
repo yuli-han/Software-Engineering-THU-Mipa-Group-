@@ -64,6 +64,7 @@
      <Compile Include="Assets\MoveInterface.cs" />
      <Compile Include="Assets\NetMessage.cs" />
      <Compile Include="Assets\Netlink.cs" />
+     <Compile Include="Assets\NewScript\GamePlayScene_GameEndButton.cs" />
      <Compile Include="Assets\TestScene\BUT3.cs" />
      <Compile Include="Assets\TestScene\But1.cs" />
      <Compile Include="Assets\TestScene\But2.cs" />

@@ -19,6 +19,7 @@ public class Netlink
     //private static StreamWriter writer;
 
     public static int id;
+    public static bool shutdown;
 
     public static int Host(int port)
     {
