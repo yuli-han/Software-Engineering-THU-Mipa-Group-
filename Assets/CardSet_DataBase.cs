@@ -40,7 +40,7 @@ public class CardSet_DataBase
                 info.cost = 1;
                 info.atk = 1;
                 info.hp = 1;
-                info.name = "奇怪的射手";
+                info.name = "冯式狙击手";
                 info.description = "战吼：造成1点伤害";
                 info.CardType = Common_CardInfo.BaseInfo.aimBattleUnit;
                 info.thisTrigger = new Trigger.Trigger();
@@ -49,12 +49,17 @@ public class CardSet_DataBase
                 info.thisTrigger.thisResult.thisMove = CardMove.battleDamage;
                 break;
             case 3:
-                info.cost = 2;
-                info.atk = 2;
+                info.cost = 3;
+                info.atk = 3;
                 info.hp = 3;
-                info.name = "普通的植物";
-                info.description = "";
-                info.CardType = Common_CardInfo.BaseInfo.normalUnit;
+                info.name = "咪啪治疗师";
+                info.description = "战吼：恢复3点生命";
+                info.CardType = Common_CardInfo.BaseInfo.aimBattleUnit;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Others;//Ԛբ/ָ÷Kբضߨ߉Ҕ٥۷Ȏڎեλ
+                info.thisTrigger.thisResult = new TriggerExecSpace.HealUnit(3);
+                info.thisTrigger.thisResult.thisMove = CardMove.battleHeal;
+
                 break;
             case 4:
                 info.cost = 1;
@@ -66,11 +71,17 @@ public class CardSet_DataBase
                 break;
             case 5:
                 info.cost = 6;
-                info.atk = 5;
+                info.atk = 4;
                 info.hp = 5;
-                info.name = "圣光治疗者";
-                info.description = "为所有友方角色恢复3点生命值";
-                info.CardType = Common_CardInfo.BaseInfo.normalUnit;
+                info.name = "圣光治韩雨";
+                info.description = "战吼：回复一个英雄6点生命";
+                info.CardType = Common_CardInfo.BaseInfo.aimBattleUnit;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Unit;//Ԛբ/ָ÷Kբضߨ߉Ҕ٥۷Ȏڎեλ
+                info.thisTrigger.thisResult = new TriggerExecSpace.HealUnit(6);
+                info.thisTrigger.thisResult.thisMove = CardMove.battleHeal;
+
+
                 break;
             case 6:
                 info.cost = 4;
@@ -131,7 +142,7 @@ public class CardSet_DataBase
                 info.cost = 3;
                 info.atk = 4;
                 info.hp = 3;
-                info.name = "倒立的猴子ۺ";
+                info.name = "倒立的猴子";
                 info.CardType = Common_CardInfo.BaseInfo.normalUnit;
                 break;
             case 14:
@@ -252,6 +263,104 @@ public class CardSet_DataBase
                 info.hp = 12;
                 info.name = "伊瑟拉（醒着的）";
                 info.CardType = Common_CardInfo.BaseInfo.normalUnit;
+                break;
+            case 31:
+                info.cost = 1;
+                info.name = "急速治疗";
+                info.description = "回复所有单位4点生命";
+                info.CardType = Common_CardInfo.BaseInfo.noaimSpell;//բضѪǩָʾKբՅߨʇһضָϲרʵߨ
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Anyone;//Ԛբ/ָ÷Kբضߨ߉Ҕ٥۷Ȏڎեλ
+                info.thisTrigger.thisResult = new TriggerExecSpace.AllHeal(4);
+                //info.thisTrigger.thisResult.thisMove = CardMove.spellDamage;
+                break;
+            case 32:
+                info.cost = 1;
+                info.atk = 1;
+                info.hp = 1;
+                info.name = "海盗帕奇思";
+                info.description = "冲锋，当你打出一个海盗时....别想了，你没有海盗！";
+                info.CardType = Common_CardInfo.BaseInfo.noaimBattleUnit;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Myself;//Ԛբ/ָ÷Kբضߨ߉Ҕ٥۷Ȏڎեλ
+                info.thisTrigger.thisResult = new TriggerExecSpace.CanStrike();
+                break;
+            case 33:
+                info.cost = 7;
+                info.atk = 4;
+                info.hp = 7;
+                info.name = "华溢*王";
+                info.description = "战吼：如果你的牌库没有重复卡牌，则使你的英雄生命变为30";
+                info.CardType = Common_CardInfo.BaseInfo.noaimBattleUnit;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Hero;//Ԛբ/ָ÷Kբضߨ߉Ҕ٥۷Ȏڎեλ
+                info.thisTrigger.thisResult = new TriggerExecSpace.ConditionHeal_Collection_No_Same();
+                break;
+            case 34:
+                info.cost = 5;
+                info.name = "生而牧师";
+                info.description = "将所有随从的攻击力和生命值变为4";
+                info.CardType = Common_CardInfo.BaseInfo.noaimSpell;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Unit;
+                info.thisTrigger.thisResult = new TriggerExecSpace.AllStaticSet(4, 4);
+                //info.thisTrigger.thisResult.thisMove = CardMove.spellDamage;
+                break;
+            case 35:
+                info.cost = 5;
+                info.atk = 4;
+                info.hp = 5;
+                info.name = "牧师城管理员";
+                info.description = "战吼：使一个随从的攻击力和生命值变为4";
+                info.CardType = Common_CardInfo.BaseInfo.aimBattleUnit;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Unit | Trigger.TriggerTarget.Others;
+                info.thisTrigger.thisResult = new TriggerExecSpace.StaticSet(4, 4);
+                info.thisTrigger.thisResult.thisMove = CardMove.spellHeal;
+                break;
+            case 36:
+                info.cost = 4;
+                info.atk = 3;
+                info.hp = 2;
+                info.name = "战斗助手";
+                info.description = "战吼：一个友军获得+2/+2";
+                info.CardType = Common_CardInfo.BaseInfo.aimBattleUnit;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Unit | Trigger.TriggerTarget.Friend | Trigger.TriggerTarget.Others;
+                info.thisTrigger.thisResult = new TriggerExecSpace.StaticChange(2, 2);
+                info.thisTrigger.thisResult.thisMove = CardMove.spellHeal;
+                break;
+            case 37:
+                info.cost = 5;
+                info.name = "奥数愚蠢";
+                info.description = "抽3张牌";
+                info.CardType = Common_CardInfo.BaseInfo.noaimSpell;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Myself;
+                info.thisTrigger.thisResult = new TriggerExecSpace.DrawCard(3);
+                //info.thisTrigger.thisResult.thisMove = CardMove.spellDamage;
+                break;
+            case 38:
+                info.cost = 5;
+                info.name = "爆炸药水";
+                info.description = "对所有单位造成3点伤害";
+                info.CardType = Common_CardInfo.BaseInfo.noaimSpell;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Anyone;
+                info.thisTrigger.thisResult = new TriggerExecSpace.AllDamage(3);
+                //info.thisTrigger.thisResult.thisMove = CardMove.spellDamage;
+                break;
+            case 39:
+                info.cost = 9;
+                info.atk = 7;
+                info.hp = 9;
+                info.name = "红喵";
+                info.description = "战吼：使一个英雄的生命值变为15";
+                info.CardType = Common_CardInfo.BaseInfo.aimBattleUnit;
+                info.thisTrigger = new Trigger.Trigger();
+                info.thisTrigger.thisTarget.target = Trigger.TriggerTarget.Hero;
+                info.thisTrigger.thisResult = new TriggerExecSpace.StaticSet(0, 15);
+                info.thisTrigger.thisResult.thisMove = CardMove.battleDamage;
                 break;
 
         }
