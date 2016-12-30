@@ -146,7 +146,14 @@ namespace Trigger
                 if (user != target && (range.target & TriggerTarget.Others) == 0) return false;
             }
 
-
+            //Ó¢ÐÛËæ´Ó×é
+            if (!((range.target & TriggerTarget.Hero) == 0 && (range.target & TriggerTarget.Unit) == 0))
+            {
+                if ((target.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.Hero)
+                    && (range.target & TriggerTarget.Hero) == 0) return false;
+                if ((target.GetComponent<Common_CardInfo>().cardInfo.CardType != Common_CardInfo.BaseInfo.Hero)
+                    && (range.target & TriggerTarget.Unit) == 0) return false;
+            }
 
             return true;
         }

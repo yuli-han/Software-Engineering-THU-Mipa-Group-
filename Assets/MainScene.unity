@@ -336,8 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea39a2e4ced8744789931a55bdded4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardBack: {fileID: 0}
-  Card: {fileID: 0}
+  CardBack: {fileID: 21300126, guid: 8e08201cec45666458ce8302959c3f09, type: 3}
+  Card: {fileID: 21300128, guid: 8e08201cec45666458ce8302959c3f09, type: 3}
 --- !u!65 &1175821838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -585,8 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e6f0952f2ab6547a585fafec83bd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardBack: {fileID: 0}
-  Card: {fileID: 0}
+  CardBack: {fileID: 21300126, guid: 8e08201cec45666458ce8302959c3f09, type: 3}
+  Card: {fileID: 21300128, guid: 8e08201cec45666458ce8302959c3f09, type: 3}
 --- !u!65 &1357979242
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -678,8 +678,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff74c9da39fa4a47995333752bea4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardBack: {fileID: 0}
-  Card: {fileID: 0}
+  CardBack: {fileID: 21300126, guid: 8e08201cec45666458ce8302959c3f09, type: 3}
+  Card: {fileID: 21300128, guid: 8e08201cec45666458ce8302959c3f09, type: 3}
 --- !u!65 &1658003628
 BoxCollider:
   m_ObjectHideFlags: 0
