@@ -81,7 +81,7 @@ GameObject:
   - 114: {fileID: 114000011798567566}
   - 114: {fileID: 114000013950276394}
   - 114: {fileID: 114000013478210736}
-  - 114: {fileID: 114000011612463216}
+  - 114: {fileID: 114000011258230050}
   m_Layer: 5
   m_Name: Card 2
   m_TagString: Untagged
@@ -297,6 +297,23 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &114000011258230050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013222896662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0097f8393919b4b8a243f5e5be42d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentToReturnTo: {fileID: 0}
+  placeholderParent: {fileID: 0}
+  bigCard: {fileID: 0}
+  placeholder: {fileID: 0}
+  dragTexture: {fileID: 2800000, guid: 177bbd37633195348a7f12269d6516a2, type: 3}
+  DefaultCursor: {fileID: 2800000, guid: 8402e683237ab7846a623d70c0b75e88, type: 3}
 --- !u!114 &114000011565810750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,22 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 1849938685, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114000011612463216
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013222896662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e69a52ef993e0a4d88f58917e3bc374, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IfDelete: 0
-  parentToReturnTo: {fileID: 0}
-  placeholderParent: {fileID: 0}
-  initialcanvas: {fileID: 0}
-  holderindex: -1
 --- !u!114 &114000011798567566
 MonoBehaviour:
   m_ObjectHideFlags: 1

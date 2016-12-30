@@ -7,7 +7,7 @@ public class DropZone_selected : MonoBehaviour, IDropHandler, IPointerEnterHandl
 
 	public void Start(){
 		for (int i = 0; i < Common_NowCardSet.Length; i++) {
-			GameObject c=Common_DataBase.GetCard(Common_NowCardSet.CardSet[i]%5+1,0);
+			GameObject c=CardSet_DataBase.GetCard(Common_NowCardSet.CardSet[i]%5+1,0);
 			c.transform.SetParent(GameObject.Find("Canvas/Panel_right_up_scoll/Panel_right_up").transform);
 		}
 	}

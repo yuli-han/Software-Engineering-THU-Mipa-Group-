@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MainScene_HoldGame : MonoBehaviour {
 
@@ -43,7 +44,7 @@ public class MainScene_HoldGame : MonoBehaviour {
 		
 	
 		
-		Netlink.Host(int.Parse(GameObject.Find("Canvas/InputPORT/Text").GetComponent<Text>().text.ToString()));		
+		Netlink.Host(int.Parse(GameObject.Find("Canvas/InputPORT/Text").GetComponent<Text>().text));		
 		
 		Application.LoadLevel ("GamePlayScene");
 	}

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MainScene_JoinGame : MonoBehaviour {
 
@@ -40,7 +41,7 @@ public class MainScene_JoinGame : MonoBehaviour {
 			return;
 		}
 			
-		Netlink.Client(int.Parse(GameObject.Find("Canvas/InputIP/Text").GetComponent<Text>().text),
+		Netlink.Client(GameObject.Find("Canvas/InputIP/Text").GetComponent<Text>().text,
 		int.Parse(GameObject.Find("Canvas/InputPORT/Text").GetComponent<Text>().text));			
 
 		Application.LoadLevel ("GamePlayScene");

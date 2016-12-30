@@ -239,7 +239,7 @@ namespace TriggerExecSpace
                 if (abled)
                 {
                     Trigger.TriggerResult newRes = new StaticSet(0, 30);
-                    newRes.exec(new Trigger.TriggerInput(GameObject.Find("Hero"),null));
+                    newRes.exec(new Trigger.TriggerInput(GameObject.Find("Hero"), GameObject.Find("Hero")));
                 }
             }
             else

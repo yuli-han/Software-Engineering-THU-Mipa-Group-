@@ -142,6 +142,11 @@ public class Draggerable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 				Destroy(placeholder);
 					
 				if(ini == 1 && this.GetComponent<Common_CardInfo>().cardInfo.position == 2){
+                    if (this.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.noaimSpell)
+                    {
+                        this.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(new Trigger.TriggerInput(this.gameObject,null));
+                        this.GetComponent<Common_CardInfo>().cardInfo.ifdelete = true;
+                    }
 					NetMessage outMSG=new NetMessage();
 					outMSG.infoType=NetMessage.Summon;
 					outMSG.addint1=this.GetComponent<Common_CardInfo>().cardInfo.itemId;

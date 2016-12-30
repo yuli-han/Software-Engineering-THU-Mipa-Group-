@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class Attack_card : MonoBehaviour,IDropHandler,IPointerDownHandler{
 
 	public void OnDrop(PointerEventData eventData){
+        if (this.GetComponent<Common_CardInfo>().cardInfo.CardType == Common_CardInfo.BaseInfo.noaimSpell) return;
 		if(eventData.pointerDrag ==null)
 			return;
 		//Debug.Log(eventData.pointerDrag.name + "was dropped on" + gameObject.name);		

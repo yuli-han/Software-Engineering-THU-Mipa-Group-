@@ -302,7 +302,11 @@ public class CardMove : MonoBehaviour {
 			case 3:
 				StartCoroutine(Heal(input,extra));
 				break;
+            default:
+                input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
+                break;
 		}
+
 	}
 		
 	IEnumerator battleMove(Trigger.TriggerInput input, int damage)

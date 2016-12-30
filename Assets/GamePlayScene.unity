@@ -571,8 +571,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 641853171}
   - 114: {fileID: 641853172}
-  - 114: {fileID: 641853174}
-  - 114: {fileID: 641853173}
   m_Layer: 0
   m_Name: GamePlayScene_CardFactory
   m_TagString: Untagged
@@ -605,48 +603,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card: {fileID: 1000013222896662, guid: a5cd48aca8291974c99310a6c6323f24, type: 2}
-  BigCard: {fileID: 1000011043080196, guid: af45bb567e3aa7741b4c24b58834d513, type: 2}
-  picture:
-  - {fileID: 21300000, guid: 8f2c96bda8d30264fab7f455065d87db, type: 3}
-  - {fileID: 21300000, guid: 352b2a69eca0d814aa661d3141ab3cba, type: 3}
-  - {fileID: 21300000, guid: a3dd678f9b216b14da7a72f12f2ec0fe, type: 3}
-  - {fileID: 21300000, guid: e4384c8893e5abc4e95cc04709bba26d, type: 3}
-  - {fileID: 21300000, guid: 7c1709bc2bfe9c945b9ad54c86993b99, type: 3}
-  - {fileID: 21300000, guid: 05083e726f4d39245825b7914e53e1a9, type: 3}
-  - {fileID: 21300000, guid: 07558721f2b3fa245afa5999a247ff73, type: 3}
-  - {fileID: 21300000, guid: 64b580ee29b604741a9160cd661471fe, type: 3}
-  frame:
-  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
-  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
-  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
-  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
-  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
-  - {fileID: 21300000, guid: 47f77a5977919604b860eee5634eab26, type: 3}
-  - {fileID: 21300000, guid: dc4e5dd79e778ea4fa542e76b20e567e, type: 3}
-  - {fileID: 21300000, guid: dc4e5dd79e778ea4fa542e76b20e567e, type: 3}
---- !u!114 &641853173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 641853170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cbcbc4d671d38d4f8418e4285df9c75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &641853174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 641853170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90d77e182c2847e48833fb94d7ab95b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Card: {fileID: 1000012418193862, guid: badd07ccbac2514438034ae91044deba, type: 2}
   BigCard: {fileID: 1000011043080196, guid: af45bb567e3aa7741b4c24b58834d513, type: 2}
   picture:
   - {fileID: 0}
@@ -987,6 +943,7 @@ GameObject:
   - 33: {fileID: 804666169}
   - 23: {fileID: 804666168}
   - 65: {fileID: 804666167}
+  - 114: {fileID: 804666166}
   m_Layer: 0
   m_Name: "\u6E38\u620F\u7ED3\u675F\u6309\u94AE"
   m_TagString: Untagged
@@ -1008,6 +965,17 @@ Transform:
   - {fileID: 737280251}
   m_Father: {fileID: 732694068}
   m_RootOrder: 6
+--- !u!114 &804666166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804666164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17d7942b72e74f46aabdca1af74274c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &804666167
 BoxCollider:
   m_ObjectHideFlags: 0

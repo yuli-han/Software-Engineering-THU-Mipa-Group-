@@ -22,7 +22,7 @@ public class Group_GameCenterScript : MonoBehaviour {
         //生成的卡片按顺序铺在场上
         for (int i = 0; i < length; i++)
         {
-            CardCollection[i]=Common_DataBase.GetCard(cardSet[i]);
+            CardCollection[i]=CardSet_DataBase.GetCard(cardSet[i]);
 			CardCollection[i].transform.SetParent(GameObject.Find("Canvas/Panel_left_scoll/Panel_left").transform);
         }
         
