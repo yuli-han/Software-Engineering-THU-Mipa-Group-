@@ -15,6 +15,9 @@ public class CardMove : MonoBehaviour {
 	public GameObject cardBack;
 	public GameObject textBlood;
 	public GameObject Image_ball;
+	public GameObject Heal_ball;
+	public GameObject Damage_ball;
+	
 	GameObject placeholder_2;
 	float duration = 0.5f;
 	
@@ -168,7 +171,8 @@ public class CardMove : MonoBehaviour {
 			beginPosition = start.transform.position;
 		GameObject placeholder = this.GetComponent<Draggerable>().placeholder;
 		this.GetComponent<LayoutElement>().ignoreLayout = true;
-		
+		GameObject Ball = Instantiate(Damage_ball);
+		int u = 0;
 		while(time<2f)//移动攻击的动画
 		{
 			//placeholder = this.GetComponent<Draggerable>().placeholder;
@@ -188,6 +192,18 @@ public class CardMove : MonoBehaviour {
 			time += Time.deltaTime / duration;
 			this.transform.position = location;
 			//Debug.Log("攻击" + this.transform.position);
+			if(time > 0.8f && time < 1.3f)
+			{
+				if(u == 0)
+				{
+					Debug.Log("攻击特效！Mipa");
+					Ball.transform.SetParent(GameObject.Find("Canvas").transform);
+					Ball.transform.position = end.transform.position;
+				}
+				u++;
+				if(time + Time.deltaTime / duration > 1.3f)
+					Destroy(Ball);
+			}
 			yield return new WaitForFixedUpdate();
 		}
 		Vector3 delta = new Vector3(10f,0f,0f);
@@ -282,6 +298,9 @@ public class CardMove : MonoBehaviour {
                 //Debug.Log("BeforeSpell");
 				StartCoroutine(SpellDamage(input,extra));
                 //Debug.Log("afterSpell");
+				break;
+			case 3:
+				StartCoroutine(Heal(input,extra));
 				break;
 		}
 	}
@@ -443,6 +462,30 @@ public class CardMove : MonoBehaviour {
 
 	IEnumerator Heal(Trigger.TriggerInput input, int heal)
 	{
-		yield return new WaitForFixedUpdate();
+		float time = 0f;
+		GameObject Ball = Instantiate(Heal_ball);
+		Ball.transform.SetParent(GameObject.Find("Canvas").transform);
+		Ball.transform.position = input.CardTarget.transform.position;
+		
+		GameObject reduceBlood = Instantiate(textBlood);
+		reduceBlood.transform.SetParent(GameObject.Find("Canvas").transform);
+		reduceBlood.transform.position = input.CardTarget.transform.position;
+		reduceBlood.GetComponent<Text>().text = ("+"+heal);
+		Color c = reduceBlood.GetComponent<Text>().color;
+		c.r = 0f;
+		c.g = 255f;
+		c.b = 255f;
+		reduceBlood.GetComponent<Text>().color = c;
+		
+		while(time<0.48f)//旋转死亡的动画
+		{
+			time += Time.deltaTime / duration;
+			reduceBlood.transform.position = reduceBlood.transform.position + new Vector3(0f,2f,0f);
+			yield return new WaitForFixedUpdate();
+		}
+		Destroy(Ball);
+		Destroy(reduceBlood);
+		input.CardUser.GetComponent<Common_CardInfo>().cardInfo.thisTrigger.thisResult.exec(input);
+		GameObject.Find("GameCenter").GetComponent<GamePlayScene_GameCenterScript>().moveEnded=true;
 	}
 }
