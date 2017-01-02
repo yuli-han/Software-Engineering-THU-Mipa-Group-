@@ -403,7 +403,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 529373196}
   m_LocalRotation: {x: 0.93358046, y: -0.35836798, z: 0, w: 0}
-  m_LocalPosition: {x: 0.3, y: -0.1, z: 2}
+  m_LocalPosition: {x: 0.47, y: 0.03, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 42}
   m_Children: []
@@ -577,7 +577,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 719752613}
   m_LocalRotation: {x: 0.71581477, y: -0.6982903, z: 0.0000001490116, w: -0.0000001490116}
-  m_LocalPosition: {x: -0.1, y: -0.33, z: 0.98}
+  m_LocalPosition: {x: 0.08, y: 0.01, z: 0.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 180, y: -0.000015258789, z: 88.58}
   m_Children: []
@@ -1034,7 +1034,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1045544898}
   m_LocalRotation: {x: 0.9335805, y: -0.35836792, z: -0, w: 0}
-  m_LocalPosition: {x: -0.07, y: -0.19, z: 2}
+  m_LocalPosition: {x: 0.22, y: -0.31, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 42}
   m_Children: []
@@ -2184,7 +2184,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1874758588}
   m_LocalRotation: {x: 0.7158147, y: -0.69829035, z: 0.00000013403881, w: -0.00000013075731}
-  m_LocalPosition: {x: 0, y: 0.11, z: 0.98}
+  m_LocalPosition: {x: 0.04, y: -0.01, z: 0.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 180, y: -0.000015258789, z: 88.58}
   m_Children: []
@@ -2297,7 +2297,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1889614202}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 465, y: 770, z: -133}
+  m_LocalPosition: {x: 383.4, y: 731.9, z: -170}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
@@ -2420,7 +2420,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1902530903}
   m_LocalRotation: {x: 0.71581477, y: -0.6982902, z: 0.00000017881392, w: -0.0000001490116}
-  m_LocalPosition: {x: 0.11, y: 0.18, z: 0.98}
+  m_LocalPosition: {x: 0.05, y: 0.25, z: 0.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 180, y: -0.000015258789, z: 88.58}
   m_Children: []
