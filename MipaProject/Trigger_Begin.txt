@@ -1,0 +1,16 @@
+Trigger_Begin_***:
+DrawCard
+TurnStart
+TurnEnd
+UnitSummon
+UnitAttack
+UnitAttacked
+UnitKill
+UnitDead
+Damage
+
+Trigger_Condition_***:
+isFriend
+isEnemy
+AttackAble
+

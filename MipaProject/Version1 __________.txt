@@ -1,0 +1,5 @@
+UI:彻底完成TestUI
+做好正式UI的准备；
+Paint:准备好更换引擎至Unity3D
+Trigger:做好测试用的Trigger后准备好补充各种游戏机制。
+
